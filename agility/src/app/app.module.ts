@@ -8,8 +8,6 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { SplashComponent } from './home/splash/splash.component';
 
-import { CookieService } from 'ngx-cookie-service';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,9 +20,7 @@ import { CookieService } from 'ngx-cookie-service';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [
-    CookieService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
