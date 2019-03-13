@@ -9,8 +9,4 @@ export class AuthService {
 
   constructor() { }
 
-  onSignIn(googleUser) {
-    this.profile = googleUser.getBasicProfile();
-    console.log(this.profile.getName());
-  }
 }
