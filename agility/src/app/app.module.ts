@@ -5,12 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopNavbarComponent } from './shared/top-navbar/top-navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { HomeComponent } from './home/home.component';
+import { SplashComponent } from './home/splash/splash.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopNavbarComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+    SplashComponent
   ],
   imports: [
     BrowserModule,
