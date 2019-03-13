@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { getDefaultService } from 'selenium-webdriver/chrome';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-splash',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SplashComponent implements OnInit {
 
-  constructor() { }
+  //https://stackoverflow.com/questions/38846232/how-to-implement-signin-with-google-in-angular-2-using-typescript
+
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
+  }
+
+  onClick() {
+    
   }
 
 }
