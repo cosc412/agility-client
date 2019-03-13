@@ -10,6 +10,11 @@ button {
     color: $light-blue;
     background-color: transparent;
     border: none;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    padding: 10px;
     cursor: pointer;
 
     &:hover {
@@ -20,12 +25,42 @@ button {
     }
 }
 
+span {
+    margin: 0 auto;
+}
+
+button.google {
+    -moz-transition-duration: .2s;
+    transition-duration: .2s;
+    background-color: white;
+    border: none;
+    color: $grey;
+
+    &:hover {
+        -moz-transition-duration: .4s;
+        transition-duration: .4s;
+        background-color: $light-blue;
+        color: $grey;
+    }
+}
+
+img.google {
+    width: 30px;
+    height: 30px;
+    float: left;
+}
+span.google {
+    vertical-align: middle;
+    position: relative;
+}
+
 .navbar {
     background-color: $grey;
     width: 100%;
     height: 70px;
 
     .button_wrapper {
+        display: flex;
         float: right;
     }
 }
