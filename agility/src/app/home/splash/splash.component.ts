@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/auth.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-splash',
@@ -10,7 +10,6 @@ export class SplashComponent implements OnInit {
 
   constructor(private auth: AuthService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }
