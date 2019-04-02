@@ -1,0 +1,30 @@
+
+@import '../../../vars';
+
+a {
+    text-decoration: none;
+}
+
+.card_wrapper {
+    background-color: $grey;
+    padding: 15px;
+    color: $white;
+    height: 250px;
+    overflow: hidden;
+
+    .name {
+        color: $light-blue;
+        font-size: 25px;
+    }
+
+    .description {
+        text-align: left;
+        font-size: 18px;
+    }
+
+    hr {
+        border: none;
+        height: 2px;
+        background-color: $light-blue;
+    }
+}

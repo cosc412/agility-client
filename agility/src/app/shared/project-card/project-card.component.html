@@ -1,3 +1,12 @@
-<p>
-  project-card works!
-</p>
+
+<a *ngIf="project" routerLink="">
+  <div class="card_wrapper">
+    <div class="name">
+      {{ project.name }}
+    </div>
+    <hr>
+    <div class="description">
+      {{ project.description }}
+    </div>
+  </div>
+</a>

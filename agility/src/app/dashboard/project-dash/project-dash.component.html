@@ -6,8 +6,6 @@
   </div>
 
   <div *ngIf="projects" class="card_grid">
-    <div *ngFor="let p of projects">
-      <app-project-card></app-project-card>
-    </div>
+    <app-project-card *ngFor="let p of projects" [project]='p'></app-project-card>
   </div>
 </div>

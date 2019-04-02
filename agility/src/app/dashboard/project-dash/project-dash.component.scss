@@ -3,8 +3,8 @@
 
 .wrapper {
     margin: 200px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 40px;
+    margin-bottom: 100px;
     text-align: center;
     
     .header {
@@ -21,5 +21,7 @@
 
 .card_grid {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+    margin-top: 50px;
 }

@@ -9,7 +9,7 @@ export class ProjectService {
     {
       _id: 1,
       name: `John Doe's Project`,
-      description: 'This is a very descriptive project!'
+      description: 'This is a very descriptive project! This is a very descriptive project! This is a very descriptive project! This is a very descriptive project! This is a very descriptive project! This is a very descriptive project! This is a very descriptive project! This is a very descriptive project! This is a very descriptive project! This is a very descriptive project! This is a very descriptive project! This is a very descriptive project!'
     },
     {
       _id: 2,
