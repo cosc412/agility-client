@@ -1,0 +1,25 @@
+
+@import '../../../vars';
+
+.wrapper {
+    margin: 200px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    
+    .header {
+        color: $light-blue;
+        font-size: 40px;
+
+        hr {
+            border: none;
+            height: 2px;
+            background-color: $light-blue;
+        }
+    }
+}
+
+.card_grid {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
