@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ProjectService {
 
-  mock_projects = [
+  private mock_projects = [
     {
       _id: 1,
       name: `John Doe's Project`,

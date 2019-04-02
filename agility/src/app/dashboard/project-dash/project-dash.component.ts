@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProjectService } from 'src/app/auth/project.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-project-dash',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectDashComponent implements OnInit {
 
-  constructor() { }
+  projects;
+
+  constructor(private auth: AuthService, private project: ProjectService) { }
 
   ngOnInit() {
+    this.projects = this.project.getProjects(this.auth.user._id);
   }
 
 }
