@@ -7,6 +7,7 @@ import { TopNavbarComponent } from './shared/top-navbar/top-navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { SplashComponent } from './home/splash/splash.component';
+import { ProjectDashComponent } from './dashboard/project-dash/project-dash.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SplashComponent } from './home/splash/splash.component';
     TopNavbarComponent,
     FooterComponent,
     HomeComponent,
-    SplashComponent
+    SplashComponent,
+    ProjectDashComponent
   ],
   imports: [
     BrowserModule,
