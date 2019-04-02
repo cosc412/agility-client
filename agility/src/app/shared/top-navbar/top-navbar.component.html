@@ -1,9 +1,9 @@
 
 <div class="navbar">
   <div class="button_wrapper">
-    <button><span>About</span></button>
+    <button><span>Home</span></button>
     <button><span>FAQ</span></button>
-    <button (click)="auth.signIn()" class="google">
+    <button *ngIf="!auth.user; else logout" (click)="auth.signIn()" class="google">
       <img class="google" src="../../../assets/google.png">
       <span class="google">
         Sign In
@@ -11,3 +11,12 @@
     </button>
   </div>
 </div>
+
+<ng-template #logout>
+  <button *ngIf="auth.user; else logout" (click)="auth.signOut()" class="google">
+    <img class="google" src="../../../assets/google.png">
+    <span class="google">
+      Sign Out
+    </span>
+  </button>
+</ng-template>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { Router } from '@angular/router';
 
 declare const gapi: any;
 
@@ -13,10 +14,9 @@ export class AuthService {
 
   private auth2: any;
   private profile: any;
-
   user;
 
-  constructor() {
+  constructor(private router: Router) {
     this.init();
   }
 
@@ -40,6 +40,8 @@ export class AuthService {
 
   signOut() {
     this.auth2.signOut();
+    this.user = undefined;
+    this.router.navigate(['']);
   }
 
   private async getUser(email: string) {
@@ -52,8 +54,10 @@ export class AuthService {
 
   private listenForUser() {
     this.auth2.currentUser.listen(profile => {
-      this.profile = profile.getBasicProfile();
-      this.getUser(this.profile.getEmail());
+      if (profile) {
+        this.profile = profile.getBasicProfile();
+        this.getUser(this.profile.getEmail());
+      }
     });
   }
 

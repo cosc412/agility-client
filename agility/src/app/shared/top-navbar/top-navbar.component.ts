@@ -10,7 +10,6 @@ export class TopNavbarComponent implements OnInit {
 
   constructor(private auth: AuthService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }
