@@ -50,6 +50,13 @@ span.google {
 button.projects {
     padding: 20px;
     font-size: 18px;
+    background-color: transparent;
+    color: $light-blue;
+    border-color: $grey;
+
+    &:hover {
+        background-color: $grey;
+    }
 }
 .wrapper {
     text-align: center;
