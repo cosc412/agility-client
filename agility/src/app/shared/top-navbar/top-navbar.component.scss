@@ -59,7 +59,13 @@ span.google {
     width: 100%;
     height: 70px;
 
-    .button_wrapper {
+    .button_wrapper_left {
+        display: flex;
+        float: left;
+        padding-left: 10px;
+    }
+
+    .button_wrapper_right {
         display: flex;
         float: right;
     }

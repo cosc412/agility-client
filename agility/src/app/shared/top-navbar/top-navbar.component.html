@@ -1,6 +1,11 @@
 
 <div class="navbar">
-  <div class="button_wrapper">
+  <div class="button_wrapper_left">
+    <a routerLink="">
+      <img src="../../../assets//logo.png" height="70px">
+    </a>
+  </div>
+  <div class="button_wrapper_right">
     <button><span>Home</span></button>
     <button><span>FAQ</span></button>
     <button *ngIf="!auth.user; else logout" (click)="auth.signIn()" class="google">
