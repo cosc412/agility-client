@@ -6,10 +6,15 @@ a {
 }
 
 .card_wrapper {
+    -moz-transition-duration: .2s;
+    transition-duration: .2s;
     background-color: $grey;
     padding: 15px;
     color: $white;
     height: 250px;
+    border: 2px;
+    border-style: solid;
+    border-color: $grey;
     overflow: hidden;
 
     .name {
@@ -26,5 +31,11 @@ a {
         border: none;
         height: 2px;
         background-color: $light-blue;
+    }
+
+    &:hover {
+        -moz-transition-duration: .4s;
+        transition-duration: .4s;
+        border-color: $light-blue;
     }
 }
