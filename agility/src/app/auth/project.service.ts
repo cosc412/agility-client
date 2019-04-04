@@ -43,4 +43,20 @@ export class ProjectService {
   getProjects(userID: string) {
     return this.mock_projects;
   }
+
+  getProject() {
+
+  }
+
+  createProject() {
+
+  }
+
+  updateProject() {
+
+  }
+
+  deleteProject() {
+    
+  }
 }
