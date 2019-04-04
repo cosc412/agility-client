@@ -26,11 +26,14 @@ a {
     display: none;
     position: absolute;
     background-color: transparent;
-    width: 100px;
+    width: 130px;
+    height: 50px;
     box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
     z-index: 1;
 
     a {
+        -moz-transition-duration: .2s;
+        transition-duration: .2s;
         color: $black;
         text-decoration: none;
         padding: 10px;
@@ -38,7 +41,20 @@ a {
         display: block;
         cursor: pointer;
 
+        img {
+            height: 17px;
+            width: 17px;
+            padding-right: 15px;
+        }
+
+        &.delete {
+            background-color: $red;
+            color: $white;
+        }
+
         &:hover {
+            -moz-transition-duration: .4s;
+            transition-duration: .4s;
             color: $grey;
             background-color: $light-blue;
         }
