@@ -54,7 +54,7 @@ export class AuthService {
 
   private listenForUser() {
     this.auth2.currentUser.listen(profile => {
-      if (profile) {
+      if (this.auth2.isSignedIn.get()) {
         this.profile = profile.getBasicProfile();
         this.getUser(this.profile.getEmail());
       }
