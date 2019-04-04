@@ -14,7 +14,7 @@ export class AuthService {
 
   private auth2: any;
   private profile: any;
-  user;
+  user: any;
 
   constructor(private router: Router) {
     this.init();
