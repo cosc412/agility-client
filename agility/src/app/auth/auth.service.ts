@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 
 declare const gapi: any;
@@ -11,6 +10,7 @@ export class AuthService {
 
   // https://stackoverflow.com/questions/38846232/how-to-implement-signin-with-google-in-angular-2-using-typescript
   // https://developers.google.com/identity/sign-in/web/people
+  // https://stackoverflow.com/questions/38664350/google-sign-in-with-angular2-and-typescript-where-to-get-gapi
 
   private auth2: any;
   private profile: any;
