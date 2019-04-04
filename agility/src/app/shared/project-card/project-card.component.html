@@ -1,6 +1,13 @@
 
-<a *ngIf="project" routerLink="">
-  <div class="card_wrapper">
+<div *ngIf="project" class="card_wrapper">
+  <div class="dropdown">
+    <button class="settings"></button>
+    <div class="dropdown-content">
+      <a>Edit</a>
+      <a>Delete</a>
+    </div>
+  </div>
+  <div class="container" routerLink="">
     <div class="name">
       {{ project.name }}
     </div>
@@ -9,4 +16,4 @@
       {{ project.description }}
     </div>
   </div>
-</a>
+</div>

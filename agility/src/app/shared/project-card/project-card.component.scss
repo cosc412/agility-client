@@ -5,21 +5,71 @@ a {
     text-decoration: none;
 }
 
+.dropdown {
+    position: relative;
+    display: inline-block;
+    text-align: left;
+
+    .settings {
+        background-color: $white;
+        background-image: url('../../../assets//more.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 50px;
+        height: 40px;
+        border: none;
+    }
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: transparent;
+    width: 100px;
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
+    z-index: 1;
+
+    a {
+        color: $black;
+        text-decoration: none;
+        padding: 10px;
+        background-color: $white;
+        display: block;
+        cursor: pointer;
+
+        &:hover {
+            color: $grey;
+            background-color: $light-blue;
+        }
+    }
+}
+
+.dropdown:hover .dropdown-content {display: block;}
+
 .card_wrapper {
     -moz-transition-duration: .2s;
     transition-duration: .2s;
     background-color: $grey;
-    padding: 15px;
     color: $white;
-    height: 250px;
+    height: 280px;
     border: 2px;
     border-style: solid;
     border-color: $grey;
     overflow: hidden;
+    text-align: left;
+
+    .container {
+        padding: 15px;
+        padding-top: 5px;
+        height: 100%;
+        cursor: pointer;
+    }
 
     .name {
         color: $light-blue;
         font-size: 25px;
+        text-align: center;
     }
 
     .description {
