@@ -24,4 +24,29 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 30px;
     margin-top: 50px;
+
+    .create_project {
+        -moz-transition-duration: .2s;
+        transition-duration: .2s;
+        height: 280px;
+        border-style: solid;
+        border-color: $grey;
+        border-width: 2px;
+        background-color: $grey;
+        color: $white;
+        font-size: 20px;
+        cursor: pointer;
+
+        img {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 15px;
+        }
+
+        &:hover {
+            -moz-transition-duration: .4s;
+            transition-duration: .4s;
+            border-color: $light-blue;
+        }
+    }
 }

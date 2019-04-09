@@ -7,5 +7,9 @@
 
   <div *ngIf="projects" class="card_grid">
     <app-project-card *ngFor="let p of projects" [project]='p'></app-project-card>
+    <button class="create_project">
+      <img src="../../../assets/plus.png" width="100" height="100">
+      <div>Create Project</div>
+    </button>
   </div>
 </div>
