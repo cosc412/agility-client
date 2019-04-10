@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Oxygen');
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import './vars';
 
 body {
@@ -7,4 +8,10 @@ body {
     margin: 0px;
     padding: 0px;
     background-color: $black;
+}
+
+.custom-dialog-container .mat-dialog-container {
+    padding: 0px;
+    background-color: $white;
+    color: $grey;
 }
