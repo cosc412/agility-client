@@ -1,0 +1,12 @@
+
+@import '../../../vars';
+
+.wrapper {
+    margin: 50px 100px;
+
+    .sprint_wrapper {
+        overflow: auto;
+        white-space: nowrap;
+    }
+}
+

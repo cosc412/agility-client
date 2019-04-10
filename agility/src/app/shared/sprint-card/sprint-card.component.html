@@ -1,3 +1,11 @@
-<p>
-  sprint-card works!
-</p>
+
+<div *ngIf="sprint" class="wrapper">
+  <div class="content">
+    <div class="header">
+      {{ sprint.header }}
+    </div>
+    <div class="body">
+      {{ sprint.description }}
+    </div>
+  </div>
+</div>

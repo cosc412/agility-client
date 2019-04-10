@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-sprint-card',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sprint-card.component.scss']
 })
 export class SprintCardComponent implements OnInit {
+
+  @Input() sprint;
 
   constructor() { }
 
