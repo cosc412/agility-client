@@ -7,7 +7,32 @@
     background-color: $grey;
     height: 300px;
     width: 270px;
-    text-align: center;
+    text-align: left;
     margin: 10px 20px;
     text-decoration: none;
+    border-style: solid;
+    border-color: $grey;
+    border-width: 2px;
+    white-space: normal;
+
+    .header {
+        background-color: $light-blue;
+        color: $grey;
+        padding: 20px 10px;
+        font-size: 18px;
+    }
+
+    .body {
+        padding: 10px 20px;
+        height: 200px;
+        overflow: hidden;
+    }
+
+    &:hover {
+        border-color: $light-blue;
+    }
+}
+
+.clickable {
+    cursor: pointer;
 }

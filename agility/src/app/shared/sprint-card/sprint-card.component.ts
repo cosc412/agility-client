@@ -14,4 +14,8 @@ export class SprintCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  sprintClicked() {
+    
+  }
+
 }

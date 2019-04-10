@@ -1,6 +1,6 @@
 
 <div *ngIf="sprint" class="wrapper">
-  <div class="content">
+  <div class="clickable" (click)="sprintClicked()">
     <div class="header">
       {{ sprint.header }}
     </div>
