@@ -70,3 +70,13 @@ span.google {
         float: right;
     }
 }
+
+.project_name {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    padding: 10px;
+    color: $white;
+    font-size: 18px;
+}

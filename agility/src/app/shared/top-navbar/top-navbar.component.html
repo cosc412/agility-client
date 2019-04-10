@@ -4,6 +4,9 @@
     <a routerLink="">
       <img src="../../../assets//logo.png" height="70px">
     </a>
+    <div *ngIf="navbarService.isInDetailsDash" class="project_name">
+      <span>Project Name</span>
+    </div>
   </div>
   <div class="button_wrapper_right">
     <button *ngIf="auth.user" routerLink="/projects"><span>Projects</span></button>
