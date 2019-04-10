@@ -20,7 +20,7 @@ export class ProjectDashComponent implements OnInit {
   }
 
   openCreateDialog() {
-    this.dialog.open(CreateProjectComponent, { panelClass: 'custom-dialog-container' });
+    this.dialog.open(CreateProjectComponent, { panelClass: 'custom-container' });
   }
 
 }
