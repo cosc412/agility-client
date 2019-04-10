@@ -15,6 +15,7 @@ import { FaqPageComponent } from './home/faq-page/faq-page.component';
 import { QaViewComponent } from './shared/qa-view/qa-view.component';
 import { ProjectDetailsDashComponent } from './dashboard/project-details-dash/project-details-dash.component';
 import { SprintCardComponent } from './shared/sprint-card/sprint-card.component';
+import { TaskListViewComponent } from './shared/task-list-view/task-list-view.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SprintCardComponent } from './shared/sprint-card/sprint-card.component'
     FaqPageComponent,
     QaViewComponent,
     ProjectDetailsDashComponent,
-    SprintCardComponent
+    SprintCardComponent,
+    TaskListViewComponent
   ],
   imports: [
     BrowserModule,
