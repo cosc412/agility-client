@@ -22,4 +22,8 @@ export class SprintCardComponent implements OnInit {
     this.selected.emit(this.sprint._id);
   }
 
+  unselect() {
+    this.chosen = false;
+  }
+
 }
