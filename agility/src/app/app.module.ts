@@ -11,6 +11,7 @@ import { SplashComponent } from './home/splash/splash.component';
 import { ProjectDashComponent } from './dashboard/project-dash/project-dash.component';
 import { ProjectCardComponent } from './shared/project-card/project-card.component';
 import { CreateProjectComponent } from './shared/create-project/create-project.component';
+import { FaqPageComponent } from './home/faq-page/faq-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CreateProjectComponent } from './shared/create-project/create-project.c
     SplashComponent,
     ProjectDashComponent,
     ProjectCardComponent,
-    CreateProjectComponent
+    CreateProjectComponent,
+    FaqPageComponent
   ],
   imports: [
     BrowserModule,
