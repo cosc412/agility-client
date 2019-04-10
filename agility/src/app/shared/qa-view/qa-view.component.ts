@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-qa-view',
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QaViewComponent implements OnInit {
 
+  @Input() question;
+  expand = false;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  expandMenu() {
+    this.expand = !this.expand;
   }
 
 }

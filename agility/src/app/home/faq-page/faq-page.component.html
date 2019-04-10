@@ -5,6 +5,10 @@
     <hr>
   </div>
 
+  <div class="qa_view_wrapper">
+    <app-qa-view *ngFor="let section of sections" [question]="section"></app-qa-view>
+  </div>
+
   <div class="title">
     About Agility
     <hr>
