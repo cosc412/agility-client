@@ -23,6 +23,15 @@ export class TaskService {
       description: 'We need to finish this up within the hour.',
       note: ['This is a note!'],
       block: ['This is a block!']
+    },
+    {
+      _id: '3',
+      sprintID: '2',
+      due: '4/10/19',
+      header: 'This is a new task!',
+      description: 'We need to finish this up within the hour.',
+      note: ['This is a note!'],
+      block: ['This is a block!']
     }
   ];
 

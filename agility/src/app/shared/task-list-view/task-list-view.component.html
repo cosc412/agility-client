@@ -1,3 +1,7 @@
-<p>
-  task-list-view works!
-</p>
+
+<div *ngIf="task" class='wrapper'>
+  <div>{{ task.due }}</div>
+  <div>{{ task.header }}</div>
+  <div>{{ task.block.length }}</div>
+  <img src="../../../assets/more.png">
+</div>

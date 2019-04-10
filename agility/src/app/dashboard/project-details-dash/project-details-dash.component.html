@@ -17,6 +17,7 @@
         <div class="header">Task</div>
         <div class="header">Blocks</div>
       </div>
+      <app-task-list-view *ngFor="let task of tasks" [task]="task"></app-task-list-view>
     </div>
   </div>
 </div>

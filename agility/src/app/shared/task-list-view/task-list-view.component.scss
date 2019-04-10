@@ -1,0 +1,24 @@
+
+@import '../../../vars';
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 60px;
+    text-align: left;
+    font-size: 20px;
+    padding: 10px 0;
+    margin: 10px 0;
+    border-left-width: 10px;
+    border-left-style: solid;
+    border-left-color: $light-blue;
+
+    div {
+        margin-left: 30px;
+    }
+
+    img {
+        height: 30px;
+        width: 30px;
+        margin-right: 30px;
+    }
+}
