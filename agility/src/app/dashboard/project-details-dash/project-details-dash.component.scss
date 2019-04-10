@@ -49,5 +49,37 @@
             }
         }
     }
+
+    .tasks_wrapper {
+        margin-top: 70px;
+        color: $white;
+        font-size: 30px;
+        text-align: center;
+
+        .title {
+            text-align: left;
+        }
+
+        .task_list_wrapper {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: $grey;
+            width: 80vw;
+            display: inline-block;
+
+            .heading_grid {
+                display: grid;
+                grid-template-columns: 1fr 2fr 1fr;
+                
+                .header {
+                    font-size: 25px;
+                    color: $light-blue;
+                    text-align: left;
+                    margin-left: 40px;
+                }
+            }
+        }
+
+    }
 }
 

@@ -9,4 +9,14 @@
       <div>New Sprint</div>
     </button>
   </div>
+  <div *ngIf="tasks" class="tasks_wrapper">
+    <div class="title">Sprint Header's Tasks</div>
+    <div class="task_list_wrapper">
+      <div class="heading_grid">
+        <div class="header">Due</div>
+        <div class="header">Task</div>
+        <div class="header">Blocks</div>
+      </div>
+    </div>
+  </div>
 </div>

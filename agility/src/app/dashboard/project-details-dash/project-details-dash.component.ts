@@ -5,6 +5,7 @@ import { SprintService } from 'src/app/auth/sprint.service';
 import { ActivatedRoute } from '@angular/router';
 
 import { SprintCardComponent } from '../../shared/sprint-card/sprint-card.component';
+import { TaskService } from 'src/app/auth/task.service';
 
 @Component({
   selector: 'app-project-details-dash',
@@ -22,7 +23,7 @@ export class ProjectDetailsDashComponent implements OnInit {
   selectedSprint;
 
   constructor(private navbarService: NavbarService, private projectService: ProjectService,
-    private sprintService: SprintService, private route: ActivatedRoute) { }
+    private sprintService: SprintService, private taskService: TaskService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.navbarService.isInDetailsDash = true;
@@ -41,11 +42,13 @@ export class ProjectDetailsDashComponent implements OnInit {
         if (sprintID !== val.sprint._id) {
           val.unselect();
         }
-        this.selectedSprint = sprintID;
       });
+      this.selectedSprint = sprintID;
       // Get the tasks of the sprint selected
+      this.tasks = this.taskService.getTasksBySprint(this.selectedSprint);
     } else {
       this.selectedSprint = undefined;
+      this.tasks = undefined;
     }
   }
 
