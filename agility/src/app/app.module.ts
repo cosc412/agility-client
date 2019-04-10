@@ -12,6 +12,7 @@ import { ProjectDashComponent } from './dashboard/project-dash/project-dash.comp
 import { ProjectCardComponent } from './shared/project-card/project-card.component';
 import { CreateProjectComponent } from './shared/create-project/create-project.component';
 import { FaqPageComponent } from './home/faq-page/faq-page.component';
+import { QaViewComponent } from './shared/qa-view/qa-view.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FaqPageComponent } from './home/faq-page/faq-page.component';
     ProjectDashComponent,
     ProjectCardComponent,
     CreateProjectComponent,
-    FaqPageComponent
+    FaqPageComponent,
+    QaViewComponent
   ],
   imports: [
     BrowserModule,
