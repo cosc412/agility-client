@@ -1,12 +1,5 @@
 
 <div *ngIf="project" class="card_wrapper">
-  <div class="dropdown">
-    <button class="settings"></button>
-    <div class="dropdown-content">
-      <a><img src="../../../assets/edit.png">Edit</a>
-      <a class="delete"><img src="../../../assets/trashcan.png">Delete</a>
-    </div>
-  </div>
   <div class="container" routerLink="">
     <div class="name">
       {{ project.name }}
@@ -15,5 +8,9 @@
     <div class="description">
       {{ project.description }}
     </div>
+  </div>
+  <div class="btn_group">
+    <button class="edit"></button>
+    <button class="delete"></button>
   </div>
 </div>
