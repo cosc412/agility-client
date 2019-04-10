@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-sprint-card',
@@ -8,6 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SprintCardComponent implements OnInit {
 
   @Input() sprint;
+  @Output() selected: EventEmitter<string> = new EventEmitter();
+
+  chosen = false;
 
   constructor() { }
 
@@ -15,7 +18,8 @@ export class SprintCardComponent implements OnInit {
   }
 
   sprintClicked() {
-    
+    this.chosen = !this.chosen;
+    this.selected.emit(this.sprint._id);
   }
 
 }

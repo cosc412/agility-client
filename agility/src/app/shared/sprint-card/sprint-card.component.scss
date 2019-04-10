@@ -30,6 +30,10 @@
         overflow: hidden;
     }
 
+    &.selected {
+        border-color: $light-blue;
+    }
+
     &:hover {
         -moz-transition-duration: .4s;
         transition-duration: .4s;

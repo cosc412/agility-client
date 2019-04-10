@@ -1,5 +1,5 @@
 
-<div *ngIf="sprint" class="wrapper">
+<div *ngIf="sprint" class="wrapper" [ngClass]="{'selected': chosen}">
   <div class="clickable" (click)="sprintClicked()">
     <div class="header">
       {{ sprint.header }}
