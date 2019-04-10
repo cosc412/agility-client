@@ -1,6 +1,12 @@
 
 <div class="wrapper">
-  <div class="sprint_wrapper">
-    <app-sprint-card *ngFor="let sprint of sprints" [sprint]="sprint"></app-sprint-card>
+  <div class="sprint_grid">
+    <div class="sprint_wrapper">
+      <app-sprint-card *ngFor="let sprint of sprints" [sprint]="sprint"></app-sprint-card>
+    </div>
+    <button class="new_sprint_btn">
+      <img src ="../../../assets/plus.png">
+      <div>New Sprint</div>
+    </button>
   </div>
 </div>

@@ -2,6 +2,8 @@
 @import '../../../vars';
 
 .wrapper {
+    -moz-transition-duration: .2s;
+    transition-duration: .2s;
     display: inline-block;
     color: $white;
     background-color: $grey;
@@ -29,6 +31,8 @@
     }
 
     &:hover {
+        -moz-transition-duration: .4s;
+        transition-duration: .4s;
         border-color: $light-blue;
     }
 }
