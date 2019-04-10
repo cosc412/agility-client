@@ -40,12 +40,12 @@ export class ProjectService {
 
   constructor() { }
 
-  getProjects(userID: string) {
+  getProjects() {
     return this.mock_projects;
   }
 
-  getProject() {
-
+  getProject(id: string) {
+    return this.mock_projects[Number.parseInt(id) - 1];
   }
 
   createProject() {

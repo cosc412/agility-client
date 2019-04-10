@@ -17,7 +17,7 @@ export class ProjectDashComponent implements OnInit {
   constructor(private auth: AuthService, private project: ProjectService, private navbarService: NavbarService, private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.projects = this.project.getProjects(this.auth.user._id);
+    this.projects = this.project.getProjects();
     this.navbarService.isInDetailsDash = false;
   }
 
