@@ -9,9 +9,11 @@
     </div>
   </div>
   <div class="button_wrapper_right">
-    <button *ngIf="auth.user" routerLink="/projects"><span>Projects</span></button>
-    <button routerLink=""><span>Home</span></button>
-    <button routerLink="/faq"><span>FAQ</span></button>
+    <div *ngIf="!navbarService.isInDetailsDash; else inDashTemplate">
+      <button *ngIf="auth.user" routerLink="/projects"><span>Projects</span></button>
+      <button routerLink=""><span>Home</span></button>
+      <button routerLink="/faq"><span>FAQ</span></button>
+    </div>
     <button *ngIf="!auth.user; else logout" (click)="auth.signIn()" class="google">
       <img class="google" src="../../../assets/google.png">
       <span class="google">
@@ -28,4 +30,13 @@
       Sign Out
     </span>
   </button>
+</ng-template>
+
+<ng-template #inDashTemplate>
+  <a routerLink="">
+    <img class="icon side" src="../../../assets/team.png">
+  </a>
+  <a routerLink="/faq">
+    <img class="icon" src = "../../../assets/question.png">
+  </a>
 </ng-template>

@@ -3,6 +3,7 @@ import {MatDialog} from "@angular/material";
 import { ProjectService } from 'src/app/auth/project.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { CreateProjectComponent } from '../../shared/create-project/create-project.component';
+import { NavbarService } from 'src/app/auth/navbar.service';
 
 @Component({
   selector: 'app-project-dash',
@@ -13,10 +14,11 @@ export class ProjectDashComponent implements OnInit {
 
   projects;
 
-  constructor(private auth: AuthService, private project: ProjectService, private dialog: MatDialog) { }
+  constructor(private auth: AuthService, private project: ProjectService, private navbarService: NavbarService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.projects = this.project.getProjects(this.auth.user._id);
+    this.navbarService.isInDetailsDash = false;
   }
 
   openCreateDialog() {

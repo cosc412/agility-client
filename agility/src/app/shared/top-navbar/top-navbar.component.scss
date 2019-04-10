@@ -54,6 +54,17 @@ span.google {
     position: relative;
 }
 
+img.icon {
+    height: 50px;
+    width: 50px;
+    margin:  0 30px;
+    padding: 10px;
+}
+
+img.icon.side {
+    margin: 0;
+}
+
 .navbar {
     background-color: $grey;
     width: 100%;

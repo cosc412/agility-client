@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavbarService } from 'src/app/auth/navbar.service';
 
 @Component({
   selector: 'app-faq-page',
@@ -34,9 +35,10 @@ export class FaqPageComponent implements OnInit {
     }
   ]
 
-  constructor() { }
+  constructor(private navbarService: NavbarService) { }
 
   ngOnInit() {
+    this.navbarService.isInDetailsDash = false;
   }
 
 }

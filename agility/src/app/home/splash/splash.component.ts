@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
+import { NavbarService } from 'src/app/auth/navbar.service';
 
 @Component({
   selector: 'app-splash',
@@ -8,8 +9,10 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class SplashComponent implements OnInit {
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private navbarService: NavbarService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.navbarService.isInDetailsDash = false;
+  }
 
 }
