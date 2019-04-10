@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from "@angular/material";
+import { ProjectService } from 'src/app/auth/project.service';
 
 @Component({
   selector: 'app-create-project',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateProjectComponent implements OnInit {
 
-  constructor() { }
+  data = {
+    name: '',
+    description: ''
+  }
 
-  ngOnInit() {
+  constructor(private dialogRef: MatDialogRef<CreateProjectComponent>, private projectService: ProjectService) { }
+
+  ngOnInit() { }
+
+  close() {
+    this.dialogRef.close();
+  }
+
+  async create() {
+    this.projectService.createProject();
+    this.dialogRef.close();
   }
 
 }
