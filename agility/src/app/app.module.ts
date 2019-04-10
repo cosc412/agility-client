@@ -14,6 +14,7 @@ import { CreateProjectComponent } from './shared/create-project/create-project.c
 import { FaqPageComponent } from './home/faq-page/faq-page.component';
 import { QaViewComponent } from './shared/qa-view/qa-view.component';
 import { ProjectDetailsDashComponent } from './dashboard/project-details-dash/project-details-dash.component';
+import { SprintCardComponent } from './shared/sprint-card/sprint-card.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ProjectDetailsDashComponent } from './dashboard/project-details-dash/pr
     CreateProjectComponent,
     FaqPageComponent,
     QaViewComponent,
-    ProjectDetailsDashComponent
+    ProjectDetailsDashComponent,
+    SprintCardComponent
   ],
   imports: [
     BrowserModule,
