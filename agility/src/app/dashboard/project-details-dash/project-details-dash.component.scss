@@ -7,6 +7,14 @@
     .sprint_wrapper {
         overflow: auto;
         white-space: nowrap;
+
+        &::-webkit-scrollbar {
+            height: .5em;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: $white;
+        }
     }
 }
 
