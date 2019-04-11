@@ -9,12 +9,14 @@
     </div>
   </div>
   <div class="button_wrapper_right">
-    <div *ngIf="!navbarService.isInDetailsDash; else inDashTemplate">
-      <button *ngIf="auth.user" routerLink="/projects"><span>Projects</span></button>
-      <button routerLink=""><span>Home</span></button>
-      <button routerLink="/faq"><span>FAQ</span></button>
+    <a routerLink=""><img class="icon side" src="../../../assets/home.png" alt="home button"></a>
+    <div *ngIf="auth.user">
+      <a *ngIf="!navbarService.isInDetailsDash; else inDashTemplate" routerLink="/projects" alt="projects dashboard button">
+        <img class="icon side" src="../../../assets//books.png">
+      </a>
     </div>
-    <button *ngIf="!auth.user; else logout" (click)="auth.signIn()" class="google">
+    <a routerLink="/faq"><img class="icon" src="../../../assets/question.png" alt="faq button"></a>
+    <button *ngIf="!auth.user; else logout" (click)="auth.signIn()" class="google" alt="google sign in button">
       <img class="google" src="../../../assets/google.png">
       <span class="google">
         Sign In
@@ -24,7 +26,7 @@
 </div>
 
 <ng-template #logout>
-  <button *ngIf="auth.user; else logout" (click)="auth.signOut()" class="google">
+  <button *ngIf="auth.user; else logout" (click)="auth.signOut()" class="google" alt="google sign out button">
     <img class="google" src="../../../assets/google.png">
     <span class="google">
       Sign Out
@@ -34,9 +36,6 @@
 
 <ng-template #inDashTemplate>
   <a routerLink="">
-    <img class="icon side" src="../../../assets/team.png">
-  </a>
-  <a routerLink="/faq">
-    <img class="icon" src = "../../../assets/question.png">
+    <img class="icon side" src="../../../assets/team.png" alt="project team page button">
   </a>
 </ng-template>
