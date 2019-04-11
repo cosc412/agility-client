@@ -16,6 +16,8 @@ import { QaViewComponent } from './shared/qa-view/qa-view.component';
 import { ProjectDetailsDashComponent } from './dashboard/project-details-dash/project-details-dash.component';
 import { SprintCardComponent } from './shared/sprint-card/sprint-card.component';
 import { TaskListViewComponent } from './shared/task-list-view/task-list-view.component';
+import { TeamPageComponent } from './dashboard/project-details-dash/team-page/team-page.component';
+import { TaskDetailsComponent } from './dashboard/project-details-dash/task-details/task-details.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { TaskListViewComponent } from './shared/task-list-view/task-list-view.co
     QaViewComponent,
     ProjectDetailsDashComponent,
     SprintCardComponent,
-    TaskListViewComponent
+    TaskListViewComponent,
+    TeamPageComponent,
+    TaskDetailsComponent
   ],
   imports: [
     BrowserModule,
