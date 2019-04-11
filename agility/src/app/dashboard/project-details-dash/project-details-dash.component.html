@@ -4,7 +4,7 @@
     <div class="sprint_wrapper">
       <app-sprint-card #sprintCards *ngFor="let sprint of sprints" [sprint]="sprint" (selected)="getSprintTasks($event)"></app-sprint-card>
     </div>
-    <button class="new_sprint_btn">
+    <button class="new_sprint_btn" alt="create new sprint button">
       <img src ="../../../assets/plus.png">
       <div>New Sprint</div>
     </button>
@@ -18,6 +18,10 @@
         <div class="header">Blocks</div>
       </div>
       <app-task-list-view *ngFor="let task of tasks" [task]="task"></app-task-list-view>
+      <button class="new_task_btn">
+        <img src="../../../assets/plus.png">
+        <span>New Task</span>
+      </button>
     </div>
   </div>
 </div>

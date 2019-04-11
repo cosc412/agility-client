@@ -78,6 +78,41 @@
                     margin-left: 40px;
                 }
             }
+
+            .new_task_btn {
+                -moz-transition-duration: .2s;
+                transition-duration: .2s;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                background: transparent;
+                border-style: solid;
+                border-color: $light-grey;
+                border-width: 3px;
+                color: $white;
+                font-size: 20px;
+                width: 100%;
+                padding: 10px;
+                cursor: pointer;
+
+                img {
+                    height: 30px;
+                    width: 30px;
+                    padding: auto 0;
+                }
+
+                span {
+                    margin-left: 20px;
+                    padding: auto 0;
+                }
+
+                &:hover {
+                    -moz-transition-duration: .4s;
+                    transition-duration: .4s;
+                    background-color: $light-grey;
+                }
+            }
         }
 
     }
