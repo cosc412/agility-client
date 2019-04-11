@@ -17,10 +17,11 @@ export class ProjectDetailsDashComponent implements OnInit {
   @ViewChildren('sprintCards') components:QueryList<SprintCardComponent>;
 
   project;
-  sprints;
-  tasks;
+  sprints: any[];
+  tasks: any[];
 
-  selectedSprint;
+  selectedSprint: string;
+  selectedSprintHeader: string;
 
   constructor(private navbarService: NavbarService, private projectService: ProjectService,
     private sprintService: SprintService, private taskService: TaskService, private route: ActivatedRoute) { }
@@ -36,7 +37,7 @@ export class ProjectDetailsDashComponent implements OnInit {
     });
   }
 
-  getSprintTasks(sprintID) {
+  getSprintTasks(sprintID: string) {
     // Tell the previous sprint card, if any to be unselected then assign the new sprint
     if (this.selectedSprint !== sprintID) {
       this.components.forEach(val => {
@@ -45,10 +46,14 @@ export class ProjectDetailsDashComponent implements OnInit {
         }
       });
       this.selectedSprint = sprintID;
+      this.selectedSprintHeader = this.sprints.find(sprint => {
+        return sprint._id === this.selectedSprint;
+      }).header;
       // Get the tasks of the sprint selected
       this.tasks = this.taskService.getTasksBySprint(this.selectedSprint);
     } else {
       this.selectedSprint = undefined;
+      this.selectedSprintHeader = undefined;
       this.tasks = undefined;
     }
   }

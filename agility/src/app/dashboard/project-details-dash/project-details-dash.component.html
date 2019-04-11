@@ -10,7 +10,7 @@
     </button>
   </div>
   <div *ngIf="tasks" class="tasks_wrapper">
-    <div class="title">Sprint Header's Tasks</div>
+    <div *ngIf="selectedSprintHeader" class="title">{{ selectedSprintHeader }} Tasks</div>
     <div class="task_list_wrapper">
       <div class="heading_grid">
         <div class="header">Due</div>
