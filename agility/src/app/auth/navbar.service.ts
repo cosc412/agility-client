@@ -7,6 +7,7 @@ export class NavbarService {
 
   isInDetailsDash = false;
   projectName: string;
+  projectID: string;
 
   constructor() { }
 }
