@@ -30,6 +30,7 @@ export class ProjectDetailsDashComponent implements OnInit {
     this.route.params.subscribe(params => {
       if (params.id) {
         this.project = this.projectService.getProject(params.id);
+        this.navbarService.projectName = this.project.name;
         this.sprints = this.sprintService.getProjectSprints(params.id);
       }
     });

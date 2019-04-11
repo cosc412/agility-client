@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class NavbarService {
 
   isInDetailsDash = false;
+  projectName: string;
 
   constructor() { }
 }
