@@ -51,18 +51,6 @@ export class AuthService {
     this.init();
   }
 
-  private init() {
-    gapi.load('auth2', () => {
-      let auth = gapi.auth2.init({
-        client_id: '675904009128-7qot95l5mnb63pbq98d6u7ab0djshgsj.apps.googleusercontent.com',
-        fetch_basic_profile: true,
-        scope: 'profile'
-      });
-      this.auth2 = auth;
-      this.listenForUser();
-    });
-  }
-
   signIn() {
     this.auth2.signIn().then(() => {
       this.profile = this.auth2.currentUser.get().getBasicProfile();
@@ -79,6 +67,19 @@ export class AuthService {
     return this.MOCK_TEAM;
   }
 
+  private init() {
+    this.parseCookie();
+    gapi.load('auth2', () => {
+      let auth = gapi.auth2.init({
+        client_id: '675904009128-7qot95l5mnb63pbq98d6u7ab0djshgsj.apps.googleusercontent.com',
+        fetch_basic_profile: true,
+        scope: 'profile'
+      });
+      this.auth2 = auth;
+      this.listenForUser();
+    });
+  }
+
   private async getUser(email: string) {
     this.user = {
       _id: '1234',
@@ -93,8 +94,15 @@ export class AuthService {
       if (this.auth2.isSignedIn.get()) {
         this.profile = profile.getBasicProfile();
         this.getUser(this.profile.getEmail());
+        localStorage.setItem('agility_cookie', JSON.stringify(this.user));
       }
     });
+  }
+
+  private parseCookie() {
+    if (localStorage.getItem('agility_cookie')) {
+      this.user = JSON.parse(localStorage.getItem('agility_cookie'));
+    }
   }
 
 }
