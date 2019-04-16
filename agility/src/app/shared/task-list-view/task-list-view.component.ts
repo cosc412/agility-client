@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { NavbarService } from 'src/app/auth/navbar.service';
 
 @Component({
   selector: 'app-task-list-view',
@@ -9,7 +10,7 @@ export class TaskListViewComponent implements OnInit {
 
   @Input() task;
 
-  constructor() { }
+  constructor(private navbarService: NavbarService) { }
 
   ngOnInit() {
   }
