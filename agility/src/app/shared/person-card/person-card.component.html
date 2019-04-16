@@ -1,10 +1,12 @@
 
 <div *ngIf="member" class="wrapper">
   <img src="{{ member.profileURL }}">
-  <div class="name">
-    {{ member.name }}
+  <div class="info">
+    <div class="name">
+      {{ member.name }}
+    </div>
+    <hr>
+    <div class="content"><span>Email:</span> {{ member.email }}</div>
+    <div class="content"><span>Role:</span> Developer</div>
   </div>
-  <hr>
-  <div class="email">Email: {{ member.email }}</div>
-  <div class="role">Role: Developer</div>
 </div>
