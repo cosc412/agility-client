@@ -26,6 +26,12 @@ export class AuthService {
       name: 'Scarlet Johenson',
       email: 'sjohenson@gmail.com',
       profileURL: 'https://i.ytimg.com/vi/8RDueVUvsLY/hqdefault.jpg'
+    },
+    {
+      _id: '1234',
+      name: 'Emily Vogel',
+      email: 'eav990@gmail.com',
+      profileURL: 'https://www.advocate.com/sites/advocate.com/files/2017/05/16/over-the-period-of-trump-750.jpg'
     }
   ];
 

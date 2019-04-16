@@ -1,3 +1,10 @@
-<p>
-  person-card works!
-</p>
+
+<div *ngIf="member" class="wrapper">
+  <img src="{{ member.profileURL }}">
+  <div class="name">
+    {{ member.name }}
+  </div>
+  <hr>
+  <div class="email">Email: {{ member.email }}</div>
+  <div class="role">Role: Developer</div>
+</div>

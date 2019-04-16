@@ -17,7 +17,6 @@ export class TeamPageComponent implements OnInit {
     this.route.params.subscribe(params => {
       if (params.id) {
         this.team = this.auth.getTeam(params.id);
-        console.log(this.team);
       }
     });
   }
