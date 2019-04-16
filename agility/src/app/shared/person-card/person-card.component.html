@@ -1,16 +1,18 @@
 
 <div *ngIf="member" class="outer">
-  <div class="wrapper">
-    <img src="{{ member.profileURL }}">
-    <div class="info">
-      <div class="name">
-        {{ member.name }}
+  <a href="mailto:{{ member.email }}">
+    <div class="wrapper">
+      <img src="{{ member.profileURL }}">
+      <div class="info">
+        <div class="name">
+          {{ member.name }}
+        </div>
+        <hr>
+        <div class="content"><span>Email:</span> {{ member.email }}</div>
+        <div class="content"><span>Role:</span> {{ member.role }}</div>
       </div>
-      <hr>
-      <div class="content"><span>Email:</span> {{ member.email }}</div>
-      <div class="content"><span>Role:</span> {{ member.role }}</div>
     </div>
-  </div>
+  </a>
   <div class="button_group">
     <img src="../../../assets/edit.png">
     <img src="../../../assets/trashcan.png">
