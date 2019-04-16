@@ -18,6 +18,7 @@ import { SprintCardComponent } from './shared/sprint-card/sprint-card.component'
 import { TaskListViewComponent } from './shared/task-list-view/task-list-view.component';
 import { TeamPageComponent } from './dashboard/project-details-dash/team-page/team-page.component';
 import { TaskDetailsComponent } from './dashboard/project-details-dash/task-details/task-details.component';
+import { PersonCardComponent } from './shared/person-card/person-card.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { TaskDetailsComponent } from './dashboard/project-details-dash/task-deta
     SprintCardComponent,
     TaskListViewComponent,
     TeamPageComponent,
-    TaskDetailsComponent
+    TaskDetailsComponent,
+    PersonCardComponent
   ],
   imports: [
     BrowserModule,

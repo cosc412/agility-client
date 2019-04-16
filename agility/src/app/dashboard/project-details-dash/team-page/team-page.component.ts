@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-team-page',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamPageComponent implements OnInit {
 
-  constructor() { }
+  team;
+
+  constructor(private route: ActivatedRoute, private auth: AuthService) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      if (params.id) {
+        this.team = this.auth.getTeam(params.id);
+        console.log(this.team);
+      }
+    });
   }
 
 }
