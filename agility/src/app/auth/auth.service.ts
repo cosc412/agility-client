@@ -13,25 +13,29 @@ export class AuthService {
       _id: 'nvkaheia',
       name: 'John Doe',
       email: 'jdoe@gmail.com',
-      profileURL: 'http://krnb.com/janetg/wp-content/uploads//sites/11/2016/01/Barack-Obama-3.jpg'
+      profileURL: 'http://krnb.com/janetg/wp-content/uploads//sites/11/2016/01/Barack-Obama-3.jpg',
+      role: 'Developer'
     },
     {
       _id: 'nvmewiwowoww',
       name: 'Jane Doe',
       email: 'janedoe@gmail.com',
-      profileURL: 'https://content.internetvideoarchive.com/content/photos/9280/414206_001.jpg'
+      profileURL: 'https://content.internetvideoarchive.com/content/photos/9280/414206_001.jpg',
+      role: 'Project Lead'
     },
     {
       _:'aqqwioeel',
       name: 'Scarlet Johenson',
       email: 'sjohenson@gmail.com',
-      profileURL: 'https://i.ytimg.com/vi/8RDueVUvsLY/hqdefault.jpg'
+      profileURL: 'https://i.ytimg.com/vi/8RDueVUvsLY/hqdefault.jpg',
+      role: 'Developer'
     },
     {
       _id: '1234',
       name: 'Emily Vogel',
       email: 'eav990@gmail.com',
-      profileURL: 'https://www.advocate.com/sites/advocate.com/files/2017/05/16/over-the-period-of-trump-750.jpg'
+      profileURL: 'https://www.advocate.com/sites/advocate.com/files/2017/05/16/over-the-period-of-trump-750.jpg',
+      role: 'Developer'
     }
   ];
 
