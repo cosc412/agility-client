@@ -8,6 +8,27 @@ declare const gapi: any;
 })
 export class AuthService {
 
+  private MOCK_TEAM = [
+    {
+      _id: 'nvkaheia',
+      name: 'John Doe',
+      email: 'jdoe@gmail.com',
+      profileURL: 'http://krnb.com/janetg/wp-content/uploads//sites/11/2016/01/Barack-Obama-3.jpg'
+    },
+    {
+      _id: 'nvmewiwowoww',
+      name: 'Jane Doe',
+      email: 'janedoe@gmail.com',
+      profileURL: 'https://content.internetvideoarchive.com/content/photos/9280/414206_001.jpg'
+    },
+    {
+      _:'aqqwioeel',
+      name: 'Scarlet Johenson',
+      email: 'sjohenson@gmail.com',
+      profileURL: 'https://i.ytimg.com/vi/8RDueVUvsLY/hqdefault.jpg'
+    }
+  ];
+
   // https://stackoverflow.com/questions/38846232/how-to-implement-signin-with-google-in-angular-2-using-typescript
   // https://developers.google.com/identity/sign-in/web/people
   // https://stackoverflow.com/questions/38664350/google-sign-in-with-angular2-and-typescript-where-to-get-gapi
@@ -44,11 +65,16 @@ export class AuthService {
     this.router.navigate(['']);
   }
 
+  getTeam(projectID: string) {
+    return this.MOCK_TEAM;
+  }
+
   private async getUser(email: string) {
     this.user = {
       _id: '1234',
       name: 'Emily Vogel',
-      email: 'eav990@gmail.com'
+      email: 'eav990@gmail.com',
+      profileURL: 'https://www.advocate.com/sites/advocate.com/files/2017/05/16/over-the-period-of-trump-750.jpg'
     }
   }
 
