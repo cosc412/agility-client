@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
-const base64 = require('base-64');
-const utf8 = require('utf8');
 declare const gapi: any;
 
 @Injectable({
@@ -96,7 +94,7 @@ export class AuthService {
       if (this.auth2.isSignedIn.get()) {
         this.profile = profile.getBasicProfile();
         this.getUser(this.profile.getEmail());
-        const cookie = base64.encode(utf8.encode(JSON.stringify(this.user)));
+        const cookie = btoa(JSON.stringify(this.user));
         localStorage.setItem('agility_cookie', cookie);
       }
     });
@@ -104,7 +102,7 @@ export class AuthService {
 
   private parseCookie() {
     if (localStorage.getItem('agility_cookie')) {
-      const cookie = utf8.decode(base64.decode(localStorage.getItem('agility_cookie')));
+      const cookie = atob(localStorage.getItem('agility_cookie'));
       this.user = JSON.parse(cookie);
     }
   }
