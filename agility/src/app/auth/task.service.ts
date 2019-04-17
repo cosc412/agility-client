@@ -13,7 +13,7 @@ export class TaskService {
       header: 'This is a new task!',
       description: 'We need to finish this up within the hour.',
       note: ['This is a note!'],
-      block: ['This is a block!']
+      block: []
     },
     {
       _id: '2',
