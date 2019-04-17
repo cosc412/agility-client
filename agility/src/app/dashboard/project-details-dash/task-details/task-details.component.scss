@@ -1,0 +1,49 @@
+
+@import '../../../../vars';
+
+.wrapper {
+    margin: 50px 200px;
+    text-align: center;
+
+    .title {
+        color: $light-blue;
+        font-size: 40px;
+
+        hr {
+            background-color: $light-blue;
+            border: none;
+            height: 2px;
+            margin: 20px 0;
+        }
+    }
+
+    .description {
+        display: inline-block;
+        text-align: left;
+        background-color: $grey;
+        color: $light-blue;
+        font-size: 20px;
+        margin: 20px 0;
+        width: 90%;
+
+        .header {
+            -moz-transition-duration: .2s;
+            transition-duration: .2s;
+            padding: 20px;
+            cursor: pointer;
+
+            &:hover {
+                -moz-transition-duration: .4s;
+                transition-duration: .4s;
+                background-color: $light-blue;
+                color: $grey;
+            }
+        }
+
+        .info {
+            color: $white;
+            font-size: 18px;
+            padding: 10px 30px 30px 30px;
+        }
+    }
+}

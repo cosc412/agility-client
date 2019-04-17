@@ -1,3 +1,15 @@
-<p>
-  task-details works!
-</p>
+
+<div *ngIf="task" class="wrapper">
+  <div class="title">
+    {{ task.header }}
+    <hr>
+  </div>
+  <div class="description">
+    <div class="header" (click)="descriptionClick = !descriptionClick">
+      Description
+    </div>
+    <div *ngIf="descriptionClick" class="info">
+      {{ task.description }}
+    </div>
+  </div>
+</div>

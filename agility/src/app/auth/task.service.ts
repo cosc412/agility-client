@@ -42,4 +42,10 @@ export class TaskService {
       return task.sprintID === sprintID;
     });
   }
+
+  getTaskByID(taskID: string) {
+    return this.MOCK_TASKS.find(task => {
+      return task._id === taskID;
+    })
+  }
 }

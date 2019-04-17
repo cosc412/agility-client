@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { TaskService } from 'src/app/auth/task.service';
 
 @Component({
   selector: 'app-task-details',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskDetailsComponent implements OnInit {
 
-  constructor() { }
+  task;
+  descriptionClick = false;
+
+  constructor(private route: ActivatedRoute, private taskService: TaskService) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      if (params.taskID) {
+        this.task = this.taskService.getTaskByID(params.taskID);
+      }
+    });
   }
 
 }
