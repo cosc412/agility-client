@@ -54,6 +54,7 @@ export class AuthService {
   signIn() {
     this.auth2.signIn().then(() => {
       this.profile = this.auth2.currentUser.get().getBasicProfile();
+      this.router.navigate(['/projects']);
     });
   }
 
@@ -112,7 +113,7 @@ export class AuthService {
       if (Date.parse(cookie.expire) > new Date().getTime()) // If cookie hasn't expired, get user data
         this.user = cookie;
       else {                                                // Else remove cookie from local storage
-        this.router.navigate(['']);
+        this.router.navigate(['/projects']);
         localStorage.setItem('agility_cookie', JSON.stringify({}));
       }
     }
