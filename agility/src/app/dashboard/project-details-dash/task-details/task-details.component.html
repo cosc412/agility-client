@@ -16,10 +16,18 @@
     <div class="section">
       <div class="title">Notes</div>
       <div *ngFor="let note of task.note" class="item">{{ note }}</div>
+      <button>
+        <img src="../../../../assets/plus.png">
+        New Note
+      </button>
     </div>
     <div class="section" [ngClass]="{'block': true}">
       <div class="title">Blocks</div>
       <div *ngFor="let block of task.block" class="item">{{ block }}</div>
+      <button>
+        <img src="../../../../assets/plus.png">
+        New Block
+      </button>
     </div>
   </div>
 </div>

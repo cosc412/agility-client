@@ -83,3 +83,33 @@
         }
     }
 }
+
+button {
+    -moz-transition-duration: .2s;
+    transition-duration: .2s;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: $light-grey;
+    border: 3px solid $light-grey;
+    color: $white;
+    font-size: 18px;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+
+    img {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+    }
+
+    &:hover {
+        -moz-transition-duration: .4s;
+        transition-duration: .4s;
+        background-color: transparent;
+    }
+}
