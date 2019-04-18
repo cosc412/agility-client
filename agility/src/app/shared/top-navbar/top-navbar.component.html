@@ -9,12 +9,11 @@
     </div>
   </div>
   <div class="button_wrapper_right">
-    <a routerLink=""><img class="icon side" src="../../../assets/home.png" alt="home button"></a>
-    <div *ngIf="auth.user">
-      <a *ngIf="!navbarService.isInDetailsDash; else inDashTemplate" routerLink="/projects" alt="projects dashboard button">
-        <img class="icon side" src="../../../assets//books.png">
-      </a>
-    </div>
+    <a *ngIf="auth.user" routerLink="/projects"><img class="icon side" src="../../../assets/home.png" alt="home button"></a>
+    <a *ngIf="!auth.user" routerLink=""><img class="icon side" src="../../../assets/home.png" alt="home button"></a>
+    <a *ngIf="navbarService.isInDetailsDash" routerLink="/projects/{{ navbarService.projectID }}/team">
+      <img class="icon side" src="../../../assets/team.png" alt="project team page button">
+    </a>
     <a routerLink="/faq"><img class="icon" src="../../../assets/question.png" alt="faq button"></a>
     <button *ngIf="!auth.user; else logout" (click)="auth.signIn()" class="google" alt="google sign in button">
       <img class="google" src="../../../assets/google.png">
@@ -32,10 +31,4 @@
       Sign Out
     </span>
   </button>
-</ng-template>
-
-<ng-template #inDashTemplate>
-  <a routerLink="/projects/{{ navbarService.projectID }}/team">
-    <img class="icon side" src="../../../assets/team.png" alt="project team page button">
-  </a>
 </ng-template>
