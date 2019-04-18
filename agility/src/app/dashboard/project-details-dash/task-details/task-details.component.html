@@ -5,11 +5,21 @@
     <hr>
   </div>
   <div class="description">
-    <div class="header" (click)="descriptionClick = !descriptionClick">
+    <div class="header">
       Description
     </div>
-    <div *ngIf="descriptionClick" class="info">
+    <div class="info">
       {{ task.description }}
+    </div>
+  </div>
+  <div class="content">
+    <div class="section">
+      <div class="title">Notes</div>
+      <div *ngFor="let note of task.note" class="item">{{ note }}</div>
+    </div>
+    <div class="section" [ngClass]="{'block': true}">
+      <div class="title">Blocks</div>
+      <div *ngFor="let block of task.block" class="item">{{ block }}</div>
     </div>
   </div>
 </div>

@@ -30,20 +30,56 @@
             -moz-transition-duration: .2s;
             transition-duration: .2s;
             padding: 20px;
-            cursor: pointer;
-
-            &:hover {
-                -moz-transition-duration: .4s;
-                transition-duration: .4s;
-                background-color: $light-blue;
-                color: $grey;
-            }
         }
 
         .info {
             color: $white;
             font-size: 18px;
             padding: 10px 30px 30px 30px;
+        }
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: center;
+    margin-top: 30px;
+    font-size: 18px;
+
+    .section {
+        width: 90%;
+        margin: 0 10px;
+        background-color: $grey;
+        border-color: $light-blue;
+        border-style: solid;
+        border-width: 2px;
+        padding: 10px;
+
+        .item {
+            margin: 5px;
+            border-left-style: solid;
+            border-left-width: 5px;
+            border-left-color: $light-blue;
+            color: $white;
+            text-align: left;
+            padding: 10px 20px;
+            padding-right: 0;
+        }
+
+        .title {
+            color: $white;
+            font-size: 30px;
+        }
+
+        &.block {
+            border-color: $red;
+
+            .item {
+                border-left-color: $red;
+            }
         }
     }
 }

@@ -60,6 +60,7 @@ export class AuthService {
   signOut() {
     this.auth2.signOut();
     this.user = undefined;
+    localStorage.setItem('agility_cookie', JSON.stringify({}));
     this.router.navigate(['']);
   }
 
@@ -94,16 +95,26 @@ export class AuthService {
       if (this.auth2.isSignedIn.get()) {
         this.profile = profile.getBasicProfile();
         this.getUser(this.profile.getEmail());
-        const cookie = btoa(JSON.stringify(this.user));
+
+        let expirable = this.user;
+        expirable.expire = new Date(new Date().getTime() + (60 * 60 * 1000)); // Set expiration time for one hour from now 
+
+        const cookie = btoa(JSON.stringify(expirable));
         localStorage.setItem('agility_cookie', cookie);
       }
     });
   }
 
   private parseCookie() {
-    if (localStorage.getItem('agility_cookie')) {
-      const cookie = atob(localStorage.getItem('agility_cookie'));
-      this.user = JSON.parse(cookie);
+    let c = localStorage.getItem('agility_cookie');
+    if (c != '{}') {
+      const cookie = JSON.parse(atob(c));
+      if (Date.parse(cookie.expire) > new Date().getTime()) // If cookie hasn't expired, get user data
+        this.user = cookie;
+      else {                                                // Else remove cookie from local storage
+        this.router.navigate(['']);
+        localStorage.setItem('agility_cookie', JSON.stringify({}));
+      }
     }
   }
 

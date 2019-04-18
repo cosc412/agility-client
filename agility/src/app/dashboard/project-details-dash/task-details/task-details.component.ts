@@ -10,7 +10,6 @@ import { TaskService } from 'src/app/auth/task.service';
 export class TaskDetailsComponent implements OnInit {
 
   task;
-  descriptionClick = false;
 
   constructor(private route: ActivatedRoute, private taskService: TaskService) { }
 
