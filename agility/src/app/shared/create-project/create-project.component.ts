@@ -11,7 +11,7 @@ export class CreateProjectComponent implements OnInit {
 
   mode: string; // i.e. 'create' or 'update'
 
-  data = {
+  model = {
     name: '',
     description: ''
   }
@@ -19,6 +19,9 @@ export class CreateProjectComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef<CreateProjectComponent>, private projectService: ProjectService,
     @Inject(MAT_DIALOG_DATA) data) {
       this.mode = data.mode;
+      if (this.mode === 'update') {
+        this.model = data.params;
+      }
     }
 
   ngOnInit() { }

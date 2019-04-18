@@ -27,7 +27,8 @@ export class ProjectDashComponent implements OnInit {
   }
 
   openUpdateDialog(params) {
-    this.dialog.open(CreateProjectComponent, { panelClass: 'custom-container', data: { mode: 'update' } });
+    this.dialog.open(CreateProjectComponent, { panelClass: 'custom-container',
+      data: { mode: 'update', params: params } });
   }
 
   openDeleteDialog(id: string) {

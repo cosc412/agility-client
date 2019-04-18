@@ -2,13 +2,15 @@
 <div class="wrapper">
   <div class="title">Create a Project</div>
   <hr>
-  <input type="text" placeholder="Project Name">
-  <div class="subtitle">
-    Project Description
-  </div>
-  <textarea></textarea>
-  <div class="button_group">
-    <button (click)="close()">Cancel</button>
-    <button (click)="create()">Create</button>
-  </div>
+  <form (ngSubmit)="create()">
+    <input type="text" placeholder="Project Name" [(ngModel)]="model.name" name="name" required>
+    <div class="subtitle">
+      Project Description
+    </div>
+    <textarea [(ngModel)]="model.description" name="description" required></textarea>
+    <div class="button_group">
+      <button (click)="close()">Cancel</button>
+      <button type="submit">Create</button>
+    </div>
+  </form>
 </div>
