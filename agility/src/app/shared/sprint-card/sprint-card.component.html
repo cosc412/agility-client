@@ -1,6 +1,6 @@
 
 <div *ngIf="sprint" class="wrapper" [ngClass]="{'selected': chosen}">
-  <div class="clickable" (click)="sprintClicked()">
+  <div (click)="sprintClicked()">
     <div class="header">
       {{ sprint.header }}
     </div>

@@ -40,12 +40,12 @@ a {
     border-color: $grey;
     overflow: hidden;
     text-align: left;
+    cursor: pointer;
 
     .container {
         padding: 15px;
         padding-top: 5px;
         height: 230px;
-        cursor: pointer;
     }
 
     .name {
