@@ -20,6 +20,7 @@ import { TaskListViewComponent } from './shared/task-list-view/task-list-view.co
 import { TeamPageComponent } from './dashboard/project-details-dash/team-page/team-page.component';
 import { TaskDetailsComponent } from './dashboard/project-details-dash/task-details/task-details.component';
 import { PersonCardComponent } from './shared/person-card/person-card.component';
+import { DeleteConfirmComponent } from './shared/delete-confirm/delete-confirm.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { PersonCardComponent } from './shared/person-card/person-card.component'
     TaskListViewComponent,
     TeamPageComponent,
     TaskDetailsComponent,
-    PersonCardComponent
+    PersonCardComponent,
+    DeleteConfirmComponent
   ],
   imports: [
     BrowserModule,
