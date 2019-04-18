@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from "@angular/material";
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { ProjectService } from 'src/app/auth/project.service';
 
 @Component({
@@ -9,12 +9,17 @@ import { ProjectService } from 'src/app/auth/project.service';
 })
 export class CreateProjectComponent implements OnInit {
 
+  mode: string; // i.e. 'create' or 'update'
+
   data = {
     name: '',
     description: ''
   }
 
-  constructor(private dialogRef: MatDialogRef<CreateProjectComponent>, private projectService: ProjectService) { }
+  constructor(private dialogRef: MatDialogRef<CreateProjectComponent>, private projectService: ProjectService,
+    @Inject(MAT_DIALOG_DATA) data) {
+      this.mode = data.mode;
+    }
 
   ngOnInit() { }
 
@@ -23,7 +28,12 @@ export class CreateProjectComponent implements OnInit {
   }
 
   async create() {
-    this.projectService.createProject();
+    if (this.mode === 'create') {
+      this.projectService.createProject();
+    }
+    else {
+
+    }
     this.dialogRef.close();
   }
 

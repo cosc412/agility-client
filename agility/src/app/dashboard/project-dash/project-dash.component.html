@@ -6,7 +6,8 @@
   </div>
 
   <div *ngIf="projects" class="card_grid">
-    <app-project-card *ngFor="let p of projects" [project]='p'></app-project-card>
+    <app-project-card *ngFor="let p of projects" (edit)="openUpdateDialog($event)" (delete)="openDeleteDialog($event)"
+      [project]='p'></app-project-card>
     <button class="create_project" (click)="openCreateDialog()">
       <img src="../../../assets/plus.png">
       <div>New Project</div>

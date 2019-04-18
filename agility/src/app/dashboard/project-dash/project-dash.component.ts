@@ -14,7 +14,8 @@ export class ProjectDashComponent implements OnInit {
 
   projects;
 
-  constructor(private auth: AuthService, private project: ProjectService, private navbarService: NavbarService, private dialog: MatDialog) { }
+  constructor(private auth: AuthService, private project: ProjectService, private navbarService: NavbarService,
+    private dialog: MatDialog) { }
 
   ngOnInit() {
     this.projects = this.project.getProjects();
@@ -22,7 +23,15 @@ export class ProjectDashComponent implements OnInit {
   }
 
   openCreateDialog() {
-    this.dialog.open(CreateProjectComponent, { panelClass: 'custom-container' });
+    this.dialog.open(CreateProjectComponent, { panelClass: 'custom-container', data: { mode: 'create'} });
+  }
+
+  openUpdateDialog(params) {
+    this.dialog.open(CreateProjectComponent, { panelClass: 'custom-container', data: { mode: 'update' } });
+  }
+
+  openDeleteDialog(id: string) {
+    console.log(id);
   }
 
 }
