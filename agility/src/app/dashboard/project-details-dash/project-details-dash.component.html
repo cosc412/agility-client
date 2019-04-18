@@ -12,12 +12,15 @@
   <div *ngIf="tasks" class="tasks_wrapper">
     <div *ngIf="selectedSprintHeader" class="title">{{ selectedSprintHeader }} Tasks</div>
     <div class="task_list_wrapper">
-      <div class="heading_grid">
+      <div *ngIf="tasks.length !== 0" class="heading_grid">
         <div class="header">Due</div>
         <div class="header">Task</div>
         <div class="header">Blocks</div>
       </div>
       <app-task-list-view *ngFor="let task of tasks" [task]="task"></app-task-list-view>
+      <div *ngIf="tasks.length === 0" class="no_tasks">
+        There are no tasks for this sprint
+      </div>
       <button class="new_task_btn">
         <img src="../../../assets/plus.png">
         <span>New Task</span>
