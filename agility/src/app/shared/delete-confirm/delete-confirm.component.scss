@@ -1,0 +1,46 @@
+
+@import '../../../vars';
+
+.wrapper {
+    padding: 20px;
+
+    .title {
+        font-size: 20px;
+        color: $grey;
+        margin-bottom: 20px;
+    }
+
+    .button_group {
+        text-align: center;
+
+        button {
+            -moz-transition-duration: .2s;
+            transition-duration: .2s;
+            border: 2px solid $light-grey;
+            background-color: transparent;
+            color: $grey;
+            margin: 0 10px;
+            font-size: 18px;
+            padding: 10px;
+            cursor: pointer;
+
+            &:hover {
+                -moz-transition-duration: .4s;
+                transition-duration: .4s;
+                background-color: $light-grey;
+                color: $white;
+            }
+        }
+
+        .delete {
+            border: 2px solid $red;
+            background-color: $red;
+            color: $white;
+
+            &:hover {
+                background-color: lighten($red, 10%);
+                border-color: lighten($red, 10%);
+            }
+        }
+    }
+}
