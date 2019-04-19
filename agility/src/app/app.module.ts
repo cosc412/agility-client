@@ -11,7 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { SplashComponent } from './home/splash/splash.component';
 import { ProjectDashComponent } from './dashboard/project-dash/project-dash.component';
 import { ProjectCardComponent } from './shared/project-card/project-card.component';
-import { CreateProjectComponent } from './shared/create-project/create-project.component';
+import { ProjectPopupComponent } from './shared/project-popup/project-popup.component';
 import { FaqPageComponent } from './home/faq-page/faq-page.component';
 import { QaViewComponent } from './shared/qa-view/qa-view.component';
 import { ProjectDetailsDashComponent } from './dashboard/project-details-dash/project-details-dash.component';
@@ -30,7 +30,7 @@ import { DeleteConfirmComponent } from './shared/delete-confirm/delete-confirm.c
     SplashComponent,
     ProjectDashComponent,
     ProjectCardComponent,
-    CreateProjectComponent,
+    ProjectPopupComponent,
     FaqPageComponent,
     QaViewComponent,
     ProjectDetailsDashComponent,
@@ -53,7 +53,7 @@ import { DeleteConfirmComponent } from './shared/delete-confirm/delete-confirm.c
     AppComponent
   ],
   entryComponents: [
-    CreateProjectComponent,
+    ProjectPopupComponent,
     DeleteConfirmComponent
   ]
 })

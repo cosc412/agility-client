@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material";
 import { ProjectService } from 'src/app/auth/project.service';
 import { AuthService } from 'src/app/auth/auth.service';
-import { CreateProjectComponent } from '../../shared/create-project/create-project.component';
+import { ProjectPopupComponent } from '../../shared/project-popup/project-popup.component';
 import { DeleteConfirmComponent } from '../../shared/delete-confirm/delete-confirm.component';
 import { NavbarService } from 'src/app/auth/navbar.service';
 
@@ -24,11 +24,11 @@ export class ProjectDashComponent implements OnInit {
   }
 
   openCreateDialog() {
-    this.dialog.open(CreateProjectComponent, { panelClass: 'custom-container', data: { mode: 'create'} });
+    this.dialog.open(ProjectPopupComponent, { panelClass: 'custom-container', data: { mode: 'create'} });
   }
 
   openUpdateDialog(params) {
-    this.dialog.open(CreateProjectComponent, { panelClass: 'custom-container',
+    this.dialog.open(ProjectPopupComponent, { panelClass: 'custom-container',
       data: { mode: 'update', params: params } });
   }
 
