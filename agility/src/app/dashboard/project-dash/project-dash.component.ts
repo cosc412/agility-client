@@ -3,6 +3,7 @@ import {MatDialog} from "@angular/material";
 import { ProjectService } from 'src/app/auth/project.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { CreateProjectComponent } from '../../shared/create-project/create-project.component';
+import { DeleteConfirmComponent } from '../../shared/delete-confirm/delete-confirm.component';
 import { NavbarService } from 'src/app/auth/navbar.service';
 
 @Component({
@@ -32,7 +33,7 @@ export class ProjectDashComponent implements OnInit {
   }
 
   openDeleteDialog(id: string) {
-    console.log(id);
+    this.dialog.open(DeleteConfirmComponent, { panelClass: 'custom-container' });
   }
 
 }

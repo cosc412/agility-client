@@ -53,7 +53,8 @@ import { DeleteConfirmComponent } from './shared/delete-confirm/delete-confirm.c
     AppComponent
   ],
   entryComponents: [
-    CreateProjectComponent
+    CreateProjectComponent,
+    DeleteConfirmComponent
   ]
 })
 export class AppModule { }
