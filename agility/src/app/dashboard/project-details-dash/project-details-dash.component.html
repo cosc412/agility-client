@@ -21,7 +21,7 @@
       <div *ngIf="tasks.length === 0" class="no_tasks">
         There are no tasks for this sprint
       </div>
-      <button class="new_task_btn">
+      <button class="new_task_btn" (click)="createTask()" alt="create new task button">
         <img src="../../../assets/plus.png">
         <span>New Task</span>
       </button>
