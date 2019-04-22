@@ -22,10 +22,10 @@
       <div *ngFor="let note of task.note" class="item">
         <div class="text">{{ note }}</div>
         <div class="button_group">
-          <button alt="edit note button"><img src="../../../../assets/trashcan.png"></button>
+          <button alt="delete note button" (click)="deleteNote()"><img src="../../../../assets/trashcan.png"></button>
         </div>
       </div>
-      <button>
+      <button (click)="createNote()">
         <img src="../../../../assets/plus.png">
         New Note
       </button>
@@ -35,10 +35,10 @@
       <div *ngFor="let block of task.block" class="item">
         <div class="text">{{ block }}</div>
         <div class="button_group">
-          <button alt="edit note button"><img src="../../../../assets/trashcan.png"></button>
+          <button alt="delete block button" (click)="deleteBlock()"><img src="../../../../assets/trashcan.png"></button>
         </div>
       </div>
-      <button>
+      <button (click)="createBlock()">
         <img src="../../../../assets/plus.png">
         New Block
       </button>

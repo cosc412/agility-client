@@ -64,7 +64,8 @@ import { DetailsPopupComponent } from './shared/details-popup/details-popup.comp
     ProjectPopupComponent,
     DeleteConfirmComponent,
     TaskPopupComponent,
-    SprintPopupComponent
+    SprintPopupComponent,
+    DetailsPopupComponent
   ]
 })
 export class AppModule { }

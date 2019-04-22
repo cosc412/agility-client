@@ -4,6 +4,7 @@ import {MatDialog} from "@angular/material";
 import { TaskService } from 'src/app/auth/task.service';
 import { TaskPopupComponent } from 'src/app/shared/task-popup/task-popup.component';
 import { DeleteConfirmComponent } from 'src/app/shared/delete-confirm/delete-confirm.component';
+import { DetailsPopupComponent } from 'src/app/shared/details-popup/details-popup.component';
 
 @Component({
   selector: 'app-task-details',
@@ -24,11 +25,27 @@ export class TaskDetailsComponent implements OnInit {
     });
   }
 
+  createNote() {
+    this.dialog.open(DetailsPopupComponent, { panelClass: 'custom-container' });
+  }
+
+  createBlock() {
+    this.dialog.open(DetailsPopupComponent, { panelClass: 'custome-container' });
+  }
+
   editTask() {
     this.dialog.open(TaskPopupComponent, { panelClass: 'custom-container', data: { mode: 'update', params: this.task } });
   }
 
   deleteTask() {
+    this.dialog.open(DeleteConfirmComponent, { panelClass: 'custom-container' });
+  }
+
+  deleteBlock() {
+    this.dialog.open(DeleteConfirmComponent, { panelClass: 'custom-container' });
+  }
+
+  deleteNote() {
     this.dialog.open(DeleteConfirmComponent, { panelClass: 'custom-container' });
   }
 
