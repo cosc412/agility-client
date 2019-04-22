@@ -36,7 +36,7 @@ export class ProjectService {
 
   }
 
-  deleteProject() {
-    
+  deleteProject(id: string) {
+    return this.http.delete('http://localhost:3000/projects/'+id).toPromise();
   }
 }

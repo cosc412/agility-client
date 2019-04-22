@@ -35,7 +35,7 @@ export class ProjectDashComponent implements OnInit {
   }
 
   openDeleteDialog(id: string) {
-    this.dialog.open(DeleteConfirmComponent, { panelClass: 'custom-container' });
+    this.dialog.open(DeleteConfirmComponent, { panelClass: 'custom-container', data: { mode: 'project', id: id } });
   }
 
 }

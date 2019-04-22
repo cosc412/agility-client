@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { ProjectService } from 'src/app/auth/project.service';
+import { SprintService } from 'src/app/auth/sprint.service';
+import { TaskService } from 'src/app/auth/task.service';
 
 @Component({
   selector: 'app-delete-confirm',
@@ -8,7 +11,14 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 })
 export class DeleteConfirmComponent implements OnInit {
 
-  constructor(private dialogRef: MatDialogRef<DeleteConfirmComponent>) { }
+  mode: string;
+  id: string;
+
+  constructor(private dialogRef: MatDialogRef<DeleteConfirmComponent>, private project: ProjectService,
+    private sprint: SprintService, private task: TaskService, @Inject(MAT_DIALOG_DATA) data) {
+      this.mode = data.mode;
+      this.id = data.id;
+  }
 
   ngOnInit() {
   }
@@ -18,7 +28,9 @@ export class DeleteConfirmComponent implements OnInit {
   }
 
   async confirm() {
-    this.dialogRef.close();
+    if (this.mode === 'project') {
+      this.project.deleteProject(this.id).then(() => this.dialogRef.close());
+    }
   }
 
 }
