@@ -1,8 +1,8 @@
 
 <div class="wrapper">
   <div class="title">
-    <span>Create</span>
-    <span>Update</span>
+    <span *ngIf="mode === 'create'">Create</span>
+    <span *ngIf="mode === 'update'">Update</span>
     a Sprint
   </div>
   <hr>
@@ -10,7 +10,7 @@
     <input type="text" placeholder="Sprint Name" [(ngModel)]="model.header" name="header" required>
 
     <div class="dateWrapper">
-      <input matInput [value]="model.due" [matDatepicker]="picker" placeholder="Choose a due date">
+      <input matInput [(ngModel)]="model.due" [matDatepicker]="picker" placeholder="Choose a due date" name="due">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </div>
@@ -20,8 +20,8 @@
     <div class="button_group">
       <button (click)="close">Cancel</button>
       <button type="submit">
-        <span>Create</span>
-        <span>Update</span>
+        <span *ngIf="mode === 'create'">Create</span>
+        <span *ngIf="mode === 'update'">Update</span>
       </button>
     </div>
   </form>

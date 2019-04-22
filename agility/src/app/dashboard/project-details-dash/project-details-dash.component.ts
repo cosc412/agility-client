@@ -63,11 +63,11 @@ export class ProjectDetailsDashComponent implements OnInit {
   }
 
   createSprint() {
-    this.dialog.open(SprintPopupComponent, { panelClass: 'custom-container' });
+    this.dialog.open(SprintPopupComponent, { panelClass: 'custom-container', data: { mode: 'create' } });
   }
 
   createTask() {
-    this.dialog.open(TaskPopupComponent, { panelClass: 'custom-container' });
+    this.dialog.open(TaskPopupComponent, { panelClass: 'custom-container', data: { mode: 'create' } });
   }
 
 }

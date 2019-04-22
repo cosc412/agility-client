@@ -14,12 +14,17 @@ export class SprintPopupComponent implements OnInit {
     _id: '',
     projID: '',
     header: '',
-    due: '',
+    due: new Date(),
     description: ''
   };
 
   constructor(private dialogRef: MatDialogRef<SprintPopupComponent>, private sprintService: SprintService,
-    @Inject(MAT_DIALOG_DATA) data) { }
+    @Inject(MAT_DIALOG_DATA) data) {
+      this.mode = data.mode;
+      if (this.mode === 'update') {
+        this.model = data.params;
+      }
+    }
 
   ngOnInit() {
   }

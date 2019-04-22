@@ -30,7 +30,7 @@ export class SprintCardComponent implements OnInit {
   }
 
   editSprint() {
-    this.dialog.open(SprintPopupComponent, { panelClass: 'custom-container' });
+    this.dialog.open(SprintPopupComponent, { panelClass: 'custom-container', data: { mode: 'update', params: this.sprint } });
   }
 
   deleteSprint() {

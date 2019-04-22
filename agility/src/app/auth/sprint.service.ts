@@ -5,33 +5,33 @@ import { Injectable } from '@angular/core';
 })
 export class SprintService {
 
-  private MOCK_SPRINTS: {_id: string, projID: string, header: string, due: string, description: string}[] = [
+  private MOCK_SPRINTS: {_id: string, projID: string, header: string, due: Date, description: string}[] = [
     {
       _id: '1',
       projID: '1',
       header: 'This is a new sprint!',
-      due: '4/10/2019',
+      due: new Date('Tue Apr 23 2019 00:00:00 GMT-0400 (Eastern Daylight Time)'),
       description: 'We need to complete this sprint TODAY'
     },
     {
       _id: '2',
       projID: '1',
       header: 'This is a new sprint!',
-      due: '4/10/2019',
+      due: new Date('Tue Apr 23 2019 00:00:00 GMT-0400 (Eastern Daylight Time)'),
       description: 'We need to complete this sprint TODAY'
     },
     {
       _id: '3',
       projID: '1',
       header: 'This is a new sprint!',
-      due: '4/10/2019',
+      due: new Date('Tue Apr 23 2019 00:00:00 GMT-0400 (Eastern Daylight Time)'),
       description: 'We need to complete this sprint TODAY'
     },
     {
       _id: '4',
       projID: '1',
       header: 'This is a new sprint!',
-      due: '4/10/2019',
+      due: new Date('Tue Apr 23 2019 00:00:00 GMT-0400 (Eastern Daylight Time)'),
       description: 'We need to complete this sprint TODAY'
     }
   ]
