@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +41,7 @@ export class ProjectService {
     }
   ]
 
-  constructor() { }
+  constructor(private http: HttpClient, private auth: AuthService, private router: Router) { }
 
   getProjects() {
     return this.mock_projects;
@@ -48,8 +51,16 @@ export class ProjectService {
     return this.mock_projects[Number.parseInt(id) - 1];
   }
 
-  createProject() {
-
+  createProject(name: string, description: string) {
+    this.http.post('http://localhost:3000/projects',
+    {
+      name: name,
+      description: description,
+      userID: this.auth.user._id
+    },
+    {responseType: 'text'}).toPromise().then(project => {
+      this.router.navigate(['/projects']);
+    });
   }
 
   updateProject() {

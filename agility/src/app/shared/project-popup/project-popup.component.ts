@@ -32,7 +32,7 @@ export class ProjectPopupComponent implements OnInit {
 
   async create() {
     if (this.mode === 'create') {
-      this.projectService.createProject();
+      this.projectService.createProject(this.model.name, this.model.description);
     }
     else {
 

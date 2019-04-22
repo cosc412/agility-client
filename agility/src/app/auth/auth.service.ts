@@ -62,7 +62,12 @@ export class AuthService {
         profileURL: this.profile.getImageUrl()
       },
       {responseType: 'text'}).toPromise().then(user => {
-        this.user = user;
+        this.user = JSON.parse(user);
+
+        let expirable = this.user;
+        expirable.expire = new Date(new Date().getTime() + (60 * 60 * 1000)); // Set expiration time for one hour from now 
+        const cookie = btoa(JSON.stringify(expirable));
+        localStorage.setItem('agility_cookie', cookie);
     });
   }
 
@@ -71,12 +76,6 @@ export class AuthService {
       if (this.auth2.isSignedIn.get()) {
         this.profile = profile.getBasicProfile();
         this.getUser();
-
-        let expirable = this.user;
-        expirable.expire = new Date(new Date().getTime() + (60 * 60 * 1000)); // Set expiration time for one hour from now 
-
-        const cookie = btoa(JSON.stringify(expirable));
-        localStorage.setItem('agility_cookie', cookie);
       }
     });
   }
