@@ -58,7 +58,9 @@ import { TaskPopupComponent } from './shared/task-popup/task-popup.component';
   ],
   entryComponents: [
     ProjectPopupComponent,
-    DeleteConfirmComponent
+    DeleteConfirmComponent,
+    TaskPopupComponent,
+    SprintPopupComponent
   ]
 })
 export class AppModule { }
