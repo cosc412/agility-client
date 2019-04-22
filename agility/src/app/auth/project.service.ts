@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 
@@ -8,43 +8,10 @@ import { Router } from '@angular/router';
 })
 export class ProjectService {
 
-  private mock_projects = [
-    {
-      _id: 1,
-      name: `John Doe's Project`,
-      description: 'This is a very descriptive project! This is a very descriptive project! This is a very descriptive project! This is a very descriptive project! This is a very descriptive project! This is a very descriptive project! This is a very descriptive project! This is a very descriptive project! This is a very descriptive project! This is a very descriptive project!'
-    },
-    {
-      _id: 2,
-      name: `Jane Doe's Project`,
-      description: 'This is a very descriptive project!'
-    },
-    {
-      _id: 3,
-      name: `Emily Vogel's Project`,
-      description: 'This is a very descriptive project!'
-    },
-    {
-      _id: 4,
-      name: `Cameron Crow's Project`,
-      description: 'This is a very descriptive project!'
-    },
-    {
-      _id: 5,
-      name: `Sam Salas's Project`,
-      description: 'This is a very descriptive project!'
-    },
-    {
-      _id: 6,
-      name: `Andrew Noonan's Project`,
-      description: 'This is a very descriptive project!'
-    }
-  ]
-
   constructor(private http: HttpClient, private auth: AuthService, private router: Router) { }
 
   getProjects() {
-    return this.mock_projects;
+    return this.http.get('http://localhost:3000/projects', {headers: new HttpHeaders().set('userID', this.auth.user._id)}).toPromise();
   }
 
   getProject(id: string) {
@@ -59,7 +26,9 @@ export class ProjectService {
       userID: this.auth.user._id
     },
     {responseType: 'text'}).toPromise().then(project => {
-      this.router.navigate(['/projects']);
+      let navigate = '/projects/'+project;
+      navigate = navigate.replace(/"/g, '');
+      this.router.navigate([navigate]);
     });
   }
 

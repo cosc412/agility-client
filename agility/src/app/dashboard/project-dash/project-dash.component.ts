@@ -19,7 +19,9 @@ export class ProjectDashComponent implements OnInit {
     private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.projects = this.project.getProjects();
+    this.project.getProjects().then(p => {
+      this.projects = p;
+    });
     this.navbarService.isInDetailsDash = false;
   }
 
