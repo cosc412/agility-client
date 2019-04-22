@@ -48,4 +48,16 @@ export class TaskService {
       return task._id === taskID;
     })
   }
+
+  createTask() {
+
+  }
+
+  updateTask() {
+
+  }
+
+  deleteTask() {
+    
+  }
 }

@@ -3,7 +3,7 @@ import { NavbarService } from 'src/app/auth/navbar.service';
 import { ProjectService } from 'src/app/auth/project.service';
 import { SprintService } from 'src/app/auth/sprint.service';
 import { ActivatedRoute } from '@angular/router';
-
+import {MatDialog} from "@angular/material";
 import { SprintCardComponent } from '../../shared/sprint-card/sprint-card.component';
 import { TaskService } from 'src/app/auth/task.service';
 
@@ -24,7 +24,8 @@ export class ProjectDetailsDashComponent implements OnInit {
   selectedSprintHeader: string;
 
   constructor(private navbarService: NavbarService, private projectService: ProjectService,
-    private sprintService: SprintService, private taskService: TaskService, private route: ActivatedRoute) { }
+    private sprintService: SprintService, private taskService: TaskService, private route: ActivatedRoute,
+    private dialog: MatDialog) { }
 
   ngOnInit() {
     this.navbarService.isInDetailsDash = true;

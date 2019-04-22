@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { SprintService } from 'src/app/auth/sprint.service';
 
 @Component({
   selector: 'app-sprint-popup',
@@ -7,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SprintPopupComponent implements OnInit {
 
-  constructor() { }
+  mode: string;
+  model;
+
+  constructor(private dialogRef: MatDialogRef<SprintPopupComponent>, private sprintService: SprintService,
+    @Inject(MAT_DIALOG_DATA) data) { }
 
   ngOnInit() {
+  }
+
+  close() {
+    this.dialogRef.close();
+  }
+
+  async create() {
+    if (this.mode === 'create') {
+      this.sprintService.createProjectSprint(null, null);
+    }
+    else {
+      this.sprintService.deleteProjectSprint(null);
+    }
+    this.dialogRef.close();
   }
 
 }
