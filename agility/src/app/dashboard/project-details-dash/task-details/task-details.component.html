@@ -22,7 +22,6 @@
       <div *ngFor="let note of task.note" class="item">
         <div class="text">{{ note }}</div>
         <div class="button_group">
-          <button alt="edit note button"><img src="../../../../assets/edit.png"></button>
           <button alt="edit note button"><img src="../../../../assets/trashcan.png"></button>
         </div>
       </div>
@@ -34,9 +33,8 @@
     <div class="section" [ngClass]="{'block': true}">
       <div class="title">Blocks</div>
       <div *ngFor="let block of task.block" class="item">
-        <div class="text">{{ block }} aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+        <div class="text">{{ block }}</div>
         <div class="button_group">
-          <button alt="edit note button"><img src="../../../../assets/edit.png"></button>
           <button alt="edit note button"><img src="../../../../assets/trashcan.png"></button>
         </div>
       </div>
