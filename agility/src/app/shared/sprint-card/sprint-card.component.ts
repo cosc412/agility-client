@@ -1,4 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {MatDialog} from "@angular/material";
+import { SprintPopupComponent } from 'src/app/shared/sprint-popup/sprint-popup.component';
+import { DeleteConfirmComponent } from 'src/app/shared/delete-confirm/delete-confirm.component';
 
 @Component({
   selector: 'app-sprint-card',
@@ -12,7 +15,7 @@ export class SprintCardComponent implements OnInit {
 
   chosen = false;
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -24,6 +27,14 @@ export class SprintCardComponent implements OnInit {
 
   unselect() {
     this.chosen = false;
+  }
+
+  editSprint() {
+    this.dialog.open(SprintPopupComponent, { panelClass: 'custom-container' });
+  }
+
+  deleteSprint() {
+    this.dialog.open(DeleteConfirmComponent, { panelClass: 'custom-container' });
   }
 
 }
