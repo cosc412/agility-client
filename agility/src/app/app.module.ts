@@ -21,6 +21,7 @@ import { TeamPageComponent } from './dashboard/project-details-dash/team-page/te
 import { TaskDetailsComponent } from './dashboard/project-details-dash/task-details/task-details.component';
 import { PersonCardComponent } from './shared/person-card/person-card.component';
 import { DeleteConfirmComponent } from './shared/delete-confirm/delete-confirm.component';
+import { SprintPopupComponent } from './shared/sprint-popup/sprint-popup.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { DeleteConfirmComponent } from './shared/delete-confirm/delete-confirm.c
     TeamPageComponent,
     TaskDetailsComponent,
     PersonCardComponent,
-    DeleteConfirmComponent
+    DeleteConfirmComponent,
+    SprintPopupComponent
   ],
   imports: [
     BrowserModule,
