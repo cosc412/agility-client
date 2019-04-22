@@ -12,6 +12,7 @@ export class ProjectPopupComponent implements OnInit {
   mode: string; // i.e. 'create' or 'update'
 
   model = {
+    _id: '',
     name: '',
     description: ''
   }
@@ -34,8 +35,8 @@ export class ProjectPopupComponent implements OnInit {
     if (this.mode === 'create') {
       this.projectService.createProject(this.model.name, this.model.description);
     }
-    else {
-
+    if (this.mode === 'update') {
+      this.projectService.updateProject(this.model._id, this.model.name, this.model.description);
     }
     this.dialogRef.close();
   }

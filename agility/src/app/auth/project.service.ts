@@ -32,8 +32,12 @@ export class ProjectService {
     });
   }
 
-  updateProject() {
-
+  updateProject(id: string, name: string, description: string) {
+    return this.http.patch('http://localhost:3000/projects/'+id,
+    {
+      name: name,
+      description: description
+    });
   }
 
   deleteProject(id: string) {
