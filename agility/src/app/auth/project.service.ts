@@ -48,7 +48,7 @@ export class ProjectService {
   }
 
   getProject(id: string) {
-    return this.mock_projects[Number.parseInt(id) - 1];
+    return this.http.get('http://localhost:3000/projects/'+id).toPromise();
   }
 
   createProject(name: string, description: string) {
