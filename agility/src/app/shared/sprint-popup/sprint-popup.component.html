@@ -1,3 +1,21 @@
-<p>
-  sprint-popup works!
-</p>
+
+<div class="wrapper">
+  <div class="title">
+    <span>Create</span>
+    <span>Update</span>
+    a Sprint
+  </div>
+  <hr>
+  <form (ngSubmit)="create()">
+    <input type="text" placeholder="Sprint Name" [(ngModel)]="model.header" name="header" required>
+    <div class="subtitle">Sprint Description</div>
+    <textarea [(ngModel)]="model.description" name="description" required></textarea>
+    <div class="button_group">
+      <button (click)="close">Cancel</button>
+      <button type="submit">
+        <span>Create</span>
+        <span>Update</span>
+      </button>
+    </div>
+  </form>
+</div>

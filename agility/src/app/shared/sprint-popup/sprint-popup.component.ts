@@ -10,7 +10,13 @@ import { SprintService } from 'src/app/auth/sprint.service';
 export class SprintPopupComponent implements OnInit {
 
   mode: string;
-  model;
+  model = {
+    _id: '',
+    projID: '',
+    header: '',
+    due: '',
+    description: ''
+  };
 
   constructor(private dialogRef: MatDialogRef<SprintPopupComponent>, private sprintService: SprintService,
     @Inject(MAT_DIALOG_DATA) data) { }
