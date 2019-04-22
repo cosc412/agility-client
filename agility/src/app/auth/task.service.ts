@@ -60,4 +60,12 @@ export class TaskService {
   deleteTask() {
     
   }
+
+  addNote() {
+
+  }
+
+  addBlock() {
+    
+  }
 }
