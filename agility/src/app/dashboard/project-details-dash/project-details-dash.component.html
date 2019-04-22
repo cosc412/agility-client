@@ -4,7 +4,7 @@
     <div class="sprint_wrapper">
       <app-sprint-card #sprintCards *ngFor="let sprint of sprints" [sprint]="sprint" (selected)="getSprintTasks($event)"></app-sprint-card>
     </div>
-    <button class="new_sprint_btn" alt="create new sprint button">
+    <button class="new_sprint_btn" (click)="createSprint()" alt="create new sprint button">
       <img src ="../../../assets/plus.png">
       <div>New Sprint</div>
     </button>

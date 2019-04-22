@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import {MatDialog} from "@angular/material";
 import { SprintCardComponent } from '../../shared/sprint-card/sprint-card.component';
 import { TaskService } from 'src/app/auth/task.service';
+import { SprintPopupComponent } from 'src/app/shared/sprint-popup/sprint-popup.component';
 
 @Component({
   selector: 'app-project-details-dash',
@@ -58,6 +59,10 @@ export class ProjectDetailsDashComponent implements OnInit {
       this.selectedSprintHeader = undefined;
       this.tasks = [];
     }
+  }
+
+  createSprint() {
+    this.dialog.open(SprintPopupComponent, { panelClass: 'custom-container' });
   }
 
 }
