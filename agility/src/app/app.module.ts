@@ -23,6 +23,7 @@ import { PersonCardComponent } from './shared/person-card/person-card.component'
 import { DeleteConfirmComponent } from './shared/delete-confirm/delete-confirm.component';
 import { SprintPopupComponent } from './shared/sprint-popup/sprint-popup.component';
 import { TaskPopupComponent } from './shared/task-popup/task-popup.component';
+import { DetailsPopupComponent } from './shared/details-popup/details-popup.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { TaskPopupComponent } from './shared/task-popup/task-popup.component';
     PersonCardComponent,
     DeleteConfirmComponent,
     SprintPopupComponent,
-    TaskPopupComponent
+    TaskPopupComponent,
+    DetailsPopupComponent
   ],
   imports: [
     BrowserModule,
