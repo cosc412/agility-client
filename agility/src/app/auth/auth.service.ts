@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 declare const gapi: any;
 
@@ -7,37 +8,6 @@ declare const gapi: any;
   providedIn: 'root'
 })
 export class AuthService {
-
-  private MOCK_TEAM = [
-    {
-      _id: 'nvkaheia',
-      name: 'John Doe',
-      email: 'jdoe@gmail.com',
-      profileURL: 'http://krnb.com/janetg/wp-content/uploads//sites/11/2016/01/Barack-Obama-3.jpg',
-      role: 'Developer'
-    },
-    {
-      _id: 'nvmewiwowoww',
-      name: 'Jane Doe',
-      email: 'janedoe@gmail.com',
-      profileURL: 'https://content.internetvideoarchive.com/content/photos/9280/414206_001.jpg',
-      role: 'Project Lead'
-    },
-    {
-      _:'aqqwioeel',
-      name: 'Scarlet Johenson',
-      email: 'sjohenson@gmail.com',
-      profileURL: 'https://i.ytimg.com/vi/8RDueVUvsLY/hqdefault.jpg',
-      role: 'Developer'
-    },
-    {
-      _id: '1234',
-      name: 'Emily Vogel',
-      email: 'eav990@gmail.com',
-      profileURL: 'https://www.advocate.com/sites/advocate.com/files/2017/05/16/over-the-period-of-trump-750.jpg',
-      role: 'Developer'
-    }
-  ];
 
   // https://stackoverflow.com/questions/38846232/how-to-implement-signin-with-google-in-angular-2-using-typescript
   // https://developers.google.com/identity/sign-in/web/people
@@ -47,13 +17,14 @@ export class AuthService {
   private profile: any;
   user: any;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private http: HttpClient) {
     this.init();
   }
 
   signIn() {
     this.auth2.signIn().then(() => {
       this.profile = this.auth2.currentUser.get().getBasicProfile();
+      this.getUser();
       this.router.navigate(['/projects']);
     });
   }
@@ -66,7 +37,7 @@ export class AuthService {
   }
 
   getTeam(projectID: string) {
-    return this.MOCK_TEAM;
+    
   }
 
   private init() {
@@ -82,20 +53,24 @@ export class AuthService {
     });
   }
 
-  private async getUser(email: string) {
-    this.user = {
-      _id: '1234',
-      name: 'Emily Vogel',
-      email: 'eav990@gmail.com',
-      profileURL: 'https://www.advocate.com/sites/advocate.com/files/2017/05/16/over-the-period-of-trump-750.jpg'
-    }
+  private async getUser() {
+    this.http.post('http://localhost:3000/users',
+      {
+        token: this.auth2.currentUser.get().getAuthResponse().id_token,
+        name: this.profile.getName(),
+        email: this.profile.getEmail(),
+        profileURL: this.profile.getImageUrl()
+      },
+      {responseType: 'text'}).toPromise().then(user => {
+        this.user = user;
+    });
   }
 
   private listenForUser() {
     this.auth2.currentUser.listen(profile => {
       if (this.auth2.isSignedIn.get()) {
         this.profile = profile.getBasicProfile();
-        this.getUser(this.profile.getEmail());
+        this.getUser();
 
         let expirable = this.user;
         expirable.expire = new Date(new Date().getTime() + (60 * 60 * 1000)); // Set expiration time for one hour from now 

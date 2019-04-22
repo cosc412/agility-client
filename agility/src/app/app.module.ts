@@ -3,8 +3,9 @@ import { NgModule } from '@angular/core';
 import {MatDialogModule, MatDatepickerModule, MatNativeDateModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { TopNavbarComponent } from './shared/top-navbar/top-navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -54,7 +55,8 @@ import { DetailsPopupComponent } from './shared/details-popup/details-popup.comp
     MatDatepickerModule,
     MatNativeDateModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [
