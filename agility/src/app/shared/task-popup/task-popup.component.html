@@ -1,3 +1,28 @@
-<p>
-  task-popup works!
-</p>
+
+<div class="wrapper">
+  <div class="title">
+    <span *ngIf="mode === 'create'">Create</span>
+    <span *ngIf="mode === 'update'">Update</span>
+    a Task
+  </div>
+  <hr>
+  <form (ngSubmit)="create()">
+    <input type="text" placeholder="Task Name" [(ngModel)]="model.header" name="header" required>
+
+    <div class="dateWrapper">
+      <input matInput [(ngModel)]="model.due" [matDatepicker]="picker" placeholder="Choose a due date" name="due">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </div>
+
+    <div class="subtitle">Task Description</div>
+    <textarea [(ngModel)]="model.description" name="description" required></textarea>
+    <div class="button_group">
+      <button (click)="close">Cancel</button>
+      <button type="submit">
+        <span *ngIf="mode === 'create'">Create</span>
+        <span *ngIf="mode === 'update'">Update</span>
+      </button>
+    </div>
+  </form>
+</div>

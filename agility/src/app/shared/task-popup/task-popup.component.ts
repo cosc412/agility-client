@@ -10,10 +10,23 @@ import { TaskService } from 'src/app/auth/task.service';
 export class TaskPopupComponent implements OnInit {
 
   mode: string;
-  model;
+  model = {
+    _id: '',
+    sprintID: '',
+    due: new Date(),
+    header: '',
+    description: '',
+    note: [],
+    block: []
+  };
 
   constructor(private dialogRef: MatDialogRef<TaskPopupComponent>, private taskService: TaskService,
-    @Inject(MAT_DIALOG_DATA) data) { }
+    @Inject(MAT_DIALOG_DATA) data) {
+      this.mode = data.mode;
+      if (this.mode === 'update') {
+        this.model = data.params;
+      }
+    }
 
   ngOnInit() {
   }

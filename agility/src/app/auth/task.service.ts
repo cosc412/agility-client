@@ -5,11 +5,11 @@ import { Injectable } from '@angular/core';
 })
 export class TaskService {
 
-  private MOCK_TASKS: {_id: string, sprintID: string, due: string, header: string, description: string, note: string[], block: string[]}[] = [
+  private MOCK_TASKS: {_id: string, sprintID: string, due: Date, header: string, description: string, note: string[], block: string[]}[] = [
     {
       _id: '1',
       sprintID: '1',
-      due: '4/10/19',
+      due: new Date('Tue Apr 23 2019 00:00:00 GMT-0400 (Eastern Daylight Time)'),
       header: 'This is a new task!',
       description: 'We need to finish this up within the hour.',
       note: ['This is a note!'],
@@ -18,7 +18,7 @@ export class TaskService {
     {
       _id: '2',
       sprintID: '1',
-      due: '4/10/19',
+      due: new Date('Tue Apr 23 2019 00:00:00 GMT-0400 (Eastern Daylight Time)'),
       header: 'This is a new task!',
       description: 'We need to finish this up within the hour.',
       note: ['This is a note!'],
@@ -27,7 +27,7 @@ export class TaskService {
     {
       _id: '3',
       sprintID: '2',
-      due: '4/10/19',
+      due: new Date('Tue Apr 23 2019 00:00:00 GMT-0400 (Eastern Daylight Time)'),
       header: 'This is a new task!',
       description: 'We need to finish this up within the hour.',
       note: ['This is a note!'],

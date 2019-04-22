@@ -1,6 +1,6 @@
 
 <div *ngIf="task" class='wrapper' [ngClass]="{'block': task.block.length}">
-  <div>{{ task.due }}</div>
+  <div>{{ date }}</div>
   <div>{{ task.header }}</div>
   <div>{{ task.block.length }}</div>
   <img src="../../../assets/arrow.png" routerLink="/projects/{{ navbarService.projectID }}/tasks/{{ task._id }}"

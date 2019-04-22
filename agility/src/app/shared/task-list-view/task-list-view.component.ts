@@ -9,10 +9,12 @@ import { NavbarService } from 'src/app/auth/navbar.service';
 export class TaskListViewComponent implements OnInit {
 
   @Input() task;
+  date: string;
 
   constructor(private navbarService: NavbarService) { }
 
   ngOnInit() {
+    this.date = (this.task.due.getMonth() + 1) + '/' + this.task.due.getDate() + '/' +  this.task.due.getFullYear();
   }
 
 }
