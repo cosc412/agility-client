@@ -113,3 +113,23 @@ button {
         background-color: transparent;
     }
 }
+
+.button_group {
+    float: right;
+
+    button {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin: 0;
+        padding: 0;
+        margin-left: 10px;
+        background-color: transparent;
+        border: none;
+
+        img {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
