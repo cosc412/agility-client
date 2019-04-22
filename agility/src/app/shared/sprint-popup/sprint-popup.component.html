@@ -8,6 +8,11 @@
   <hr>
   <form (ngSubmit)="create()">
     <input type="text" placeholder="Sprint Name" [(ngModel)]="model.header" name="header" required>
+
+    <input matInput [matDatepicker]="picker" placeholder="Choose a due date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+
     <div class="subtitle">Sprint Description</div>
     <textarea [(ngModel)]="model.description" name="description" required></textarea>
     <div class="button_group">

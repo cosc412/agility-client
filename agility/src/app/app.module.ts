@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {MatDialogModule} from '@angular/material';
+import {MatDialogModule, MatDatepickerModule, MatNativeDateModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 
@@ -49,6 +49,8 @@ import { TaskPopupComponent } from './shared/task-popup/task-popup.component';
     BrowserModule,
     AppRoutingModule,
     MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     BrowserAnimationsModule,
     FormsModule
   ],
