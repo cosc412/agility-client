@@ -6,37 +6,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class SprintService {
 
-  private MOCK_SPRINTS: {_id: string, projID: string, header: string, due: Date, description: string}[] = [
-    {
-      _id: '1',
-      projID: '1',
-      header: 'This is a new sprint!',
-      due: new Date('Tue Apr 23 2019 00:00:00 GMT-0400 (Eastern Daylight Time)'),
-      description: 'We need to complete this sprint TODAY'
-    },
-    {
-      _id: '2',
-      projID: '1',
-      header: 'This is a new sprint!',
-      due: new Date('Tue Apr 23 2019 00:00:00 GMT-0400 (Eastern Daylight Time)'),
-      description: 'We need to complete this sprint TODAY'
-    },
-    {
-      _id: '3',
-      projID: '1',
-      header: 'This is a new sprint!',
-      due: new Date('Tue Apr 23 2019 00:00:00 GMT-0400 (Eastern Daylight Time)'),
-      description: 'We need to complete this sprint TODAY'
-    },
-    {
-      _id: '4',
-      projID: '1',
-      header: 'This is a new sprint!',
-      due: new Date('Tue Apr 23 2019 00:00:00 GMT-0400 (Eastern Daylight Time)'),
-      description: 'We need to complete this sprint TODAY'
-    }
-  ]
-
   constructor(private http: HttpClient) { }
 
   getProjectSprints(projID: string) {
@@ -53,8 +22,14 @@ export class SprintService {
     {responseType: 'text'}).toPromise();
   }
 
-  updateProjectSprint(projID: string, data) {
-
+  updateProjectSprint(sID: string, data: {projID: string, header: string, due: Date, description: string}) {
+    this.http.patch('http://localhost:3000/sprints/'+sID, {
+      projID: data.projID,
+      header: data.header,
+      due: data.due,
+      description: data.description
+    },
+    {responseType: 'text'}).toPromise();
   }
 
   deleteProjectSprint(sprintID: string) {

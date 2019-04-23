@@ -40,7 +40,7 @@ export class SprintPopupComponent implements OnInit {
       this.sprintService.createProjectSprint(this.projID, this.model);
     }
     else {
-      this.sprintService.deleteProjectSprint(null);
+      this.sprintService.updateProjectSprint(this.model._id, this.model);
     }
     this.dialogRef.close();
   }
