@@ -32,7 +32,7 @@ export class AuthService {
   signOut() {
     this.auth2.signOut();
     this.user = undefined;
-    localStorage.setItem('agility_cookie', JSON.stringify({}));
+    localStorage.removeItem('agility_cookie');
     this.router.navigate(['']);
   }
 
@@ -63,7 +63,6 @@ export class AuthService {
       },
       {responseType: 'text'}).toPromise().then(user => {
         this.user = JSON.parse(user);
-
         let expirable = this.user;
         expirable.expire = new Date(new Date().getTime() + (60 * 60 * 1000)); // Set expiration time for one hour from now 
         const cookie = btoa(JSON.stringify(expirable));
@@ -82,7 +81,7 @@ export class AuthService {
 
   private parseCookie() {
     let c = localStorage.getItem('agility_cookie');
-    if (c != '{}') {
+    if (c) {
       const cookie = JSON.parse(atob(c));
       if (Date.parse(cookie.expire) > new Date().getTime()) // If cookie hasn't expired, get user data
         this.user = cookie;

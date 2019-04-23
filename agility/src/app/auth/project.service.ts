@@ -33,11 +33,11 @@ export class ProjectService {
   }
 
   updateProject(id: string, name: string, description: string) {
-    return this.http.patch('http://localhost:3000/projects/'+id,
+    this.http.patch('http://localhost:3000/projects/'+id,
     {
       name: name,
       description: description
-    });
+    }, {responseType: 'text'}).toPromise();
   }
 
   deleteProject(id: string) {
