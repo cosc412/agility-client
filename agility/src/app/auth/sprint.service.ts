@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -36,12 +37,10 @@ export class SprintService {
     }
   ]
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getProjectSprints(projID: string) {
-    return this.MOCK_SPRINTS.filter(val => {
-      return val.projID === projID;
-    });
+    return this.http.get('http://localhost:3000/sprints', {headers: new HttpHeaders().set('projectID', projID)}).toPromise();
   }
 
   createProjectSprint(projID: string, data) {

@@ -37,7 +37,9 @@ export class ProjectDetailsDashComponent implements OnInit {
           this.project = p;
           this.navbarService.projectName = this.project.name;
           this.navbarService.projectID = params.id;
-          this.sprints = this.sprintService.getProjectSprints(params.id);
+          this.sprintService.getProjectSprints(params.id).then((sprints: any[]) => {
+            this.sprints = sprints;
+          });
         });
       }
     });
