@@ -10,6 +10,7 @@ import { SprintService } from 'src/app/auth/sprint.service';
 export class SprintPopupComponent implements OnInit {
 
   mode: string;
+  projID: string;
   model = {
     _id: '',
     projID: '',
@@ -21,6 +22,7 @@ export class SprintPopupComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef<SprintPopupComponent>, private sprintService: SprintService,
     @Inject(MAT_DIALOG_DATA) data) {
       this.mode = data.mode;
+      this.projID = data.projID;
       if (this.mode === 'update') {
         this.model = data.params;
       }
@@ -35,7 +37,7 @@ export class SprintPopupComponent implements OnInit {
 
   async create() {
     if (this.mode === 'create') {
-      this.sprintService.createProjectSprint(null, null);
+      this.sprintService.createProjectSprint(this.projID, this.model);
     }
     else {
       this.sprintService.deleteProjectSprint(null);

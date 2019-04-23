@@ -43,8 +43,14 @@ export class SprintService {
     return this.http.get('http://localhost:3000/sprints', {headers: new HttpHeaders().set('projectID', projID)}).toPromise();
   }
 
-  createProjectSprint(projID: string, data) {
-
+  createProjectSprint(projID: string, data: {header: string, due: Date, description: string}) {
+    this.http.post('http://localhost:3000/sprints', {
+      projID: projID,
+      header: data.header,
+      due: data.due.toUTCString(),
+      description: data.description
+    },
+    {responseType: 'text'}).toPromise();
   }
 
   updateProjectSprint(projID: string, data) {

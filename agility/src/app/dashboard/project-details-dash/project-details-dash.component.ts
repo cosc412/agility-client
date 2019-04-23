@@ -37,7 +37,7 @@ export class ProjectDetailsDashComponent implements OnInit {
           this.project = p;
           this.navbarService.projectName = this.project.name;
           this.navbarService.projectID = params.id;
-          this.sprintService.getProjectSprints(params.id).then((sprints: any[]) => {
+          this.sprintService.getProjectSprints(this.project._id).then((sprints: any[]) => {
             this.sprints = sprints;
           });
         });
@@ -67,7 +67,7 @@ export class ProjectDetailsDashComponent implements OnInit {
   }
 
   createSprint() {
-    this.dialog.open(SprintPopupComponent, { panelClass: 'custom-container', data: { mode: 'create' } });
+    this.dialog.open(SprintPopupComponent, { panelClass: 'custom-container', data: { mode: 'create', projID: this.project._id } });
   }
 
   createTask() {
