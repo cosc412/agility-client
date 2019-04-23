@@ -31,6 +31,9 @@ export class DeleteConfirmComponent implements OnInit {
     if (this.mode === 'project') {
       this.project.deleteProject(this.id).then(() => this.dialogRef.close());
     }
+    if (this.mode === 'sprint') {
+      this.sprint.deleteProjectSprint(this.id).then(() => this.dialogRef.close());
+    }
   }
 
 }

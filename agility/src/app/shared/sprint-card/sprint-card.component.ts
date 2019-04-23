@@ -34,7 +34,7 @@ export class SprintCardComponent implements OnInit {
   }
 
   deleteSprint() {
-    this.dialog.open(DeleteConfirmComponent, { panelClass: 'custom-container' });
+    this.dialog.open(DeleteConfirmComponent, { panelClass: 'custom-container', data: { mode: 'sprint', id: this.sprint._id } });
   }
 
 }

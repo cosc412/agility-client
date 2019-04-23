@@ -33,6 +33,7 @@ export class SprintService {
   }
 
   deleteProjectSprint(sprintID: string) {
-    
+    return this.http.delete('http://localhost:3000/sprints/'+sprintID,
+    {responseType: 'text'}).toPromise();
   }
 }
