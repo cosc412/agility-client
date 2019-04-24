@@ -6,11 +6,11 @@
       <span *ngIf="mode === 'block'">Block</span>
     </div>
     <hr>
-    <form (ngSubmit)="create()">
+    <form>
       <textarea [(ngModel)]="model.description" name="description" required></textarea>
       <div class="button_group">
-        <button (click)="close()">Cancel</button>
-        <button type="submit">Create</button>
+        <button (click)="cancel()">Cancel</button>
+        <button (click)="create()">Create</button>
       </div>
     </form>
   </div>

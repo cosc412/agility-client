@@ -32,7 +32,7 @@ export class DetailsPopupComponent implements OnInit {
   ngOnInit() {
   }
 
-  close() {
+  cancel() {
     this.dialogRef.close();
   }
 
@@ -42,7 +42,7 @@ export class DetailsPopupComponent implements OnInit {
       notes.push(this.model.description);
       await this.taskService.addNote(this.task._id, notes);
     }
-    else {
+    if (this.mode === 'block') {
       const blocks = this.task.block;
       blocks.push(this.model.description);
       await this.taskService.addBlock(this.task._id, blocks);
