@@ -14,11 +14,15 @@ import { DetailsPopupComponent } from 'src/app/shared/details-popup/details-popu
 export class TaskDetailsComponent implements OnInit {
 
   task;
+  projID: string;
 
   constructor(private route: ActivatedRoute, private taskService: TaskService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
+      if (params.id) {
+        this.projID = params.id;
+      }
       if (params.taskID) {
         this.taskService.getTaskByID(params.taskID).then(task => {
           this.task = JSON.parse(task);
@@ -40,7 +44,11 @@ export class TaskDetailsComponent implements OnInit {
   }
 
   deleteTask() {
-    this.dialog.open(DeleteConfirmComponent, { panelClass: 'custom-container' });
+    this.dialog.open(DeleteConfirmComponent, { panelClass: 'custom-container', data: {
+      mode: 'task',
+      id: this.task._id,
+      redirect: '/projects/' + this.projID
+    }});
   }
 
   deleteBlock() {

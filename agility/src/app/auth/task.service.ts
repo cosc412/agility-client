@@ -36,8 +36,8 @@ export class TaskService {
     }, {responseType: 'text'}).toPromise();
   }
 
-  deleteTask() {
-    
+  deleteTask(taskID: string) {
+    return this.http.delete('http://localhost:3000/tasks/'+taskID).toPromise();
   }
 
   addNote() {

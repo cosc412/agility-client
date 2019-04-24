@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { ProjectService } from 'src/app/auth/project.service';
 import { SprintService } from 'src/app/auth/sprint.service';
 import { TaskService } from 'src/app/auth/task.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-delete-confirm',
@@ -13,11 +14,15 @@ export class DeleteConfirmComponent implements OnInit {
 
   mode: string;
   id: string;
+  redirect?: string;
 
   constructor(private dialogRef: MatDialogRef<DeleteConfirmComponent>, private project: ProjectService,
-    private sprint: SprintService, private task: TaskService, @Inject(MAT_DIALOG_DATA) data) {
+    private sprint: SprintService, private task: TaskService, private router: Router, @Inject(MAT_DIALOG_DATA) data) {
       this.mode = data.mode;
       this.id = data.id;
+      if (data.redirect) {
+        this.redirect = data.redirect;
+      }
   }
 
   ngOnInit() {
@@ -33,6 +38,12 @@ export class DeleteConfirmComponent implements OnInit {
     }
     if (this.mode === 'sprint') {
       this.sprint.deleteProjectSprint(this.id).then(() => this.dialogRef.close());
+    }
+    if (this.mode === 'task') {
+      this.task.deleteTask(this.id).then(() => {
+        this.router.navigate([this.redirect]);
+        this.dialogRef.close();
+      });
     }
   }
 
