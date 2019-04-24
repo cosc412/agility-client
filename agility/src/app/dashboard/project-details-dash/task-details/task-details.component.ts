@@ -32,7 +32,7 @@ export class TaskDetailsComponent implements OnInit {
   }
 
   createNote() {
-    this.dialog.open(DetailsPopupComponent, { panelClass: 'custom-container', data: { mode: 'note' } });
+    this.dialog.open(DetailsPopupComponent, { panelClass: 'custom-container', data: { mode: 'note', task: this.task } });
   }
 
   createBlock() {

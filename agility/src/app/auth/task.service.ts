@@ -40,8 +40,10 @@ export class TaskService {
     return this.http.delete('http://localhost:3000/tasks/'+taskID).toPromise();
   }
 
-  addNote() {
-
+  addNote(taskID: string, notes: string[]) {
+    return this.http.post('http://localhost:3000/tasks/'+taskID+'/notes', {
+      notes: notes
+    }, {responseType: 'text'}).toPromise();
   }
 
   addBlock() {

@@ -10,6 +10,15 @@ import { TaskService } from 'src/app/auth/task.service';
 export class DetailsPopupComponent implements OnInit {
 
   mode: string;
+  task: {
+    _id: string,
+    sprintID: string,
+    due: Date,
+    header: string,
+    description: string,
+    note: string[],
+    block: string[]
+  };
   model = {
     description: ''
   };
@@ -17,6 +26,7 @@ export class DetailsPopupComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef<DetailsPopupComponent>, private taskService: TaskService,
     @Inject(MAT_DIALOG_DATA) data) {
       this.mode = data.mode;
+      this.task = data.task;
     }
 
   ngOnInit() {
@@ -28,7 +38,9 @@ export class DetailsPopupComponent implements OnInit {
 
   async create() {
     if (this.mode === 'note') {
-      this.taskService.addNote();
+      const notes = this.task.note;
+      notes.push(this.model.description);
+      await this.taskService.addNote(this.task._id, notes);
     }
     else {
       this.taskService.addBlock();
