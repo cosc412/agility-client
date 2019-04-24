@@ -58,7 +58,9 @@ export class ProjectDetailsDashComponent implements OnInit {
         return sprint._id === this.selectedSprint;
       }).header;
       // Get the tasks of the sprint selected
-      this.tasks = this.taskService.getTasksBySprint(this.selectedSprint);
+      this.taskService.getTasksBySprint(this.selectedSprint).then((tasks: any[]) => {
+        this.tasks = tasks;
+      });
     } else {
       this.selectedSprint = undefined;
       this.selectedSprintHeader = undefined;

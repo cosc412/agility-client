@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -35,12 +36,10 @@ export class TaskService {
     }
   ];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getTasksBySprint(sprintID: string) {
-    return this.MOCK_TASKS.filter(task => {
-      return task.sprintID === sprintID;
-    });
+    return this.http.get('http://localhost:3000/tasks', {headers: new HttpHeaders().set('sprintID', sprintID)}).toPromise();
   }
 
   getTaskByID(taskID: string) {
