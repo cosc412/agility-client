@@ -46,8 +46,13 @@ export class TaskService {
     return this.http.get('http://localhost:3000/tasks/'+taskID, {responseType: 'text'}).toPromise();
   }
 
-  createTask() {
-
+  createTask(sprintID: string, params: {due: Date, header: string, description: string}) {
+    return this.http.post('http://localhost:3000/tasks', {
+      sprintID: sprintID,
+      due: params.due.toUTCString(),
+      header: params.header,
+      description: params.description
+    }, {responseType: 'text'}).toPromise();
   }
 
   updateTask() {

@@ -14,6 +14,7 @@ export class TaskListViewComponent implements OnInit {
   constructor(private navbarService: NavbarService) { }
 
   ngOnInit() {
+    this.task.due = new Date(this.task.due);
     this.date = (this.task.due.getMonth() + 1) + '/' + this.task.due.getDate() + '/' +  this.task.due.getFullYear();
   }
 

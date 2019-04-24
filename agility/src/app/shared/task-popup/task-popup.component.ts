@@ -10,6 +10,7 @@ import { TaskService } from 'src/app/auth/task.service';
 export class TaskPopupComponent implements OnInit {
 
   mode: string;
+  sprintID: string;
   model = {
     _id: '',
     sprintID: '',
@@ -23,6 +24,7 @@ export class TaskPopupComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef<TaskPopupComponent>, private taskService: TaskService,
     @Inject(MAT_DIALOG_DATA) data) {
       this.mode = data.mode;
+      this.sprintID = data.sprintID;
       if (this.mode === 'update') {
         this.model = data.params;
       }
@@ -37,7 +39,7 @@ export class TaskPopupComponent implements OnInit {
 
   async create() {
     if (this.mode === 'create') {
-      this.taskService.createTask();
+      await this.taskService.createTask(this.sprintID, this.model);
     }
     else {
       this.taskService.updateTask();
