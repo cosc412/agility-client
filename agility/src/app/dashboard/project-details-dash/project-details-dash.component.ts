@@ -64,7 +64,7 @@ export class ProjectDetailsDashComponent implements OnInit {
     } else {
       this.selectedSprint = undefined;
       this.selectedSprintHeader = undefined;
-      this.tasks = [];
+      this.tasks = undefined;
     }
   }
 
