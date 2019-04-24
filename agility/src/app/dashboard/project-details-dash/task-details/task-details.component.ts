@@ -21,7 +21,7 @@ export class TaskDetailsComponent implements OnInit {
     this.route.params.subscribe(params => {
       if (params.taskID) {
         this.taskService.getTaskByID(params.taskID).then(task => {
-          this.task = task;
+          this.task = JSON.parse(task);
         });
       }
     });
