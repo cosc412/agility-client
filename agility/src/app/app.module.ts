@@ -25,6 +25,7 @@ import { DeleteConfirmComponent } from './shared/delete-confirm/delete-confirm.c
 import { SprintPopupComponent } from './shared/sprint-popup/sprint-popup.component';
 import { TaskPopupComponent } from './shared/task-popup/task-popup.component';
 import { DetailsPopupComponent } from './shared/details-popup/details-popup.component';
+import { UserPopupComponent } from './shared/user-popup/user-popup.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { DetailsPopupComponent } from './shared/details-popup/details-popup.comp
     DeleteConfirmComponent,
     SprintPopupComponent,
     TaskPopupComponent,
-    DetailsPopupComponent
+    DetailsPopupComponent,
+    UserPopupComponent
   ],
   imports: [
     BrowserModule,
