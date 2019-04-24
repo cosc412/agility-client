@@ -1,3 +1,11 @@
-<p>
-  user-popup works!
-</p>
+
+<div class="wrapper">
+  <div class="title">Add a User to this Project</div>
+  <form (ngSubmit)="add()">
+    <input type="text" placeholder="User's Email" [(ngModel)]="model.email" name="email" required>
+    <div class="button_group">
+      <button (click)="cancel()">Cancel</button>
+      <button type="submit">Add</button>
+    </div>
+  </form>
+</div>
