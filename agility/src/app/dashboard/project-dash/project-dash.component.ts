@@ -19,10 +19,43 @@ export class ProjectDashComponent implements OnInit {
     private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.project.getProjects().then(p => {
-      this.projects = p;
+    let role = [];
+    let projs = [];
+    this.auth.getMyProjectRoles().then((roles: any) => {
+      role = JSON.parse(roles);
+      this.project.getProjects().then((p: any[]) => {
+        projs = p;
+        this.mapStatus(role, projs);
+      });
     });
     this.navbarService.isInDetailsDash = false;
+  }
+
+  mapStatus(roles, projs) {
+    roles.sort((a, b) => {
+      if (a.projectID < b.projectID)
+        return -1;
+      if (a.projectID > b.projectID)
+        return 1;
+      return 0;
+    });
+    projs.sort((a, b) => {
+      if (a._id < b._id)
+        return -1;
+      if (a._id > b._id)
+        return 1;
+      return 0;
+    });
+
+    const p = [];
+    for (let i = 0; i < roles.length; i++) {
+      if (roles[i].projectID === projs[i]._id) {
+        let v = projs[i];
+        v.role = roles[i].role;
+        p.push(v);
+      }
+    }
+    this.projects = p;
   }
 
   openCreateDialog() {

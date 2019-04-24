@@ -9,7 +9,7 @@
       {{ project.description }}
     </div>
   </div>
-  <div class="btn_group">
+  <div *ngIf="project.role === 'Project Lead'" class="btn_group">
     <button class="edit" (click)="clickEdit()" alt="edit project button"></button>
     <button class="delete" (click)="clickDelete()" alt="delete project button"></button>
   </div>

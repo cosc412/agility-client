@@ -1,7 +1,7 @@
 
 <div class="wrapper">
   <div class="sprint_grid">
-    <div *ngIf="sprints.length > 0; else noSprintsTemplate" class="sprint_wrapper">
+    <div *ngIf="sprints && sprints.length > 0; else noSprintsTemplate" class="sprint_wrapper">
       <app-sprint-card #sprintCards *ngFor="let sprint of sprints" [sprint]="sprint" (selected)="getSprintTasks($event)"></app-sprint-card>
     </div>
     <ng-template #noSprintsTemplate>

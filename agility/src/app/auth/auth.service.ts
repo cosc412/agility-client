@@ -40,6 +40,10 @@ export class AuthService {
     
   }
 
+  getMyProjectRoles() {
+    return this.http.get('http://localhost:3000/users/'+this.user._id, {responseType: 'text'}).toPromise();
+  }
+
   private init() {
     this.parseCookie();
     gapi.load('auth2', () => {
