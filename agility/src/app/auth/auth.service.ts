@@ -93,7 +93,6 @@ export class AuthService {
       const cookie = JSON.parse(atob(c));
       if (Date.parse(cookie.expire) > new Date().getTime()) { // If cookie hasn't expired, get user data
         this.user = cookie;
-        this.router.navigate(['/projects']);
       }
       else {                                                  // Else remove cookie from local storage
         localStorage.removeItem('agility_cookie');
