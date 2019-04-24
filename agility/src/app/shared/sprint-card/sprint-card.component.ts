@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {MatDialog} from "@angular/material";
 import { SprintPopupComponent } from 'src/app/shared/sprint-popup/sprint-popup.component';
 import { DeleteConfirmComponent } from 'src/app/shared/delete-confirm/delete-confirm.component';
+import { ProjectService } from 'src/app/auth/project.service';
 
 @Component({
   selector: 'app-sprint-card',
@@ -15,7 +16,7 @@ export class SprintCardComponent implements OnInit {
 
   chosen = false;
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private projectService: ProjectService, private dialog: MatDialog) { }
 
   ngOnInit() {
   }

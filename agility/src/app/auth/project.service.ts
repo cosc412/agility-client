@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class ProjectService {
 
+  projectRole: string;
+
   constructor(private http: HttpClient, private auth: AuthService, private router: Router) { }
 
   getProjects() {

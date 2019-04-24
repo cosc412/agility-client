@@ -8,6 +8,7 @@ import { SprintCardComponent } from '../../shared/sprint-card/sprint-card.compon
 import { TaskService } from 'src/app/auth/task.service';
 import { SprintPopupComponent } from 'src/app/shared/sprint-popup/sprint-popup.component';
 import { TaskPopupComponent } from 'src/app/shared/task-popup/task-popup.component';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-project-details-dash',
@@ -26,8 +27,8 @@ export class ProjectDetailsDashComponent implements OnInit {
   selectedSprintHeader: string;
 
   constructor(private navbarService: NavbarService, private projectService: ProjectService,
-    private sprintService: SprintService, private taskService: TaskService, private route: ActivatedRoute,
-    private dialog: MatDialog) { }
+    private sprintService: SprintService, private taskService: TaskService, private auth: AuthService,
+    private route: ActivatedRoute, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.navbarService.isInDetailsDash = true;
@@ -37,6 +38,9 @@ export class ProjectDetailsDashComponent implements OnInit {
           this.project = p;
           this.navbarService.projectName = this.project.name;
           this.navbarService.projectID = params.id;
+          this.auth.getMyProjectRole(params.id).then((role: any) => {
+            this.projectService.projectRole = JSON.parse(role).role;
+          });
           this.sprintService.getProjectSprints(this.project._id).then((sprints: any[]) => {
             this.sprints = sprints;
           });

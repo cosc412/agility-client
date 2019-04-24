@@ -8,7 +8,7 @@
       {{ sprint.description }}
     </div>
   </div>
-  <div class="button_group">
+  <div *ngIf="projectService.projectRole === 'Project Lead'" class="button_group">
     <button (click)="editSprint()" alt="edit sprint button">
       <img src="../../../assets/edit.png" alt="edit sprint button">
     </button>

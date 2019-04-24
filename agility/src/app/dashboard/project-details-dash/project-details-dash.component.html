@@ -9,9 +9,10 @@
         There are no sprints for the project yet...
       </div>
     </ng-template>
-    <button class="new_sprint_btn" (click)="createSprint()" alt="create new sprint button">
-      <img src ="../../../assets/plus.png">
-      <div>New Sprint</div>
+    <button *ngIf="this.projectService.projectRole === 'Project Lead'" class="new_sprint_btn" (click)="createSprint()"
+      alt="create new sprint button">
+        <img src ="../../../assets/plus.png">
+        <div>New Sprint</div>
     </button>
   </div>
   <div *ngIf="tasks" class="tasks_wrapper">
