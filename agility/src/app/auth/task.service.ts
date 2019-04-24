@@ -43,9 +43,7 @@ export class TaskService {
   }
 
   getTaskByID(taskID: string) {
-    return this.MOCK_TASKS.find(task => {
-      return task._id === taskID;
-    })
+    return this.http.get('http://localhost:3000/tasks/'+taskID, {responseType: 'text'}).toPromise();
   }
 
   createTask() {

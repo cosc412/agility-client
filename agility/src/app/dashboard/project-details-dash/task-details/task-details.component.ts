@@ -20,7 +20,9 @@ export class TaskDetailsComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       if (params.taskID) {
-        this.task = this.taskService.getTaskByID(params.taskID);
+        this.taskService.getTaskByID(params.taskID).then(task => {
+          this.task = task;
+        });
       }
     });
   }
