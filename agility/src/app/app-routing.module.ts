@@ -9,14 +9,15 @@ import { TeamPageComponent } from './dashboard/project-details-dash/team-page/te
 import { TaskDetailsComponent } from './dashboard/project-details-dash/task-details/task-details.component';
 
 import { ProjectGuard } from './guards/project.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: 'home', component: SplashComponent },
   { path:'faq', component: FaqPageComponent },
-  { path: 'projects', component: ProjectDashComponent },
-  { path: 'projects/:id', component: ProjectDetailsDashComponent, canActivate: [ProjectGuard] },
-  { path: 'projects/:id/team', component: TeamPageComponent, canActivate: [ProjectGuard] },
-  { path: 'projects/:id/tasks/:taskID', component: TaskDetailsComponent, canActivate: [ProjectGuard] },
+  { path: 'projects', component: ProjectDashComponent, canActivate: [AuthGuard] },
+  { path: 'projects/:id', component: ProjectDetailsDashComponent, canActivate: [ProjectGuard, AuthGuard] },
+  { path: 'projects/:id/team', component: TeamPageComponent, canActivate: [ProjectGuard, AuthGuard] },
+  { path: 'projects/:id/tasks/:taskID', component: TaskDetailsComponent, canActivate: [ProjectGuard, AuthGuard] },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 
