@@ -91,11 +91,13 @@ export class AuthService {
     let c = localStorage.getItem('agility_cookie');
     if (c) {
       const cookie = JSON.parse(atob(c));
-      if (Date.parse(cookie.expire) > new Date().getTime()) // If cookie hasn't expired, get user data
+      if (Date.parse(cookie.expire) > new Date().getTime()) { // If cookie hasn't expired, get user data
         this.user = cookie;
-      else {                                                // Else remove cookie from local storage
         this.router.navigate(['/projects']);
-        localStorage.setItem('agility_cookie', JSON.stringify({}));
+      }
+      else {                                                  // Else remove cookie from local storage
+        localStorage.removeItem('agility_cookie');
+        this.router.navigate(['']);
       }
     }
   }
