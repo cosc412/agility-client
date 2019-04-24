@@ -43,7 +43,9 @@ export class DetailsPopupComponent implements OnInit {
       await this.taskService.addNote(this.task._id, notes);
     }
     else {
-      this.taskService.addBlock();
+      const blocks = this.task.block;
+      blocks.push(this.model.description);
+      await this.taskService.addBlock(this.task._id, blocks);
     }
     this.dialogRef.close();
   }

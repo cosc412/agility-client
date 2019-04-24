@@ -46,7 +46,9 @@ export class TaskService {
     }, {responseType: 'text'}).toPromise();
   }
 
-  addBlock() {
-    
+  addBlock(taskID: string, blocks: string[]) {
+    return this.http.post('http://localhost:3000/tasks/'+taskID+'/blocks', {
+      blocks: blocks
+    }).toPromise();
   }
 }

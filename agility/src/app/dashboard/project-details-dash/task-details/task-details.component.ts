@@ -36,7 +36,7 @@ export class TaskDetailsComponent implements OnInit {
   }
 
   createBlock() {
-    this.dialog.open(DetailsPopupComponent, { panelClass: 'custome-container', data: { mode: 'block' } });
+    this.dialog.open(DetailsPopupComponent, { panelClass: 'custome-container', data: { mode: 'block', task: this.task } });
   }
 
   editTask() {
