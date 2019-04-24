@@ -26,6 +26,7 @@ import { SprintPopupComponent } from './shared/sprint-popup/sprint-popup.compone
 import { TaskPopupComponent } from './shared/task-popup/task-popup.component';
 import { DetailsPopupComponent } from './shared/details-popup/details-popup.component';
 import { UserPopupComponent } from './shared/user-popup/user-popup.component';
+import { ProjectGuard } from './guards/project.guard';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,7 @@ import { UserPopupComponent } from './shared/user-popup/user-popup.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ProjectGuard],
   bootstrap: [
     AppComponent
   ],

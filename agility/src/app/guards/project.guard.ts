@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, UrlTree, RouterStateSnapshot } from '@angular/router';
+import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 
 @Injectable({
@@ -9,20 +10,18 @@ export class ProjectGuard implements CanActivate {
 
   constructor(private auth: AuthService, private router: Router) { }
 
-  canActivate(route: ActivatedRouteSnapshot) {
-    if (!this.auth.user)
+  async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    if (!this.auth.user) {
       return false;
-    else {
-      this.auth.getMyProjectRole(route.params.id).then(val => {
-        if (val)
-          return true;
-        else {
-          this.router.navigate(['']);
-          return false;
-        }
-      }).catch(e => {
-        return false;
-      });
+    }
+    try {
+      let role = await this.auth.getMyProjectRole(route.params.id);
+      role = JSON.parse(role);
+      if (role)
+        return true;
+      return false;
+    } catch {
+      return false;
     }
   }
 }
