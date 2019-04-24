@@ -1,9 +1,14 @@
 
 <div class="wrapper">
   <div class="sprint_grid">
-    <div class="sprint_wrapper">
+    <div *ngIf="sprints.length > 0; else noSprintsTemplate" class="sprint_wrapper">
       <app-sprint-card #sprintCards *ngFor="let sprint of sprints" [sprint]="sprint" (selected)="getSprintTasks($event)"></app-sprint-card>
     </div>
+    <ng-template #noSprintsTemplate>
+      <div class="no_sprints">
+        There are no sprints for the project yet...
+      </div>
+    </ng-template>
     <button class="new_sprint_btn" (click)="createSprint()" alt="create new sprint button">
       <img src ="../../../assets/plus.png">
       <div>New Sprint</div>
