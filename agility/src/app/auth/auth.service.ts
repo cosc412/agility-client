@@ -62,7 +62,7 @@ export class AuthService {
   }
 
   private async getUser() {
-    this.http.post('http://localhost:3000/users',
+    this.http.post('http://localhost:3000/users/validate',
       {
         token: this.auth2.currentUser.get().getAuthResponse().id_token,
         name: this.profile.getName(),
