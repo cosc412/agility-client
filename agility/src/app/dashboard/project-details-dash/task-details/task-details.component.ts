@@ -51,12 +51,22 @@ export class TaskDetailsComponent implements OnInit {
     }});
   }
 
-  deleteBlock() {
-    this.dialog.open(DeleteConfirmComponent, { panelClass: 'custom-container' });
+  deleteBlock(block: string) {
+    this.dialog.open(DeleteConfirmComponent, { panelClass: 'custom-container', data: {
+      mode: 'blocks',
+      id: this.task._id,
+      list: this.task.block,
+      selected: block
+    }});
   }
 
-  deleteNote() {
-    this.dialog.open(DeleteConfirmComponent, { panelClass: 'custom-container' });
+  deleteNote(notes: string) {
+    this.dialog.open(DeleteConfirmComponent, { panelClass: 'custom-container', data: {
+      mode: 'notes',
+      id: this.task._id,
+      list: this.task.note,
+      selected: notes
+    }});
   }
 
 }
