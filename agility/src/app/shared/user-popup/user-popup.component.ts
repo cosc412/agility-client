@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-user-popup',
@@ -8,11 +9,15 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 })
 export class UserPopupComponent implements OnInit {
 
+  projectID: string;
   model = {
     email: ''
   };
 
-  constructor(private dialogRef: MatDialogRef<UserPopupComponent>, @Inject(MAT_DIALOG_DATA) data) { }
+  constructor(private auth: AuthService, private dialogRef: MatDialogRef<UserPopupComponent>,
+    @Inject(MAT_DIALOG_DATA) data) {
+      this.projectID = data.projectID;
+  }
 
   ngOnInit() {
   }
@@ -21,8 +26,9 @@ export class UserPopupComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  add() {
-
+  async add() {
+    await this.auth.addUserToProject(this.projectID, this.model.email);
+    this.dialogRef.close();
   }
 
 }

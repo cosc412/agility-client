@@ -54,6 +54,12 @@ export class AuthService {
     }, {responseType: 'text'}).toPromise();
   }
 
+  addUserToProject(projectID: string, email: string) {
+    return this.http.post('http://localhost:3000/projects/'+projectID+'/team', {
+      email: email
+    }, {responseType: 'text'}).toPromise();
+  }
+
   private init() {
     this.parseCookie();
     gapi.load('auth2', () => {

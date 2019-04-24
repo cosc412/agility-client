@@ -11,6 +11,7 @@ import { UserPopupComponent } from 'src/app/shared/user-popup/user-popup.compone
 })
 export class TeamPageComponent implements OnInit {
 
+  projectID: string;
   team;
 
   constructor(private route: ActivatedRoute, private auth: AuthService, private dialog: MatDialog) { }
@@ -18,6 +19,7 @@ export class TeamPageComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       if (params.id) {
+        this.projectID = params.id;
         this.auth.getProjectTeam(params.id).then((t: any) => {
           const team = JSON.parse(t);
           const userIDs = [];
@@ -58,7 +60,7 @@ export class TeamPageComponent implements OnInit {
   }
 
   addUser() {
-    this.dialog.open(UserPopupComponent, { panelClass: 'custom-container' });
+    this.dialog.open(UserPopupComponent, { panelClass: 'custom-container', data: { projectID: this.projectID } });
   }
 
 }
