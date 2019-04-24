@@ -25,7 +25,7 @@ export class DeleteConfirmComponent implements OnInit {
       if (data.redirect) {
         this.redirect = data.redirect;
       }
-      if (data.list && data.selected) {
+      if (data.list && data.selected !== undefined) {
         this.list = data.list;
         this.selected = data.selected;
       }
