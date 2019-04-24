@@ -59,6 +59,10 @@ export class AuthService {
     }, {responseType: 'text'}).toPromise();
   }
 
+  removeUserFromProject(projectID: string, userID: string) {
+    return this.http.delete('http://localhost:3000/users/'+userID+'/projects/'+projectID, {responseType: 'text'}).toPromise();
+  }
+
   private init() {
     this.parseCookie();
     gapi.load('auth2', () => {

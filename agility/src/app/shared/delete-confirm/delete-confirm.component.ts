@@ -4,6 +4,7 @@ import { ProjectService } from 'src/app/auth/project.service';
 import { SprintService } from 'src/app/auth/sprint.service';
 import { TaskService } from 'src/app/auth/task.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-delete-confirm',
@@ -17,9 +18,11 @@ export class DeleteConfirmComponent implements OnInit {
   redirect?: string;
   list?: string[];    // For notes/blocks, the whole array before selected value is taken out
   selected?: string;  // For notes/blocks, the selected value to delete
+  projID?: string;    // For when removing a user from a project
 
   constructor(private dialogRef: MatDialogRef<DeleteConfirmComponent>, private project: ProjectService,
-    private sprint: SprintService, private task: TaskService, private router: Router, @Inject(MAT_DIALOG_DATA) data) {
+    private sprint: SprintService, private task: TaskService, private router: Router,
+    private auth: AuthService, @Inject(MAT_DIALOG_DATA) data) {
       this.mode = data.mode;
       this.id = data.id;
       if (data.redirect) {
@@ -28,6 +31,9 @@ export class DeleteConfirmComponent implements OnInit {
       if (data.list && data.selected !== undefined) {
         this.list = data.list;
         this.selected = data.selected;
+      }
+      if (data.projID) {
+        this.projID = data.projID;
       }
   }
 
@@ -64,6 +70,9 @@ export class DeleteConfirmComponent implements OnInit {
           updatedList.push(item);
       });
       await this.task.addBlock(this.id, updatedList);
+    }
+    if (this.mode === 'team') {
+      await this.auth.removeUserFromProject(this.projID, this.id);
     }
     this.dialogRef.close();
   }

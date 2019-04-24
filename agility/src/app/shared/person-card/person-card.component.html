@@ -14,7 +14,7 @@
     </div>
   </a>
   <div *ngIf="projectService.projectRole === 'Project Lead' && auth.user._id !== member._id" class="button_group">
-    <img src="../../../assets/edit.png">
-    <img src="../../../assets/trashcan.png">
+    <img (click)="edit()" src="../../../assets/edit.png">
+    <img (click)="delete()" src="../../../assets/trashcan.png">
   </div>
 </div>
