@@ -55,4 +55,8 @@ export class TeamPageComponent implements OnInit {
     this.team = result;
   }
 
+  addUser() {
+    console.log('Adding user...');
+  }
+
 }

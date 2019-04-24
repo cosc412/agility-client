@@ -1,7 +1,7 @@
 
 <div class="wrapper">
   <app-person-card *ngFor="let member of team" [member]="member"></app-person-card>
-  <button class="add">
+  <button (click)="addUser()" class="add">
     <img src="../../../../assets/plus.png">
     Add Team Member
   </button>
