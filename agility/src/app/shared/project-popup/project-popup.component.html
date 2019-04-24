@@ -6,7 +6,7 @@
      a Project
   </div>
   <hr>
-  <form (ngSubmit)="create()">
+  <form>
     <input type="text" placeholder="Project Name" [(ngModel)]="model.name" name="name" required>
     <div class="subtitle">
       Project Description
@@ -14,7 +14,7 @@
     <textarea [(ngModel)]="model.description" name="description" required></textarea>
     <div class="button_group">
       <button (click)="close()">Cancel</button>
-      <button type="submit">
+      <button (click)="create()">
         <span *ngIf="mode === 'create'">Create</span>
         <span *ngIf="mode === 'update'">Update</span>
       </button>

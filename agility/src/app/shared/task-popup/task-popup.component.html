@@ -6,7 +6,7 @@
     a Task
   </div>
   <hr>
-  <form (ngSubmit)="create()">
+  <form>
     <input type="text" placeholder="Task Name" [(ngModel)]="model.header" name="header" required>
 
     <div class="dateWrapper">
@@ -18,8 +18,8 @@
     <div class="subtitle">Task Description</div>
     <textarea [(ngModel)]="model.description" name="description" required></textarea>
     <div class="button_group">
-      <button (click)="close">Cancel</button>
-      <button type="submit">
+      <button (click)="close()">Cancel</button>
+      <button (click)="create()">
         <span *ngIf="mode === 'create'">Create</span>
         <span *ngIf="mode === 'update'">Update</span>
       </button>

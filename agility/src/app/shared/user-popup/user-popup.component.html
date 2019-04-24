@@ -1,11 +1,11 @@
 
 <div class="wrapper">
   <div class="title">Add a User to this Project</div>
-  <form (ngSubmit)="add()">
+  <form>
     <input type="text" placeholder="User's Email" [(ngModel)]="model.email" name="email" required>
     <div class="button_group">
       <button (click)="cancel()">Cancel</button>
-      <button type="submit">Add</button>
+      <button (click)="add()">Add</button>
     </div>
   </form>
 </div>
