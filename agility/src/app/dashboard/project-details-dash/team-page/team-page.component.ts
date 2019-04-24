@@ -16,9 +16,43 @@ export class TeamPageComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       if (params.id) {
-        this.team = this.auth.getTeam(params.id);
+        this.auth.getProjectTeam(params.id).then((t: any) => {
+          const team = JSON.parse(t);
+          const userIDs = [];
+          team.forEach(member => {
+            userIDs.push(member.userID);
+          });
+          this.auth.getUsers(userIDs).then((u: any) => {
+            const users = JSON.parse(u);
+            this.mapTeamMembers(team, users);
+          });
+        });
       }
     });
+  }
+
+  mapTeamMembers(team: any[], users: any[]) {
+    team.sort((a, b) => {
+      if (a.userID < b.userID)
+        return -1;
+      if (a.userID > b.userID)
+        return 1;
+      return 0;
+    });
+    users.sort((a, b) => {
+      if (a._id < b._id)
+        return -1;
+      if (a._id > b._id)
+        return 1;
+      return 0;
+    });
+    const result = [];
+    for (let i = 0; i < team.length; i++) {
+      let member = users[i];
+      member.role = team[i].role;
+      result.push(member);
+    }
+    this.team = result;
   }
 
 }

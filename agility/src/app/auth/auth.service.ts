@@ -36,10 +36,6 @@ export class AuthService {
     this.router.navigate(['']);
   }
 
-  getTeam(projectID: string) {
-    
-  }
-
   getMyProjectRoles() {
     return this.http.get('http://localhost:3000/users/'+this.user._id, {responseType: 'text'}).toPromise();
   }
