@@ -42,7 +42,7 @@ export class TaskPopupComponent implements OnInit {
       await this.taskService.createTask(this.sprintID, this.model);
     }
     else {
-      this.taskService.updateTask();
+      await this.taskService.updateTask(this.model._id, this.model);
     }
     this.dialogRef.close();
   }

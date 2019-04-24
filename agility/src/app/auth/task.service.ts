@@ -6,36 +6,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class TaskService {
 
-  private MOCK_TASKS: {_id: string, sprintID: string, due: Date, header: string, description: string, note: string[], block: string[]}[] = [
-    {
-      _id: '1',
-      sprintID: '1',
-      due: new Date('Tue Apr 23 2019 00:00:00 GMT-0400 (Eastern Daylight Time)'),
-      header: 'This is a new task!',
-      description: 'We need to finish this up within the hour.',
-      note: ['This is a note!'],
-      block: []
-    },
-    {
-      _id: '2',
-      sprintID: '1',
-      due: new Date('Tue Apr 23 2019 00:00:00 GMT-0400 (Eastern Daylight Time)'),
-      header: 'This is a new task!',
-      description: 'We need to finish this up within the hour.',
-      note: ['This is a note!'],
-      block: ['This is a block!']
-    },
-    {
-      _id: '3',
-      sprintID: '2',
-      due: new Date('Tue Apr 23 2019 00:00:00 GMT-0400 (Eastern Daylight Time)'),
-      header: 'This is a new task!',
-      description: 'We need to finish this up within the hour.',
-      note: ['This is a note!'],
-      block: ['This is a block!']
-    }
-  ];
-
   constructor(private http: HttpClient) { }
 
   getTasksBySprint(sprintID: string) {
@@ -55,8 +25,15 @@ export class TaskService {
     }, {responseType: 'text'}).toPromise();
   }
 
-  updateTask() {
-
+  updateTask(taskID: string, params: {sprintID: string, due: Date, header: string, description: string, block: string[], note: string[]}) {
+    return this.http.patch('http://localhost:3000/tasks/'+taskID, {
+      sprintID: params.sprintID,
+      due: params.due,
+      header: params.header,
+      description: params.description,
+      block: params.block,
+      note: params.note
+    }, {responseType: 'text'}).toPromise();
   }
 
   deleteTask() {
