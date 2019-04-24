@@ -48,7 +48,8 @@ export class TaskDetailsComponent implements OnInit {
   }
 
   editTask() {
-    this.dialog.open(TaskPopupComponent, { panelClass: 'custom-container', data: { mode: 'update', params: this.task } });
+    const t = JSON.parse(JSON.stringify(this.task));
+    this.dialog.open(TaskPopupComponent, { panelClass: 'custom-container', data: { mode: 'update', params: t } });
   }
 
   deleteTask() {

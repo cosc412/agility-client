@@ -63,8 +63,9 @@ export class ProjectDashComponent implements OnInit {
   }
 
   openUpdateDialog(params) {
+    const p = JSON.parse(JSON.stringify(params));
     this.dialog.open(ProjectPopupComponent, { panelClass: 'custom-container',
-      data: { mode: 'update', params: params } });
+      data: { mode: 'update', params: p } });
   }
 
   openDeleteDialog(id: string) {
