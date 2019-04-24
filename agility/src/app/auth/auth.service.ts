@@ -48,6 +48,16 @@ export class AuthService {
     return this.http.get('http://localhost:3000/users/'+this.user._id+'/projects/'+projectID, {responseType: 'text'}).toPromise();
   }
 
+  getProjectTeam(projID: string) {
+    return this.http.get('http://localhost:3000/projects/'+projID+'/team', {responseType: 'text'}).toPromise();
+  }
+
+  getUsers(userIDs: string[]) {
+    return this.http.post('http://localhost:3000/users', {
+      userIDs: userIDs
+    }, {responseType: 'text'}).toPromise();
+  }
+
   private init() {
     this.parseCookie();
     gapi.load('auth2', () => {
