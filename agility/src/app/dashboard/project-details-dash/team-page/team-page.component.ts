@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import {MatDialog} from "@angular/material";
+import { UserPopupComponent } from 'src/app/shared/user-popup/user-popup.component';
 
 @Component({
   selector: 'app-team-page',
@@ -11,7 +13,7 @@ export class TeamPageComponent implements OnInit {
 
   team;
 
-  constructor(private route: ActivatedRoute, private auth: AuthService) { }
+  constructor(private route: ActivatedRoute, private auth: AuthService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -56,7 +58,7 @@ export class TeamPageComponent implements OnInit {
   }
 
   addUser() {
-    console.log('Adding user...');
+    this.dialog.open(UserPopupComponent, { panelClass: 'custom-container' });
   }
 
 }

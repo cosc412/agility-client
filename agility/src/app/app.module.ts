@@ -69,7 +69,8 @@ import { UserPopupComponent } from './shared/user-popup/user-popup.component';
     DeleteConfirmComponent,
     TaskPopupComponent,
     SprintPopupComponent,
-    DetailsPopupComponent
+    DetailsPopupComponent,
+    UserPopupComponent
   ]
 })
 export class AppModule { }
