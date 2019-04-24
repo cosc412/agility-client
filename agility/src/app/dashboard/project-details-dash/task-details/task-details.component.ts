@@ -5,6 +5,8 @@ import { TaskService } from 'src/app/auth/task.service';
 import { TaskPopupComponent } from 'src/app/shared/task-popup/task-popup.component';
 import { DeleteConfirmComponent } from 'src/app/shared/delete-confirm/delete-confirm.component';
 import { DetailsPopupComponent } from 'src/app/shared/details-popup/details-popup.component';
+import { ProjectService } from 'src/app/auth/project.service';
+import { NavbarService } from 'src/app/auth/navbar.service';
 
 @Component({
   selector: 'app-task-details',
@@ -16,12 +18,18 @@ export class TaskDetailsComponent implements OnInit {
   task;
   projID: string;
 
-  constructor(private route: ActivatedRoute, private taskService: TaskService, private dialog: MatDialog) { }
+  constructor(private route: ActivatedRoute, private taskService: TaskService, private projectService: ProjectService,
+    private navbarService: NavbarService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       if (params.id) {
         this.projID = params.id;
+        this.navbarService.isInDetailsDash = true;
+        this.navbarService.projectID = params.id;
+        this.projectService.getProject(params.id).then((project: any) => {
+          this.navbarService.projectName = project.name;
+        });
       }
       if (params.taskID) {
         this.taskService.getTaskByID(params.taskID).then(task => {
