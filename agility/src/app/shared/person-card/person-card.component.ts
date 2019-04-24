@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ProjectService } from 'src/app/auth/project.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-person-card',
@@ -9,7 +11,7 @@ export class PersonCardComponent implements OnInit {
 
   @Input() member;
 
-  constructor() { }
+  constructor(private projectService: ProjectService, private auth: AuthService) { }
 
   ngOnInit() {
   }

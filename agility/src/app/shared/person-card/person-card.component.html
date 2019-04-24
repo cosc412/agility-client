@@ -13,7 +13,7 @@
       </div>
     </div>
   </a>
-  <div class="button_group">
+  <div *ngIf="projectService.projectRole === 'Project Lead' && auth.user._id !== member._id" class="button_group">
     <img src="../../../assets/edit.png">
     <img src="../../../assets/trashcan.png">
   </div>
