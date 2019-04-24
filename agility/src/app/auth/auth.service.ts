@@ -25,7 +25,6 @@ export class AuthService {
     this.auth2.signIn().then(() => {
       this.profile = this.auth2.currentUser.get().getBasicProfile();
       this.getUser();
-      this.router.navigate(['/projects']);
     });
   }
 
