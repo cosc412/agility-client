@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {MatDialogModule, MatDatepickerModule, MatNativeDateModule} from '@angular/material';
+import {MatDialogModule, MatDatepickerModule, MatNativeDateModule, MatSnackBarModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -27,6 +27,7 @@ import { TaskPopupComponent } from './shared/task-popup/task-popup.component';
 import { DetailsPopupComponent } from './shared/details-popup/details-popup.component';
 import { UserPopupComponent } from './shared/user-popup/user-popup.component';
 import { ProjectGuard } from './guards/project.guard';
+import { ToasterComponent } from './shared/toaster/toaster.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { ProjectGuard } from './guards/project.guard';
     SprintPopupComponent,
     TaskPopupComponent,
     DetailsPopupComponent,
-    UserPopupComponent
+    UserPopupComponent,
+    ToasterComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,8 @@ import { ProjectGuard } from './guards/project.guard';
     MatNativeDateModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [ProjectGuard],
   bootstrap: [
