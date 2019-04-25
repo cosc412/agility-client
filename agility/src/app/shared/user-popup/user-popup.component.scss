@@ -2,7 +2,7 @@
 @import './../../../vars';
 
 .wrapper {
-    width: 400px;
+    width: 500px;
     padding: 10px;
 
     input {
@@ -53,4 +53,37 @@
 
 form {
     text-align: center;
+}
+
+.update {
+    margin: 30px 10px;
+    font-size: 18px;
+    text-align: center;
+
+    select {
+        -moz-transition-duration: .2s;
+        transition-duration: .2s;
+        border: none;
+        padding: 5px;
+        background-color: $light-grey;
+        color: $white;
+        font-size: 18px;
+    }
+
+    option {
+        -moz-transition-duration: .2s;
+        transition-duration: .2s;
+        background-color: $light-grey;
+        cursor: pointer;
+
+        &:hover {
+            -moz-transition-duration: .4s;
+            transition-duration: .4s;
+            background-color: $grey;
+        }
+    }
+
+    span {
+        margin-right: 10px;
+    }
 }

@@ -52,7 +52,10 @@ export class TeamPageComponent implements OnInit {
   }
 
   addUser() {
-    const dialogRef = this.dialog.open(UserPopupComponent, { panelClass: 'custom-container', data: { projectID: this.projectID } });
+    const dialogRef = this.dialog.open(UserPopupComponent, { panelClass: 'custom-container', data: {
+      projectID: this.projectID,
+      mode: 'create'
+    }});
     dialogRef.afterClosed().subscribe(val => {
       this.getTeam();
     });

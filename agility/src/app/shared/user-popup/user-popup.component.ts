@@ -11,13 +11,19 @@ import { ToasterService } from 'src/app/auth/toaster.service';
 export class UserPopupComponent implements OnInit {
 
   projectID: string;
+  mode: string;
   model = {
     email: ''
   };
+  member?;
 
   constructor(private auth: AuthService, private dialogRef: MatDialogRef<UserPopupComponent>,
     private toaster: ToasterService, @Inject(MAT_DIALOG_DATA) data) {
       this.projectID = data.projectID;
+      this.mode = data.mode;
+      if (data.member) {
+        this.member = data.member;
+      }
   }
 
   ngOnInit() {
@@ -29,8 +35,13 @@ export class UserPopupComponent implements OnInit {
 
   async add() {
     try {
-      await this.auth.addUserToProject(this.projectID, this.model.email);
-      this.toaster.open('Successfully added user to project!');
+      if (this.mode === 'create') {
+        await this.auth.addUserToProject(this.projectID, this.model.email);
+        this.toaster.open('Successfully added user to project!');
+      }
+      if (this.mode === 'update') {
+
+      }
       this.dialogRef.close();
     } catch (error) {
       this.toaster.open(error.message);
