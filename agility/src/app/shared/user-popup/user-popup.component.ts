@@ -42,7 +42,8 @@ export class UserPopupComponent implements OnInit {
         this.toaster.open('Successfully added user to project!');
       }
       if (this.mode === 'update') {
-        console.log(this.model.role);
+        await this.auth.updateUserInProject(this.projectID, this.member._id, this.model.role);
+        this.toaster.open('Successfully updated user role in project!');
       }
       this.dialogRef.close();
     } catch (error) {
