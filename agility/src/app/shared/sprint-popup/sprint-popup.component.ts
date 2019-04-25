@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { SprintService } from 'src/app/auth/sprint.service';
+import { ToasterService } from 'src/app/auth/toaster.service';
 
 @Component({
   selector: 'app-sprint-popup',
@@ -20,7 +21,7 @@ export class SprintPopupComponent implements OnInit {
   };
 
   constructor(private dialogRef: MatDialogRef<SprintPopupComponent>, private sprintService: SprintService,
-    @Inject(MAT_DIALOG_DATA) data) {
+    private toaster: ToasterService, @Inject(MAT_DIALOG_DATA) data) {
       this.mode = data.mode;
       this.projID = data.projID;
       if (this.mode === 'update') {
@@ -36,13 +37,20 @@ export class SprintPopupComponent implements OnInit {
   }
 
   async create() {
-    if (this.mode === 'create') {
-      this.sprintService.createProjectSprint(this.projID, this.model);
+    try {
+      if (this.mode === 'create') {
+        await this.sprintService.createProjectSprint(this.projID, this.model);
+        this.toaster.open('Successfully created the sprint!');
+      }
+      else {
+        await this.sprintService.updateProjectSprint(this.model._id, this.model);
+        this.toaster.open('Successfully updated the sprint!');
+      }
+      this.dialogRef.close();
+    } catch (error) {
+      this.toaster.open(error.message);
+      this.dialogRef.close();
     }
-    else {
-      this.sprintService.updateProjectSprint(this.model._id, this.model);
-    }
-    this.dialogRef.close();
   }
 
 }
