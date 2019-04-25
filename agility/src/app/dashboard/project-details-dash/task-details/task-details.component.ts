@@ -7,6 +7,7 @@ import { DeleteConfirmComponent } from 'src/app/shared/delete-confirm/delete-con
 import { DetailsPopupComponent } from 'src/app/shared/details-popup/details-popup.component';
 import { ProjectService } from 'src/app/auth/project.service';
 import { NavbarService } from 'src/app/auth/navbar.service';
+import { ToasterService } from 'src/app/auth/toaster.service';
 
 @Component({
   selector: 'app-task-details',
@@ -19,7 +20,7 @@ export class TaskDetailsComponent implements OnInit {
   projID: string;
 
   constructor(private route: ActivatedRoute, private taskService: TaskService, private projectService: ProjectService,
-    private navbarService: NavbarService, private dialog: MatDialog) { }
+    private navbarService: NavbarService, private dialog: MatDialog, private toaster: ToasterService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -29,12 +30,12 @@ export class TaskDetailsComponent implements OnInit {
         this.navbarService.projectID = params.id;
         this.projectService.getProject(params.id).then((project: any) => {
           this.navbarService.projectName = project.name;
-        });
+        }).catch((error: Error) => this.toaster.open(error.message));
       }
       if (params.taskID) {
         this.taskService.getTaskByID(params.taskID).then(task => {
           this.task = JSON.parse(task);
-        });
+        }).catch((error: Error) => this.toaster.open(error.message));
       }
     });
   }

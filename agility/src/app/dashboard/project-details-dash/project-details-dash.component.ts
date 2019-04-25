@@ -9,6 +9,7 @@ import { TaskService } from 'src/app/auth/task.service';
 import { SprintPopupComponent } from 'src/app/shared/sprint-popup/sprint-popup.component';
 import { TaskPopupComponent } from 'src/app/shared/task-popup/task-popup.component';
 import { AuthService } from 'src/app/auth/auth.service';
+import { ToasterService } from 'src/app/auth/toaster.service';
 
 @Component({
   selector: 'app-project-details-dash',
@@ -28,7 +29,7 @@ export class ProjectDetailsDashComponent implements OnInit {
 
   constructor(private navbarService: NavbarService, private projectService: ProjectService,
     private sprintService: SprintService, private taskService: TaskService, private auth: AuthService,
-    private route: ActivatedRoute, private dialog: MatDialog) { }
+    private route: ActivatedRoute, private dialog: MatDialog, private toaster: ToasterService) { }
 
   ngOnInit() {
     this.navbarService.isInDetailsDash = true;
@@ -40,11 +41,11 @@ export class ProjectDetailsDashComponent implements OnInit {
           this.navbarService.projectID = params.id;
           this.auth.getMyProjectRole(params.id).then((role: any) => {
             this.projectService.projectRole = JSON.parse(role).role;
-          });
+          }).catch((error: Error) => this.toaster.open(error.message));
           this.sprintService.getProjectSprints(this.project._id).then((sprints: any[]) => {
             this.sprints = sprints;
-          });
-        });
+          }).catch((error: Error) => this.toaster.open(error.message));
+        }).catch((error: Error) => this.toaster.open(error.message));
       }
     });
   }
@@ -64,7 +65,7 @@ export class ProjectDetailsDashComponent implements OnInit {
       // Get the tasks of the sprint selected
       this.taskService.getTasksBySprint(this.selectedSprint).then((tasks: any[]) => {
         this.tasks = tasks;
-      });
+      }).catch((error: Error) => this.toaster.open(error.message));
     } else {
       this.selectedSprint = undefined;
       this.selectedSprintHeader = undefined;

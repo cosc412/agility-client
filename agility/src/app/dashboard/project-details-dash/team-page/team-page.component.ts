@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import {MatDialog} from "@angular/material";
 import { UserPopupComponent } from 'src/app/shared/user-popup/user-popup.component';
+import { ToasterService } from 'src/app/auth/toaster.service';
 
 @Component({
   selector: 'app-team-page',
@@ -14,7 +15,8 @@ export class TeamPageComponent implements OnInit {
   projectID: string;
   team;
 
-  constructor(private route: ActivatedRoute, private auth: AuthService, private dialog: MatDialog) { }
+  constructor(private route: ActivatedRoute, private auth: AuthService, private dialog: MatDialog,
+    private toaster: ToasterService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -29,8 +31,8 @@ export class TeamPageComponent implements OnInit {
           this.auth.getUsers(userIDs).then((u: any) => {
             const users = JSON.parse(u);
             this.mapTeamMembers(team, users);
-          });
-        });
+          }).catch((error: Error) => this.toaster.open(error.message));
+        }).catch((error: Error) => this.toaster.open(error.message));
       }
     });
   }

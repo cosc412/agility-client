@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { ProjectPopupComponent } from '../../shared/project-popup/project-popup.component';
 import { DeleteConfirmComponent } from '../../shared/delete-confirm/delete-confirm.component';
 import { NavbarService } from 'src/app/auth/navbar.service';
+import { ToasterService } from 'src/app/auth/toaster.service';
 
 @Component({
   selector: 'app-project-dash',
@@ -16,7 +17,7 @@ export class ProjectDashComponent implements OnInit {
   projects;
 
   constructor(private auth: AuthService, private project: ProjectService, private navbarService: NavbarService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog, private toaster: ToasterService) { }
 
   ngOnInit() {
     let role = [];
@@ -26,8 +27,8 @@ export class ProjectDashComponent implements OnInit {
       this.project.getProjects().then((p: any[]) => {
         projs = p;
         this.mapStatus(role, projs);
-      });
-    });
+      }).catch((error: Error) => this.toaster.open(error.message));
+    }).catch((error: Error) => this.toaster.open(error.message));
     this.navbarService.isInDetailsDash = false;
   }
 

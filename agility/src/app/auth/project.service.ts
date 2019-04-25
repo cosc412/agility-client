@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import { ToasterService } from 'src/app/auth/toaster.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class ProjectService {
 
   projectRole: string;
 
-  constructor(private http: HttpClient, private auth: AuthService, private router: Router) { }
+  constructor(private http: HttpClient, private auth: AuthService, private router: Router, private toaster: ToasterService) { }
 
   getProjects() {
     return this.http.get('http://localhost:3000/projects', {headers: new HttpHeaders().set('userID', this.auth.user._id)}).toPromise();
@@ -31,7 +32,7 @@ export class ProjectService {
       let navigate = '/projects/'+project;
       navigate = navigate.replace(/"/g, '');
       this.router.navigate([navigate]);
-    });
+    }).catch((error: Error) => this.toaster.open(error.message));
   }
 
   updateProject(id: string, name: string, description: string) {
