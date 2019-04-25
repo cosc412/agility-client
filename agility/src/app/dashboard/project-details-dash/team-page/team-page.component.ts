@@ -71,8 +71,8 @@ export class TeamPageComponent implements OnInit {
       this.auth.getUsers(userIDs).then((u: any) => {
         const users = JSON.parse(u);
         this.mapTeamMembers(team, users);
-      }).catch((error: Error) => this.toaster.open(error.message));
-    }).catch((error: Error) => this.toaster.open(error.message));
+      }).catch((error: Error) => this.toaster.open(error.message, true));
+    }).catch((error: Error) => this.toaster.open(error.message, true));
   }
 
 }

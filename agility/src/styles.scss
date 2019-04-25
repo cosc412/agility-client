@@ -23,6 +23,11 @@ body {
     font-size: 18px;
 }
 
+.custom-snackbar-error {
+    background-color: $red;
+    color: $white;
+}
+
 body::-webkit-scrollbar {
     width: .5em;
     height: .5em;

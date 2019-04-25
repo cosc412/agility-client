@@ -44,7 +44,7 @@ export class ProjectPopupComponent implements OnInit {
       }
       this.dialogRef.close();
     } catch (error) {
-      this.toaster.open(error.message);
+      this.toaster.open(error.message, true);
       this.dialogRef.close();
     }
   }

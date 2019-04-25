@@ -31,7 +31,7 @@ export class TaskDetailsComponent implements OnInit {
         this.navbarService.projectID = params.id;
         this.projectService.getProject(params.id).then((project: any) => {
           this.navbarService.projectName = project.name;
-        }).catch((error: Error) => this.toaster.open(error.message));
+        }).catch((error: Error) => this.toaster.open(error.message, true));
       }
       if (params.taskID) {
         this.taskID = params.taskID;
@@ -106,7 +106,7 @@ export class TaskDetailsComponent implements OnInit {
   private getTask() {
     this.taskService.getTaskByID(this.taskID).then(task => {
       this.task = JSON.parse(task);
-    }).catch((error: Error) => this.toaster.open(error.message));
+    }).catch((error: Error) => this.toaster.open(error.message, true));
   }
 
 }

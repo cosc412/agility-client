@@ -32,7 +32,7 @@ export class ProjectService {
       let navigate = '/projects/'+project;
       navigate = navigate.replace(/"/g, '');
       this.router.navigate([navigate]);
-    }).catch((error: Error) => this.toaster.open(error.message));
+    }).catch((error: Error) => this.toaster.open(error.message, true));
   }
 
   updateProject(id: string, name: string, description: string) {

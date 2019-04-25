@@ -41,9 +41,9 @@ export class ProjectDetailsDashComponent implements OnInit {
           this.navbarService.projectID = params.id;
           this.auth.getMyProjectRole(params.id).then((role: any) => {
             this.projectService.projectRole = JSON.parse(role).role;
-          }).catch((error: Error) => this.toaster.open(error.message));
+          }).catch((error: Error) => this.toaster.open(error.message, true));
           this.getSprints();
-        }).catch((error: Error) => this.toaster.open(error.message));
+        }).catch((error: Error) => this.toaster.open(error.message, true));
       }
     });
   }
@@ -63,7 +63,7 @@ export class ProjectDetailsDashComponent implements OnInit {
       // Get the tasks of the sprint selected
       this.taskService.getTasksBySprint(this.selectedSprint).then((tasks: any[]) => {
         this.tasks = tasks;
-      }).catch((error: Error) => this.toaster.open(error.message));
+      }).catch((error: Error) => this.toaster.open(error.message, true));
     } else {
       this.selectedSprint = undefined;
       this.selectedSprintHeader = undefined;
@@ -92,7 +92,7 @@ export class ProjectDetailsDashComponent implements OnInit {
   private getSprints() {
     this.sprintService.getProjectSprints(this.project._id).then((sprints: any[]) => {
       this.sprints = sprints;
-    }).catch((error: Error) => this.toaster.open(error.message));
+    }).catch((error: Error) => this.toaster.open(error.message, true));
   }
 
 }

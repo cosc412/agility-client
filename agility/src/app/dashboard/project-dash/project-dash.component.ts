@@ -79,8 +79,8 @@ export class ProjectDashComponent implements OnInit {
       this.project.getProjects().then((p: any[]) => {
         projs = p;
         this.mapStatus(role, projs);
-      }).catch((error: Error) => this.toaster.open(error.message));
-    }).catch((error: Error) => this.toaster.open(error.message));
+      }).catch((error: Error) => this.toaster.open(error.message, true));
+    }).catch((error: Error) => this.toaster.open(error.message, true));
   }
 
 }

@@ -20,7 +20,7 @@ export class ProjectGuard implements CanActivate {
       return false;
     } catch (error) {
       this.router.navigate(['']);
-      this.toaster.open(error.message);
+      this.toaster.open(error.message, true);
       return false;
     }
   }

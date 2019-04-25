@@ -26,7 +26,7 @@ export class AuthService {
     this.auth2.signIn().then(() => {
       this.profile = this.auth2.currentUser.get().getBasicProfile();
       this.getUser();
-    }).catch((error: Error) => this.toaster.open(error.message));
+    }).catch((error: Error) => this.toaster.open(error.message, true));
   }
 
   signOut() {
@@ -98,7 +98,7 @@ export class AuthService {
         expirable.expire = new Date(new Date().getTime() + (60 * 60 * 1000)); // Set expiration time for one hour from now 
         const cookie = btoa(JSON.stringify(expirable));
         localStorage.setItem('agility_cookie', cookie);
-    }).catch((error: Error) => this.toaster.open(error.message));
+    }).catch((error: Error) => this.toaster.open(error.message, true));
   }
 
   private listenForUser() {
