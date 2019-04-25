@@ -42,9 +42,7 @@ export class ProjectDetailsDashComponent implements OnInit {
           this.auth.getMyProjectRole(params.id).then((role: any) => {
             this.projectService.projectRole = JSON.parse(role).role;
           }).catch((error: Error) => this.toaster.open(error.message));
-          this.sprintService.getProjectSprints(this.project._id).then((sprints: any[]) => {
-            this.sprints = sprints;
-          }).catch((error: Error) => this.toaster.open(error.message));
+          this.getSprints();
         }).catch((error: Error) => this.toaster.open(error.message));
       }
     });
@@ -74,7 +72,13 @@ export class ProjectDetailsDashComponent implements OnInit {
   }
 
   createSprint() {
-    this.dialog.open(SprintPopupComponent, { panelClass: 'custom-container', data: { mode: 'create', projID: this.project._id } });
+    const dialogRef = this.dialog.open(SprintPopupComponent, { panelClass: 'custom-container', data: {
+      mode: 'create',
+      projID: this.project._id
+    }});
+    dialogRef.afterClosed().subscribe(val => {
+      this.getSprints();
+    })
   }
 
   createTask() {
@@ -83,6 +87,12 @@ export class ProjectDetailsDashComponent implements OnInit {
       sprintID: this.selectedSprint,
       projID: this.project._id
     }});
+  }
+
+  private getSprints() {
+    this.sprintService.getProjectSprints(this.project._id).then((sprints: any[]) => {
+      this.sprints = sprints;
+    }).catch((error: Error) => this.toaster.open(error.message));
   }
 
 }
