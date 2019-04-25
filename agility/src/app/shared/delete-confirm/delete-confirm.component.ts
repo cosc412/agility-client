@@ -5,6 +5,7 @@ import { SprintService } from 'src/app/auth/sprint.service';
 import { TaskService } from 'src/app/auth/task.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import { ToasterService } from 'src/app/auth/toaster.service';
 
 @Component({
   selector: 'app-delete-confirm',
@@ -22,7 +23,7 @@ export class DeleteConfirmComponent implements OnInit {
 
   constructor(private dialogRef: MatDialogRef<DeleteConfirmComponent>, private project: ProjectService,
     private sprint: SprintService, private task: TaskService, private router: Router,
-    private auth: AuthService, @Inject(MAT_DIALOG_DATA) data) {
+    private auth: AuthService, private toaster: ToasterService, @Inject(MAT_DIALOG_DATA) data) {
       this.mode = data.mode;
       this.id = data.id;
       if (data.redirect) {
@@ -45,36 +46,47 @@ export class DeleteConfirmComponent implements OnInit {
   }
 
   async confirm() {
-    if (this.mode === 'project') {
-      await this.project.deleteProject(this.id);
+    try {
+      if (this.mode === 'project') {
+        await this.project.deleteProject(this.id);
+        this.toaster.open('Successfully deleted the project!');
+      }
+      if (this.mode === 'sprint') {
+        await this.sprint.deleteProjectSprint(this.id);
+        this.toaster.open('Successfully deleted the sprint!');
+      }
+      if (this.mode === 'task') {
+        await this.task.deleteTask(this.id);
+        this.router.navigate([this.redirect]);
+        this.toaster.open('Successfully deleted the task!');
+      }
+      if (this.mode === 'notes') {
+        const updatedList = [];
+        this.list.forEach(item => {
+          if (item !== this.selected)
+            updatedList.push(item);
+        });
+        await this.task.addNote(this.id, updatedList);
+        this.toaster.open('Successfully deleted the note!');
+      }
+      if (this.mode === 'blocks') {
+        const updatedList = [];
+        this.list.forEach(item => {
+          if (item !== this.selected)
+            updatedList.push(item);
+        });
+        await this.task.addBlock(this.id, updatedList);
+        this.toaster.open('Successfully deleted the block!');
+      }
+      if (this.mode === 'team') {
+        await this.auth.removeUserFromProject(this.projID, this.id);
+        this.toaster.open('Successfully removed the team member!');
+      }
+      this.dialogRef.close();
+    } catch (error) {
+      this.toaster.open(error.message);
+      this.dialogRef.close();
     }
-    if (this.mode === 'sprint') {
-      await this.sprint.deleteProjectSprint(this.id);
-    }
-    if (this.mode === 'task') {
-      await this.task.deleteTask(this.id);
-      this.router.navigate([this.redirect]);
-    }
-    if (this.mode === 'notes') {
-      const updatedList = [];
-      this.list.forEach(item => {
-        if (item !== this.selected)
-          updatedList.push(item);
-      });
-      await this.task.addNote(this.id, updatedList);
-    }
-    if (this.mode === 'blocks') {
-      const updatedList = [];
-      this.list.forEach(item => {
-        if (item !== this.selected)
-          updatedList.push(item);
-      });
-      await this.task.addBlock(this.id, updatedList);
-    }
-    if (this.mode === 'team') {
-      await this.auth.removeUserFromProject(this.projID, this.id);
-    }
-    this.dialogRef.close();
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { TaskService } from 'src/app/auth/task.service';
+import { ToasterService } from 'src/app/auth/toaster.service';
 
 @Component({
   selector: 'app-task-popup',
@@ -22,7 +23,7 @@ export class TaskPopupComponent implements OnInit {
   };
 
   constructor(private dialogRef: MatDialogRef<TaskPopupComponent>, private taskService: TaskService,
-    @Inject(MAT_DIALOG_DATA) data) {
+    private toaster: ToasterService, @Inject(MAT_DIALOG_DATA) data) {
       this.mode = data.mode;
       this.sprintID = data.sprintID;
       if (this.mode === 'update') {
@@ -38,13 +39,20 @@ export class TaskPopupComponent implements OnInit {
   }
 
   async create() {
-    if (this.mode === 'create') {
-      await this.taskService.createTask(this.sprintID, this.model);
+    try {
+      if (this.mode === 'create') {
+        await this.taskService.createTask(this.sprintID, this.model);
+        this.toaster.open('Successfully created the task!');
+      }
+      else {
+        await this.taskService.updateTask(this.model._id, this.model);
+        this.toaster.open('Successfully updated the task!');
+      }
+      this.dialogRef.close();
+    } catch (error) {
+      this.toaster.open(error.message);
+      this.dialogRef.close();
     }
-    else {
-      await this.taskService.updateTask(this.model._id, this.model);
-    }
-    this.dialogRef.close();
   }
 
 }
