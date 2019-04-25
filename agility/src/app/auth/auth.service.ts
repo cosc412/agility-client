@@ -64,6 +64,13 @@ export class AuthService {
     return this.http.delete('http://localhost:3000/users/'+userID+'/projects/'+projectID, {responseType: 'text'}).toPromise();
   }
 
+  updateUserInProject(projectID: string, userID: string, role: string) {
+    return this.http.patch('http://localhost:3000/projects/'+projectID+'/team', {
+      userID: userID,
+      role: role
+    }).toPromise();
+  }
+
   private init() {
     this.parseCookie();
     gapi.load('auth2', () => {

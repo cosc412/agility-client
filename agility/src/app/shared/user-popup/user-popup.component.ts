@@ -13,7 +13,8 @@ export class UserPopupComponent implements OnInit {
   projectID: string;
   mode: string;
   model = {
-    email: ''
+    email: '',
+    role: ''
   };
   member?;
 
@@ -23,6 +24,7 @@ export class UserPopupComponent implements OnInit {
       this.mode = data.mode;
       if (data.member) {
         this.member = data.member;
+        this.model.role = data.member.role;
       }
   }
 
@@ -40,7 +42,7 @@ export class UserPopupComponent implements OnInit {
         this.toaster.open('Successfully added user to project!');
       }
       if (this.mode === 'update') {
-
+        console.log(this.model.role);
       }
       this.dialogRef.close();
     } catch (error) {

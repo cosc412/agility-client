@@ -23,7 +23,7 @@
 <ng-template #updateTemplate>
   <div *ngIf="member" class="update">
     <span>Update {{ member.name }}'s Status</span>
-    <select>
+    <select [(ngModel)]="model.role" name="role">
       <option value="Project Lead">Project Lead</option>
       <option value="Developer">Developer</option>
     </select>
