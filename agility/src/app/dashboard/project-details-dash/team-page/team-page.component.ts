@@ -22,17 +22,7 @@ export class TeamPageComponent implements OnInit {
     this.route.params.subscribe(params => {
       if (params.id) {
         this.projectID = params.id;
-        this.auth.getProjectTeam(params.id).then((t: any) => {
-          const team = JSON.parse(t);
-          const userIDs = [];
-          team.forEach(member => {
-            userIDs.push(member.userID);
-          });
-          this.auth.getUsers(userIDs).then((u: any) => {
-            const users = JSON.parse(u);
-            this.mapTeamMembers(team, users);
-          }).catch((error: Error) => this.toaster.open(error.message));
-        }).catch((error: Error) => this.toaster.open(error.message));
+        this.getTeam();
       }
     });
   }
@@ -62,7 +52,24 @@ export class TeamPageComponent implements OnInit {
   }
 
   addUser() {
-    this.dialog.open(UserPopupComponent, { panelClass: 'custom-container', data: { projectID: this.projectID } });
+    const dialogRef = this.dialog.open(UserPopupComponent, { panelClass: 'custom-container', data: { projectID: this.projectID } });
+    dialogRef.afterClosed().subscribe(val => {
+      this.getTeam();
+    });
+  }
+
+  private getTeam() {
+    this.auth.getProjectTeam(this.projectID).then((t: any) => {
+      const team = JSON.parse(t);
+      const userIDs = [];
+      team.forEach(member => {
+        userIDs.push(member.userID);
+      });
+      this.auth.getUsers(userIDs).then((u: any) => {
+        const users = JSON.parse(u);
+        this.mapTeamMembers(team, users);
+      }).catch((error: Error) => this.toaster.open(error.message));
+    }).catch((error: Error) => this.toaster.open(error.message));
   }
 
 }
