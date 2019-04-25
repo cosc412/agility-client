@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ProjectService } from 'src/app/auth/project.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { MatDialog } from "@angular/material";
@@ -13,6 +13,7 @@ import { NavbarService } from 'src/app/auth/navbar.service';
 export class PersonCardComponent implements OnInit {
 
   @Input() member;
+  @Output() change: EventEmitter<boolean> = new EventEmitter();
 
   constructor(private projectService: ProjectService, private auth: AuthService, private navbar: NavbarService,
     private dialog: MatDialog) { }
@@ -25,11 +26,14 @@ export class PersonCardComponent implements OnInit {
   }
 
   delete() {
-    this.dialog.open(DeleteConfirmComponent, { panelClass: "custom-container", data: {
+    const dialogRef = this.dialog.open(DeleteConfirmComponent, { panelClass: "custom-container", data: {
       mode: 'team',
       id: this.member._id,
       projID: this.navbar.projectID
     }});
+    dialogRef.afterClosed().subscribe(val => {
+      this.change.emit(true);
+    });
   }
 
 }
