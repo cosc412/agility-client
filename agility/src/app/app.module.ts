@@ -27,7 +27,6 @@ import { TaskPopupComponent } from './shared/task-popup/task-popup.component';
 import { DetailsPopupComponent } from './shared/details-popup/details-popup.component';
 import { UserPopupComponent } from './shared/user-popup/user-popup.component';
 import { ProjectGuard } from './guards/project.guard';
-import { ToasterComponent } from './shared/toaster/toaster.component';
 
 @NgModule({
   declarations: [
@@ -50,8 +49,7 @@ import { ToasterComponent } from './shared/toaster/toaster.component';
     SprintPopupComponent,
     TaskPopupComponent,
     DetailsPopupComponent,
-    UserPopupComponent,
-    ToasterComponent
+    UserPopupComponent
   ],
   imports: [
     BrowserModule,

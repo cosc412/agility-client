@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { ToasterService } from 'src/app/auth/toaster.service';
 
 declare const gapi: any;
 
@@ -17,7 +18,7 @@ export class AuthService {
   private profile: any;
   user: any;
 
-  constructor(private router: Router, private http: HttpClient) {
+  constructor(private router: Router, private http: HttpClient, private toaster: ToasterService) {
     this.init();
   }
 
@@ -25,7 +26,7 @@ export class AuthService {
     this.auth2.signIn().then(() => {
       this.profile = this.auth2.currentUser.get().getBasicProfile();
       this.getUser();
-    });
+    }).catch((error: Error) => this.toaster.open(error.message));
   }
 
   signOut() {
@@ -90,7 +91,7 @@ export class AuthService {
         expirable.expire = new Date(new Date().getTime() + (60 * 60 * 1000)); // Set expiration time for one hour from now 
         const cookie = btoa(JSON.stringify(expirable));
         localStorage.setItem('agility_cookie', cookie);
-    });
+    }).catch((error: Error) => this.toaster.open(error.message));
   }
 
   private listenForUser() {
