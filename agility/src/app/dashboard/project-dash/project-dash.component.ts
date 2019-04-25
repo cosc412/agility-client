@@ -20,15 +20,7 @@ export class ProjectDashComponent implements OnInit {
     private dialog: MatDialog, private toaster: ToasterService) { }
 
   ngOnInit() {
-    let role = [];
-    let projs = [];
-    this.auth.getMyProjectRoles().then((roles: any) => {
-      role = JSON.parse(roles);
-      this.project.getProjects().then((p: any[]) => {
-        projs = p;
-        this.mapStatus(role, projs);
-      }).catch((error: Error) => this.toaster.open(error.message));
-    }).catch((error: Error) => this.toaster.open(error.message));
+    this.getData();
     this.navbarService.isInDetailsDash = false;
   }
 
@@ -65,12 +57,30 @@ export class ProjectDashComponent implements OnInit {
 
   openUpdateDialog(params) {
     const p = JSON.parse(JSON.stringify(params));
-    this.dialog.open(ProjectPopupComponent, { panelClass: 'custom-container',
+    const dialogRef = this.dialog.open(ProjectPopupComponent, { panelClass: 'custom-container',
       data: { mode: 'update', params: p } });
+    dialogRef.afterClosed().subscribe(val => {
+      this.getData();
+    })
   }
 
   openDeleteDialog(id: string) {
-    this.dialog.open(DeleteConfirmComponent, { panelClass: 'custom-container', data: { mode: 'project', id: id } });
+    const dialogRef = this.dialog.open(DeleteConfirmComponent, { panelClass: 'custom-container', data: { mode: 'project', id: id } });
+    dialogRef.afterClosed().subscribe(val => {
+      this.getData();
+    });
+  }
+
+  getData() {
+    let role = [];
+    let projs = [];
+    this.auth.getMyProjectRoles().then((roles: any) => {
+      role = JSON.parse(roles);
+      this.project.getProjects().then((p: any[]) => {
+        projs = p;
+        this.mapStatus(role, projs);
+      }).catch((error: Error) => this.toaster.open(error.message));
+    }).catch((error: Error) => this.toaster.open(error.message));
   }
 
 }
