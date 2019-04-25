@@ -13,6 +13,7 @@ export class SprintCardComponent implements OnInit {
 
   @Input() sprint;
   @Output() selected: EventEmitter<string> = new EventEmitter();
+  @Output() changed: EventEmitter<boolean> = new EventEmitter();
 
   chosen = false;
 
@@ -32,11 +33,19 @@ export class SprintCardComponent implements OnInit {
 
   editSprint() {
     const s = JSON.parse(JSON.stringify(this.sprint));
-    this.dialog.open(SprintPopupComponent, { panelClass: 'custom-container', data: { mode: 'update', params: s } });
+    const dialogRef = this.dialog.open(SprintPopupComponent, { panelClass: 'custom-container', data: { mode: 'update', params: s } });
+    dialogRef.afterClosed().subscribe(val => {
+      this.changed.emit(true);
+    });
   }
 
   deleteSprint() {
-    this.dialog.open(DeleteConfirmComponent, { panelClass: 'custom-container', data: { mode: 'sprint', id: this.sprint._id } });
+    const dialogRef = this.dialog.open(DeleteConfirmComponent, { panelClass: 'custom-container', data: {
+      mode: 'sprint',
+      id: this.sprint._id }});
+    dialogRef.afterClosed().subscribe(val => {
+      this.changed.emit(true);
+    });
   }
 
 }
