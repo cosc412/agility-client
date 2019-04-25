@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { TaskService } from 'src/app/auth/task.service';
 import { ToasterService } from 'src/app/auth/toaster.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-popup',
@@ -12,6 +13,7 @@ export class TaskPopupComponent implements OnInit {
 
   mode: string;
   sprintID: string;
+  projID: string;
   model = {
     _id: '',
     sprintID: '',
@@ -23,8 +25,9 @@ export class TaskPopupComponent implements OnInit {
   };
 
   constructor(private dialogRef: MatDialogRef<TaskPopupComponent>, private taskService: TaskService,
-    private toaster: ToasterService, @Inject(MAT_DIALOG_DATA) data) {
+    private toaster: ToasterService, private router: Router, @Inject(MAT_DIALOG_DATA) data) {
       this.mode = data.mode;
+      this.projID = data.projID;
       this.sprintID = data.sprintID;
       if (this.mode === 'update') {
         this.model = data.params;
@@ -41,7 +44,9 @@ export class TaskPopupComponent implements OnInit {
   async create() {
     try {
       if (this.mode === 'create') {
-        await this.taskService.createTask(this.sprintID, this.model);
+        let id = await this.taskService.createTask(this.sprintID, this.model);
+        id = id.replace(/"/g, '');
+        this.router.navigate(['/projects/'+this.projID+'/tasks/'+id]);
         this.toaster.open('Successfully created the task!');
       }
       else {
