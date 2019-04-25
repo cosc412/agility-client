@@ -10,7 +10,7 @@ export class ToasterService {
   action: boolean = true;
   setAutoHide: boolean = true;
   autoHide: number = 3000;
-  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  horizontalPosition: MatSnackBarHorizontalPosition = 'left';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
   constructor(private snackbar: MatSnackBar) { }
@@ -20,6 +20,7 @@ export class ToasterService {
     config.verticalPosition = this.verticalPosition;
     config.horizontalPosition = this.horizontalPosition;
     config.duration = this.setAutoHide ? this.autoHide : 0;
+    config.panelClass = ['custom-snackbar'];
     this.snackbar.open(message, undefined, config);
   }
 }
