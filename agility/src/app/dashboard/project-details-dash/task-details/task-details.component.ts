@@ -17,6 +17,7 @@ import { ToasterService } from 'src/app/auth/toaster.service';
 export class TaskDetailsComponent implements OnInit {
 
   task;
+  taskID: string;
   projID: string;
 
   constructor(private route: ActivatedRoute, private taskService: TaskService, private projectService: ProjectService,
@@ -33,24 +34,41 @@ export class TaskDetailsComponent implements OnInit {
         }).catch((error: Error) => this.toaster.open(error.message));
       }
       if (params.taskID) {
-        this.taskService.getTaskByID(params.taskID).then(task => {
-          this.task = JSON.parse(task);
-        }).catch((error: Error) => this.toaster.open(error.message));
+        this.taskID = params.taskID;
+        this.getTask();
       }
     });
   }
 
   createNote() {
-    this.dialog.open(DetailsPopupComponent, { panelClass: 'custom-container', data: { mode: 'note', task: this.task } });
+    const dialogRef = this.dialog.open(DetailsPopupComponent, { panelClass: 'custom-container', data: {
+      mode: 'note',
+      task: this.task
+    }});
+    dialogRef.afterClosed().subscribe(val => {
+      this.getTask();
+    });
   }
 
   createBlock() {
-    this.dialog.open(DetailsPopupComponent, { panelClass: 'custome-container', data: { mode: 'block', task: this.task } });
+    const dialogRef = this.dialog.open(DetailsPopupComponent, { panelClass: 'custome-container', data: {
+      mode: 'block',
+      task: this.task
+    }});
+    dialogRef.afterClosed().subscribe(val => {
+      this.getTask();
+    });
   }
 
   editTask() {
     const t = JSON.parse(JSON.stringify(this.task));
-    this.dialog.open(TaskPopupComponent, { panelClass: 'custom-container', data: { mode: 'update', params: t } });
+    const dialogRef = this.dialog.open(TaskPopupComponent, { panelClass: 'custom-container', data: {
+      mode: 'update',
+      params: t
+    }});
+    dialogRef.afterClosed().subscribe(val => {
+      this.getTask();
+    });
   }
 
   deleteTask() {
@@ -62,21 +80,33 @@ export class TaskDetailsComponent implements OnInit {
   }
 
   deleteBlock(block: string) {
-    this.dialog.open(DeleteConfirmComponent, { panelClass: 'custom-container', data: {
+    const dialogRef = this.dialog.open(DeleteConfirmComponent, { panelClass: 'custom-container', data: {
       mode: 'blocks',
       id: this.task._id,
       list: this.task.block,
       selected: block
     }});
+    dialogRef.afterClosed().subscribe(val => {
+      this.getTask();
+    });
   }
 
   deleteNote(notes: string) {
-    this.dialog.open(DeleteConfirmComponent, { panelClass: 'custom-container', data: {
+    const dialogRef = this.dialog.open(DeleteConfirmComponent, { panelClass: 'custom-container', data: {
       mode: 'notes',
       id: this.task._id,
       list: this.task.note,
       selected: notes
     }});
+    dialogRef.afterClosed().subscribe(val => {
+      this.getTask();
+    });
+  }
+
+  private getTask() {
+    this.taskService.getTaskByID(this.taskID).then(task => {
+      this.task = JSON.parse(task);
+    }).catch((error: Error) => this.toaster.open(error.message));
   }
 
 }
