@@ -25,7 +25,6 @@ export class AuthService {
   signIn() {
     this.auth2.signIn().then(() => {
       this.profile = this.auth2.currentUser.get().getBasicProfile();
-      this.getUser();
     }).catch((error: Error) => this.toaster.open(error.message, true));
   }
 
