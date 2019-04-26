@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ToasterService } from 'src/app/auth/toaster.service';
@@ -18,8 +18,9 @@ export class AuthService {
   private profile: any;
   user: any;
 
-  constructor(private router: Router, private http: HttpClient, private toaster: ToasterService) {
-    this.init();
+  constructor(private router: Router, private http: HttpClient, private toaster: ToasterService,
+    private zone: NgZone) {
+      this.init();
   }
 
   signIn() {
@@ -90,13 +91,13 @@ export class AuthService {
         name: this.profile.getName(),
         email: this.profile.getEmail(),
         profileURL: this.profile.getImageUrl()
-      },
-      {responseType: 'text'}).toPromise().then(user => {
-        this.user = JSON.parse(user);
+      }).toPromise().then(user => {
+        this.user = user;
         let expirable = this.user;
         expirable.expire = new Date(new Date().getTime() + (60 * 60 * 1000)); // Set expiration time for one hour from now 
         const cookie = btoa(JSON.stringify(expirable));
         localStorage.setItem('agility_cookie', cookie);
+        this.zone.run(() => this.router.navigate(['/projects']));
     }).catch((error: Error) => this.toaster.open(error.message, true));
   }
 
