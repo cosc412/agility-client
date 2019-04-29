@@ -14,11 +14,15 @@ export class ProjectService {
   constructor(private http: HttpClient, private auth: AuthService, private router: Router, private toaster: ToasterService) { }
 
   getProjects() {
-    return this.http.get('http://localhost:3000/projects', {headers: new HttpHeaders().set('userID', this.auth.user._id)}).toPromise();
+    return this.http.get('http://localhost:3000/projects', {
+      headers: new HttpHeaders().set('authorization', this.auth.getUserToken())
+    }).toPromise();
   }
 
   getProject(id: string) {
-    return this.http.get('http://localhost:3000/projects/'+id).toPromise();
+    return this.http.get('http://localhost:3000/projects/'+id, {
+      headers: new HttpHeaders().set('authorization', this.auth.getUserToken())
+    }).toPromise();
   }
 
   createProject(name: string, description: string) {
@@ -27,8 +31,9 @@ export class ProjectService {
       name: name,
       description: description,
       userID: this.auth.user._id
-    },
-    {responseType: 'text'}).toPromise().then(project => {
+    }, {
+      headers: new HttpHeaders().set('authorization', this.auth.getUserToken())
+    }).toPromise().then(project => {
       let navigate = '/projects/'+project;
       navigate = navigate.replace(/"/g, '');
       this.router.navigate([navigate]);
@@ -40,10 +45,14 @@ export class ProjectService {
     {
       name: name,
       description: description
-    }, {responseType: 'text'}).toPromise();
+    }, {
+      headers: new HttpHeaders().set('authorization', this.auth.getUserToken())
+    }).toPromise();
   }
 
   deleteProject(id: string) {
-    return this.http.delete('http://localhost:3000/projects/'+id).toPromise();
+    return this.http.delete('http://localhost:3000/projects/'+id, {
+      headers: new HttpHeaders().set('authorization', this.auth.getUserToken())
+    }).toPromise();
   }
 }
