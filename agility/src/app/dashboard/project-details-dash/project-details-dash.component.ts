@@ -40,7 +40,7 @@ export class ProjectDetailsDashComponent implements OnInit {
           this.navbarService.projectName = this.project.name;
           this.navbarService.projectID = params.id;
           this.auth.getMyProjectRole(params.id).then((role: any) => {
-            this.projectService.projectRole = JSON.parse(role).role;
+            this.projectService.projectRole = role.role;
           }).catch((error: Error) => this.toaster.open(error.message, true));
           this.getSprints();
         }).catch((error: Error) => this.toaster.open(error.message, true));

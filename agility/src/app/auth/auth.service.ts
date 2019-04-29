@@ -1,6 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ToasterService } from 'src/app/auth/toaster.service';
 
 declare const gapi: any;
@@ -37,38 +37,56 @@ export class AuthService {
   }
 
   getMyProjectRoles() {
-    return this.http.get('http://localhost:3000/users/'+this.user._id, {responseType: 'text'}).toPromise();
+    return this.http.get('http://localhost:3000/users/'+this.user._id, {
+      headers: new HttpHeaders().set('authorization', this.getUserToken())
+    }).toPromise();
   }
 
   getMyProjectRole(projectID: string) {
-    return this.http.get('http://localhost:3000/users/'+this.user._id+'/projects/'+projectID, {responseType: 'text'}).toPromise();
+    return this.http.get('http://localhost:3000/users/'+this.user._id+'/projects/'+projectID, {
+      headers: new HttpHeaders().set('authorization', this.getUserToken())
+    }).toPromise();
   }
 
   getProjectTeam(projID: string) {
-    return this.http.get('http://localhost:3000/projects/'+projID+'/team', {responseType: 'text'}).toPromise();
+    return this.http.get('http://localhost:3000/projects/'+projID+'/team', {
+      headers: new HttpHeaders().set('authorization', this.getUserToken())
+    }).toPromise();
   }
 
   getUsers(userIDs: string[]) {
     return this.http.post('http://localhost:3000/users', {
       userIDs: userIDs
-    }, {responseType: 'text'}).toPromise();
+    }, {
+      headers: new HttpHeaders().set('authorization', this.getUserToken())
+    }).toPromise();
   }
 
   addUserToProject(projectID: string, email: string) {
     return this.http.post('http://localhost:3000/projects/'+projectID+'/team', {
       email: email
-    }, {responseType: 'text'}).toPromise();
+    }, {
+      headers: new HttpHeaders().set('authorization', this.getUserToken())
+    }).toPromise();
   }
 
   removeUserFromProject(projectID: string, userID: string) {
-    return this.http.delete('http://localhost:3000/users/'+userID+'/projects/'+projectID, {responseType: 'text'}).toPromise();
+    return this.http.delete('http://localhost:3000/users/'+userID+'/projects/'+projectID, {
+      headers: new HttpHeaders().set('authorization', this.getUserToken())
+    }).toPromise();
   }
 
   updateUserInProject(projectID: string, userID: string, role: string) {
     return this.http.patch('http://localhost:3000/projects/'+projectID+'/team', {
       userID: userID,
       role: role
+    }, {
+      headers: new HttpHeaders().set('authorization', this.getUserToken())
     }).toPromise();
+  }
+
+  getUserToken(): string {
+    return this.auth2.currentUser.get().getAuthResponse().id_token;
   }
 
   private init() {
@@ -87,7 +105,7 @@ export class AuthService {
   private async getUser() {
     this.http.post('http://localhost:3000/users/validate',
       {
-        token: this.auth2.currentUser.get().getAuthResponse().id_token,
+        token: this.getUserToken(),
         name: this.profile.getName(),
         email: this.profile.getEmail(),
         profileURL: this.profile.getImageUrl()

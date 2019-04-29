@@ -13,7 +13,6 @@ export class ProjectGuard implements CanActivate {
   async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     try {
       let role = await this.auth.getMyProjectRole(route.params.id);
-      role = JSON.parse(role);
       if (role)
         return true;
       this.router.navigate(['']);

@@ -72,13 +72,11 @@ export class ProjectDashComponent implements OnInit {
   }
 
   getData() {
-    let role = [];
     let projs = [];
     this.auth.getMyProjectRoles().then((roles: any) => {
-      role = JSON.parse(roles);
       this.project.getProjects().then((p: any[]) => {
         projs = p;
-        this.mapStatus(role, projs);
+        this.mapStatus(roles, projs);
       }).catch((error: Error) => this.toaster.open(error.message, true));
     }).catch((error: Error) => this.toaster.open(error.message, true));
   }

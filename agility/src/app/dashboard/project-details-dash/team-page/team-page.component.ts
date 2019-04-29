@@ -62,14 +62,12 @@ export class TeamPageComponent implements OnInit {
   }
 
   private getTeam() {
-    this.auth.getProjectTeam(this.projectID).then((t: any) => {
-      const team = JSON.parse(t);
+    this.auth.getProjectTeam(this.projectID).then((team: any) => {
       const userIDs = [];
       team.forEach(member => {
         userIDs.push(member.userID);
       });
-      this.auth.getUsers(userIDs).then((u: any) => {
-        const users = JSON.parse(u);
+      this.auth.getUsers(userIDs).then((users: any) => {
         this.mapTeamMembers(team, users);
       }).catch((error: Error) => this.toaster.open(error.message, true));
     }).catch((error: Error) => this.toaster.open(error.message, true));
