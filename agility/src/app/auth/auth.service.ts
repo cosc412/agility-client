@@ -66,6 +66,7 @@ export class AuthService {
     return this.http.post('http://localhost:3000/projects/'+projectID+'/team', {
       email: email
     }, {
+      responseType: 'text',
       headers: new HttpHeaders().set('authorization', this.getUserToken())
     }).toPromise();
   }
