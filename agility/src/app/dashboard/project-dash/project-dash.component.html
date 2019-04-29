@@ -1,16 +1,16 @@
 
-<div class="wrapper">
+<main class="wrapper">
   <div class="header">
     My Projects
     <hr>
   </div>
 
-  <div *ngIf="projects" class="card_grid">
+  <section *ngIf="projects" class="card_grid">
     <app-project-card *ngFor="let p of projects" (edit)="openUpdateDialog($event)" (delete)="openDeleteDialog($event)"
       [project]='p'></app-project-card>
     <button class="create_project" (click)="openCreateDialog()">
       <img src="../../../assets/plus.png" alt="Plus icon">
       <div>New Project</div>
     </button>
-  </div>
-</div>
+  </section>
+</main>

@@ -1,22 +1,24 @@
 
-<div *ngIf="task" class="wrapper">
-  <div class="title">
-    {{ task.header }}
-    <hr>
-  </div>
-  <div class="description">
-    <div class="header">
-      Description
-      <div class="button_group">
-        <button (click)="editTask()" alt="edit task button"><img src="../../../../assets/edit.png" alt="Edit icon"></button>
-        <button (click)="deleteTask()" alt="delete task button"><img src="../../../../assets/trashcan.png"alt="Delete icon"></button>
+<main *ngIf="task" class="wrapper">
+  <section>
+    <div class="title">
+      {{ task.header }}
+      <hr>
+    </div>
+    <div class="description">
+      <div class="header">
+        Description
+        <div class="button_group">
+          <button (click)="editTask()" alt="edit task button"><img src="../../../../assets/edit.png" alt="Edit icon"></button>
+          <button (click)="deleteTask()" alt="delete task button"><img src="../../../../assets/trashcan.png"alt="Delete icon"></button>
+        </div>
+      </div>
+      <div class="info">
+        {{ task.description }}
       </div>
     </div>
-    <div class="info">
-      {{ task.description }}
-    </div>
-  </div>
-  <div class="content">
+  </section>
+  <section class="content">
     <div class="section">
       <div class="title">Notes</div>
       <div *ngFor="let note of task.note" class="item">
@@ -43,5 +45,5 @@
         New Block
       </button>
     </div>
-  </div>
-</div>
+  </section>
+</main>

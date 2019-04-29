@@ -1,8 +1,8 @@
 
-<div class="navbar">
+<nav class="navbar">
   <div class="button_wrapper_left">
-    <a routerLink="">
-      <img src="../../../assets//logo.png" height="70px">
+    <a routerLink="" aria-label="Link to homepage">
+      <img src="../../../assets//logo.png" height="70px" alt="Logo">
     </a>
     <div *ngIf="navbarService.isInDetailsDash" class="project_name">
       <span *ngIf="navbarService.projectName">{{ navbarService.projectName }}</span>
@@ -22,7 +22,7 @@
       </span>
     </button>
   </div>
-</div>
+</nav>
 
 <ng-template #logout>
   <button *ngIf="auth.user; else logout" (click)="auth.signOut()" class="google" alt="google sign out button">

@@ -1,6 +1,6 @@
 
-<div class="wrapper">
-  <div class="sprint_grid">
+<main class="wrapper">
+  <section class="sprint_grid">
     <div *ngIf="sprints && sprints.length > 0; else noSprintsTemplate" class="sprint_wrapper">
       <app-sprint-card #sprintCards *ngFor="let sprint of sprints"
         [sprint]="sprint" (changed)="getSprints()" (selected)="getSprintTasks($event)"></app-sprint-card>
@@ -15,8 +15,8 @@
         <img src ="../../../assets/plus.png" alt="Plus icon">
         <div>New Sprint</div>
     </button>
-  </div>
-  <div *ngIf="tasks" class="tasks_wrapper">
+  </section>
+  <section *ngIf="tasks" class="tasks_wrapper">
     <div *ngIf="selectedSprintHeader" class="title">{{ selectedSprintHeader }} Tasks</div>
     <div class="task_list_wrapper">
       <div *ngIf="tasks.length !== 0" class="heading_grid">
@@ -33,5 +33,5 @@
         <span>New Task</span>
       </button>
     </div>
-  </div>
-</div>
+  </section>
+</main>
