@@ -105,7 +105,7 @@ export class TaskDetailsComponent implements OnInit {
 
   private getTask() {
     this.taskService.getTaskByID(this.taskID).then(task => {
-      this.task = JSON.parse(task);
+      this.task = task;
     }).catch((error: Error) => this.toaster.open(error.message, true));
   }
 
