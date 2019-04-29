@@ -2,7 +2,7 @@
 <div *ngIf="member" class="outer">
   <a href="mailto:{{ member.email }}">
     <div class="wrapper">
-      <img src="{{ member.profileURL }}">
+      <img src="{{ member.profileURL }}" alt="{{ member.name }}'s profile picture'">
       <div class="info">
         <div class="name">
           {{ member.name }}
@@ -14,7 +14,7 @@
     </div>
   </a>
   <div *ngIf="projectService.projectRole === 'Project Lead' && auth.user._id !== member._id" class="button_group">
-    <img (click)="edit()" src="../../../assets/edit.png">
-    <img (click)="delete()" src="../../../assets/trashcan.png">
+    <img (click)="edit()" src="../../../assets/edit.png" alt="Edit logo">
+    <img (click)="delete()" src="../../../assets/trashcan.png" alt="Delete logo">
   </div>
 </div>

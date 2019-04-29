@@ -16,7 +16,7 @@
     </a>
     <a routerLink="/faq"><img class="icon" src="../../../assets/question.png" alt="faq button"></a>
     <button *ngIf="!auth.user; else logout" (click)="auth.signIn()" class="google" alt="google sign in button">
-      <img class="google" src="../../../assets/google.png">
+      <img class="google" src="../../../assets/google.png" alt="Google logo">
       <span class="google">
         Sign In
       </span>
@@ -26,7 +26,7 @@
 
 <ng-template #logout>
   <button *ngIf="auth.user; else logout" (click)="auth.signOut()" class="google" alt="google sign out button">
-    <img class="google" src="../../../assets/google.png">
+    <img class="google" src="../../../assets/google.png" alt="Google logo">
     <span class="google">
       Sign Out
     </span>

@@ -9,7 +9,7 @@
     <app-project-card *ngFor="let p of projects" (edit)="openUpdateDialog($event)" (delete)="openDeleteDialog($event)"
       [project]='p'></app-project-card>
     <button class="create_project" (click)="openCreateDialog()">
-      <img src="../../../assets/plus.png">
+      <img src="../../../assets/plus.png" alt="Plus icon">
       <div>New Project</div>
     </button>
   </div>
