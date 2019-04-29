@@ -16,6 +16,7 @@ export class AuthService {
 
   private auth2: any;
   private profile: any;
+  private token: any;
   user: any;
 
   constructor(private router: Router, private http: HttpClient, private toaster: ToasterService,
@@ -87,7 +88,11 @@ export class AuthService {
   }
 
   getUserToken(): string {
-    return this.auth2.currentUser.get().getAuthResponse().id_token;
+    if (this.auth2 !== undefined) {
+      return this.auth2.currentUser.get().getAuthResponse().id_token;
+    } else {
+      return this.token;
+    }
   }
 
   private init() {
@@ -113,7 +118,8 @@ export class AuthService {
       }).toPromise().then(user => {
         this.user = user;
         let expirable = this.user;
-        expirable.expire = new Date(new Date().getTime() + (60 * 60 * 1000)); // Set expiration time for one hour from now 
+        expirable.expire = new Date(new Date().getTime() + (60 * 60 * 1000)); // Set expiration time for one hour from now
+        expirable.token = this.getUserToken();
         const cookie = btoa(JSON.stringify(expirable));
         localStorage.setItem('agility_cookie', cookie);
         this.zone.run(() => this.router.navigate(['/projects']));
@@ -135,6 +141,7 @@ export class AuthService {
       const cookie = JSON.parse(atob(c));
       if (Date.parse(cookie.expire) > new Date().getTime()) { // If cookie hasn't expired, get user data
         this.user = cookie;
+        this.token = cookie.token;
       }
       else {                                                  // Else remove cookie from local storage
         localStorage.removeItem('agility_cookie');
