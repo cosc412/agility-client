@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SprintService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private auth: AuthService) { }
 
   getProjectSprints(projID: string) {
-    return this.http.get('http://localhost:3000/sprints', {headers: new HttpHeaders().set('projectID', projID)}).toPromise();
+    return this.http.get('http://localhost:3000/sprints', {
+      headers: new HttpHeaders().set('projectID', projID)
+      .set('authorization', this.auth.getUserToken())}).toPromise();
   }
 
   createProjectSprint(projID: string, data: {header: string, due: Date, description: string}) {
@@ -18,8 +21,9 @@ export class SprintService {
       header: data.header,
       due: data.due.toUTCString(),
       description: data.description
-    },
-    {responseType: 'text'}).toPromise();
+    }, {
+      headers: new HttpHeaders().set('authorization', this.auth.getUserToken())
+    }).toPromise();
   }
 
   updateProjectSprint(sID: string, data: {projID: string, header: string, due: Date, description: string}) {
@@ -28,12 +32,15 @@ export class SprintService {
       header: data.header,
       due: data.due,
       description: data.description
-    },
-    {responseType: 'text'}).toPromise();
+    }, {
+      headers: new HttpHeaders().set('authorization', this.auth.getUserToken())
+    }).toPromise();
   }
 
   deleteProjectSprint(sprintID: string) {
     return this.http.delete('http://localhost:3000/sprints/'+sprintID,
-    {responseType: 'text'}).toPromise();
+    {
+      headers: new HttpHeaders().set('authorization', this.auth.getUserToken())
+    }).toPromise();
   }
 }
