@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 import {MatDialog} from "@angular/material";
 import { UserPopupComponent } from 'src/app/shared/user-popup/user-popup.component';
 import { ToasterService } from 'src/app/auth/toaster.service';
+import { ProjectService } from 'src/app/auth/project.service';
 
 @Component({
   selector: 'app-team-page',
@@ -16,7 +17,7 @@ export class TeamPageComponent implements OnInit {
   team;
 
   constructor(private route: ActivatedRoute, private auth: AuthService, private dialog: MatDialog,
-    private toaster: ToasterService) { }
+    private toaster: ToasterService, private projectService: ProjectService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
