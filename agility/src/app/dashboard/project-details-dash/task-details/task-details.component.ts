@@ -8,6 +8,7 @@ import { DetailsPopupComponent } from 'src/app/shared/details-popup/details-popu
 import { ProjectService } from 'src/app/auth/project.service';
 import { NavbarService } from 'src/app/auth/navbar.service';
 import { ToasterService } from 'src/app/auth/toaster.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-task-details',
@@ -21,9 +22,10 @@ export class TaskDetailsComponent implements OnInit {
   projID: string;
 
   constructor(private route: ActivatedRoute, private taskService: TaskService, private projectService: ProjectService,
-    private navbarService: NavbarService, private dialog: MatDialog, private toaster: ToasterService) { }
+    private navbarService: NavbarService, private dialog: MatDialog, private toaster: ToasterService, private auth: AuthService) { }
 
   ngOnInit() {
+    this.auth.setRedirect('/' + this.route.snapshot.url.join('/'));
     this.route.params.subscribe(params => {
       if (params.id) {
         this.projID = params.id;

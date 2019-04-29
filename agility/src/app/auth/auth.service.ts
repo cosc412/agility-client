@@ -16,7 +16,7 @@ export class AuthService {
 
   private auth2: any;
   private profile: any;
-  private token: any;
+  private redirect: any;
   user: any;
 
   constructor(private router: Router, private http: HttpClient, private toaster: ToasterService,
@@ -90,9 +90,12 @@ export class AuthService {
   getUserToken(): string {
     if (this.auth2 !== undefined) {
       return this.auth2.currentUser.get().getAuthResponse().id_token;
-    } else {
-      return this.token;
     }
+  }
+
+  setRedirect(url: string) {
+    this.redirect = url;
+    this.setCookie();
   }
 
   private init() {
@@ -117,12 +120,12 @@ export class AuthService {
         profileURL: this.profile.getImageUrl()
       }).toPromise().then(user => {
         this.user = user;
-        let expirable = this.user;
-        expirable.expire = new Date(new Date().getTime() + (60 * 60 * 1000)); // Set expiration time for one hour from now
-        expirable.token = this.getUserToken();
-        const cookie = btoa(JSON.stringify(expirable));
-        localStorage.setItem('agility_cookie', cookie);
-        this.zone.run(() => this.router.navigate(['/projects']));
+        this.setCookie();
+        if (this.redirect) {
+          this.zone.run(() => this.router.navigate([this.redirect]));
+        } else {
+          this.zone.run(() => this.router.navigate(['/projects']));
+        }
     }).catch((error: Error) => this.toaster.open(error.message, true));
   }
 
@@ -135,13 +138,21 @@ export class AuthService {
     });
   }
 
+  private setCookie() {
+    let expirable = this.user;
+    expirable.expire = new Date(new Date().getTime() + (60 * 60 * 1000)); // Set expiration time for one hour from now
+    expirable.redirect = this.redirect;
+    const cookie = btoa(JSON.stringify(expirable));
+    localStorage.setItem('agility_cookie', cookie);
+  }
+
   private parseCookie() {
     let c = localStorage.getItem('agility_cookie');
     if (c) {
       const cookie = JSON.parse(atob(c));
       if (Date.parse(cookie.expire) > new Date().getTime()) { // If cookie hasn't expired, get user data
         this.user = cookie;
-        this.token = cookie.token;
+        this.redirect = cookie.redirect;
       }
       else {                                                  // Else remove cookie from local storage
         localStorage.removeItem('agility_cookie');
