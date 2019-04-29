@@ -32,6 +32,7 @@ export class ProjectDetailsDashComponent implements OnInit {
     private route: ActivatedRoute, private dialog: MatDialog, private toaster: ToasterService) { }
 
   ngOnInit() {
+    this.auth.setRedirect('/' + this.route.snapshot.url.join('/'));
     this.navbarService.isInDetailsDash = true;
     this.route.params.subscribe(params => {
       if (params.id) {

@@ -20,6 +20,7 @@ export class TeamPageComponent implements OnInit {
     private toaster: ToasterService, private projectService: ProjectService) { }
 
   ngOnInit() {
+    this.auth.setRedirect('/' + this.route.snapshot.url.join('/'));
     this.route.params.subscribe(params => {
       if (params.id) {
         this.projectID = params.id;
