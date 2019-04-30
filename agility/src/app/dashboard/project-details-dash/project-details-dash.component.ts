@@ -27,7 +27,7 @@ export class ProjectDetailsDashComponent implements OnInit {
   selectedSprint: string;
   selectedSprintHeader: string;
 
-  constructor(private navbarService: NavbarService, private projectService: ProjectService,
+  constructor(private navbarService: NavbarService, public projectService: ProjectService,
     private sprintService: SprintService, private taskService: TaskService, private auth: AuthService,
     private route: ActivatedRoute, private dialog: MatDialog, private toaster: ToasterService) { }
 

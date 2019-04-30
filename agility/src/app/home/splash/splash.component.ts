@@ -9,7 +9,7 @@ import { NavbarService } from 'src/app/auth/navbar.service';
 })
 export class SplashComponent implements OnInit {
 
-  constructor(private auth: AuthService, private navbarService: NavbarService) { }
+  constructor(public auth: AuthService, private navbarService: NavbarService) { }
 
   ngOnInit() {
     this.navbarService.isInDetailsDash = false;

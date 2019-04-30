@@ -17,7 +17,7 @@ export class TeamPageComponent implements OnInit {
   team;
 
   constructor(private route: ActivatedRoute, private auth: AuthService, private dialog: MatDialog,
-    private toaster: ToasterService, private projectService: ProjectService) { }
+    private toaster: ToasterService, public projectService: ProjectService) { }
 
   ngOnInit() {
     this.auth.setRedirect('/' + this.route.snapshot.url.join('/'));
