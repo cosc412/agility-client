@@ -2,21 +2,21 @@
 <nav class="navbar">
   <div class="button_wrapper_left">
     <a routerLink="" aria-label="Link to homepage">
-      <img src="../../../assets//logo.png" height="70px" alt="Logo">
+      <img src="assets/img/logo.png" height="70px" alt="Logo">
     </a>
     <div *ngIf="navbarService.isInDetailsDash" class="project_name">
       <span *ngIf="navbarService.projectName">{{ navbarService.projectName }}</span>
     </div>
   </div>
   <div class="button_wrapper_right">
-    <a *ngIf="auth.user" routerLink="/projects"><img class="icon side" src="../../../assets/home.png" alt="home button"></a>
-    <a *ngIf="!auth.user" routerLink=""><img class="icon side" src="../../../assets/home.png" alt="home button"></a>
+    <a *ngIf="auth.user" routerLink="/projects"><img class="icon side" src="assets/img/home.png" alt="home button"></a>
+    <a *ngIf="!auth.user" routerLink=""><img class="icon side" src="assets/img/home.png" alt="home button"></a>
     <a *ngIf="navbarService.isInDetailsDash" routerLink="/projects/{{ navbarService.projectID }}/team">
-      <img class="icon side" src="../../../assets/team.png" alt="project team page button">
+      <img class="icon side" src="assets/img/team.png" alt="project team page button">
     </a>
-    <a routerLink="/faq"><img class="icon" src="../../../assets/question.png" alt="faq button"></a>
+    <a routerLink="/faq"><img class="icon" src="assets/img/question.png" alt="faq button"></a>
     <button *ngIf="!auth.user; else logout" (click)="auth.signIn()" class="google" alt="google sign in button">
-      <img class="google" src="../../../assets/google.png" alt="Google logo">
+      <img class="google" src="assets/img/google.png" alt="Google logo">
       <span class="google">
         Sign In
       </span>
@@ -26,7 +26,7 @@
 
 <ng-template #logout>
   <button *ngIf="auth.user; else logout" (click)="auth.signOut()" class="google" alt="google sign out button">
-    <img class="google" src="../../../assets/google.png" alt="Google logo">
+    <img class="google" src="assets/img/google.png" alt="Google logo">
     <span class="google">
       Sign Out
     </span>
