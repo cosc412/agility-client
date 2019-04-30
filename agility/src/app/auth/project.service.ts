@@ -14,19 +14,19 @@ export class ProjectService {
   constructor(private http: HttpClient, private auth: AuthService, private router: Router, private toaster: ToasterService) { }
 
   getProjects() {
-    return this.http.get('http://localhost:3000/projects', {
+    return this.http.get('https://agility-api.herokuapp.com/projects', {
       headers: new HttpHeaders().set('authorization', this.auth.getUserToken())
     }).toPromise();
   }
 
   getProject(id: string) {
-    return this.http.get('http://localhost:3000/projects/'+id, {
+    return this.http.get('https://agility-api.herokuapp.com/projects/'+id, {
       headers: new HttpHeaders().set('authorization', this.auth.getUserToken())
     }).toPromise();
   }
 
   createProject(name: string, description: string) {
-    this.http.post('http://localhost:3000/projects',
+    this.http.post('https://agility-api.herokuapp.com/projects',
     {
       name: name,
       description: description,
@@ -41,7 +41,7 @@ export class ProjectService {
   }
 
   updateProject(id: string, name: string, description: string) {
-    this.http.patch('http://localhost:3000/projects/'+id,
+    this.http.patch('https://agility-api.herokuapp.com/projects/'+id,
     {
       name: name,
       description: description
@@ -51,7 +51,7 @@ export class ProjectService {
   }
 
   deleteProject(id: string) {
-    return this.http.delete('http://localhost:3000/projects/'+id, {
+    return this.http.delete('https://agility-api.herokuapp.com/projects/'+id, {
       headers: new HttpHeaders().set('authorization', this.auth.getUserToken())
     }).toPromise();
   }

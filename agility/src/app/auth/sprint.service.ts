@@ -10,13 +10,13 @@ export class SprintService {
   constructor(private http: HttpClient, private auth: AuthService) { }
 
   getProjectSprints(projID: string) {
-    return this.http.get('http://localhost:3000/sprints', {
+    return this.http.get('https://agility-api.herokuapp.com/sprints', {
       headers: new HttpHeaders().set('projectID', projID)
       .set('authorization', this.auth.getUserToken())}).toPromise();
   }
 
   createProjectSprint(projID: string, data: {header: string, due: Date, description: string}) {
-    this.http.post('http://localhost:3000/sprints', {
+    this.http.post('https://agility-api.herokuapp.com/sprints', {
       projID: projID,
       header: data.header,
       due: data.due.toUTCString(),
@@ -27,7 +27,7 @@ export class SprintService {
   }
 
   updateProjectSprint(sID: string, data: {projID: string, header: string, due: Date, description: string}) {
-    this.http.patch('http://localhost:3000/sprints/'+sID, {
+    this.http.patch('https://agility-api.herokuapp.com/sprints/'+sID, {
       projID: data.projID,
       header: data.header,
       due: data.due,
@@ -38,7 +38,7 @@ export class SprintService {
   }
 
   deleteProjectSprint(sprintID: string) {
-    return this.http.delete('http://localhost:3000/sprints/'+sprintID,
+    return this.http.delete('https://agility-api.herokuapp.com/sprints/'+sprintID,
     {
       headers: new HttpHeaders().set('authorization', this.auth.getUserToken())
     }).toPromise();

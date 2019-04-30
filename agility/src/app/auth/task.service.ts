@@ -11,7 +11,7 @@ export class TaskService {
   constructor(private http: HttpClient, private auth: AuthService, private navbar: NavbarService) { }
 
   getTasksBySprint(sprintID: string) {
-    return this.http.get('http://localhost:3000/tasks', {
+    return this.http.get('https://agility-api.herokuapp.com/tasks', {
       headers: new HttpHeaders().set('sprintID', sprintID)
       .set('projectid', this.navbar.projectID)
       .set('authorization', this.auth.getUserToken())
@@ -19,14 +19,14 @@ export class TaskService {
   }
 
   getTaskByID(taskID: string) {
-    return this.http.get('http://localhost:3000/tasks/'+taskID, {
+    return this.http.get('https://agility-api.herokuapp.com/tasks/'+taskID, {
       headers: new HttpHeaders().set('projectid', this.navbar.projectID)
       .set('authorization', this.auth.getUserToken())
     }).toPromise();
   }
 
   createTask(sprintID: string, params: {due: Date, header: string, description: string}) {
-    return this.http.post('http://localhost:3000/tasks', {
+    return this.http.post('https://agility-api.herokuapp.com/tasks', {
       sprintID: sprintID,
       due: params.due.toUTCString(),
       header: params.header,
@@ -40,7 +40,7 @@ export class TaskService {
   }
 
   updateTask(taskID: string, params: {sprintID: string, due: Date, header: string, description: string, block: string[], note: string[]}) {
-    return this.http.patch('http://localhost:3000/tasks/'+taskID, {
+    return this.http.patch('https://agility-api.herokuapp.com/tasks/'+taskID, {
       sprintID: params.sprintID,
       due: params.due,
       header: params.header,
@@ -54,14 +54,14 @@ export class TaskService {
   }
 
   deleteTask(taskID: string) {
-    return this.http.delete('http://localhost:3000/tasks/'+taskID, {
+    return this.http.delete('https://agility-api.herokuapp.com/tasks/'+taskID, {
       headers: new HttpHeaders().set('projectid', this.navbar.projectID)
       .set('authorization', this.auth.getUserToken())
     }).toPromise();
   }
 
   addNote(taskID: string, notes: string[]) {
-    return this.http.post('http://localhost:3000/tasks/'+taskID+'/notes', {
+    return this.http.post('https://agility-api.herokuapp.com/tasks/'+taskID+'/notes', {
       notes: notes
     }, {
       headers: new HttpHeaders().set('projectid', this.navbar.projectID)
@@ -70,7 +70,7 @@ export class TaskService {
   }
 
   addBlock(taskID: string, blocks: string[]) {
-    return this.http.post('http://localhost:3000/tasks/'+taskID+'/blocks', {
+    return this.http.post('https://agility-api.herokuapp.com/tasks/'+taskID+'/blocks', {
       blocks: blocks
     }, {
       headers: new HttpHeaders().set('projectid', this.navbar.projectID)
