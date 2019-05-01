@@ -38,25 +38,25 @@ export class AuthService {
   }
 
   getMyProjectRoles() {
-    return this.http.get('https://agility-api.herokuapp.com/users/'+this.user._id, {
+    return this.http.get('https://ancient-stream-54187.herokuapp.com/users/'+this.user._id, {
       headers: new HttpHeaders().set('authorization', this.getUserToken())
     }).toPromise();
   }
 
   getMyProjectRole(projectID: string) {
-    return this.http.get('https://agility-api.herokuapp.com/users/'+this.user._id+'/projects/'+projectID, {
+    return this.http.get('https://ancient-stream-54187.herokuapp.com/users/'+this.user._id+'/projects/'+projectID, {
       headers: new HttpHeaders().set('authorization', this.getUserToken())
     }).toPromise();
   }
 
   getProjectTeam(projID: string) {
-    return this.http.get('https://agility-api.herokuapp.com/projects/'+projID+'/team', {
+    return this.http.get('https://ancient-stream-54187.herokuapp.com/projects/'+projID+'/team', {
       headers: new HttpHeaders().set('authorization', this.getUserToken())
     }).toPromise();
   }
 
   getUsers(userIDs: string[]) {
-    return this.http.post('https://agility-api.herokuapp.com/users', {
+    return this.http.post('https://ancient-stream-54187.herokuapp.com/users', {
       userIDs: userIDs
     }, {
       headers: new HttpHeaders().set('authorization', this.getUserToken())
@@ -64,7 +64,7 @@ export class AuthService {
   }
 
   addUserToProject(projectID: string, email: string) {
-    return this.http.post('https://agility-api.herokuapp.com/projects/'+projectID+'/team', {
+    return this.http.post('https://ancient-stream-54187.herokuapp.com/projects/'+projectID+'/team', {
       email: email
     }, {
       responseType: 'text',
@@ -73,13 +73,13 @@ export class AuthService {
   }
 
   removeUserFromProject(projectID: string, userID: string) {
-    return this.http.delete('https://agility-api.herokuapp.com/users/'+userID+'/projects/'+projectID, {
+    return this.http.delete('https://ancient-stream-54187.herokuapp.com/users/'+userID+'/projects/'+projectID, {
       headers: new HttpHeaders().set('authorization', this.getUserToken())
     }).toPromise();
   }
 
   updateUserInProject(projectID: string, userID: string, role: string) {
-    return this.http.patch('https://agility-api.herokuapp.com/projects/'+projectID+'/team', {
+    return this.http.patch('https://ancient-stream-54187.herokuapp.com/projects/'+projectID+'/team', {
       userID: userID,
       role: role
     }, {
@@ -112,7 +112,7 @@ export class AuthService {
   }
 
   private async getUser() {
-    this.http.post('https://agility-api.herokuapp.com/users/validate',
+    this.http.post('https://ancient-stream-54187.herokuapp.com/users/validate',
       {
         token: this.getUserToken(),
         name: this.profile.getName(),
