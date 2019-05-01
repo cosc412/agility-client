@@ -102,7 +102,7 @@ export class AuthService {
     this.parseCookie();
     gapi.load('auth2', () => {
       let auth = gapi.auth2.init({
-        client_id: '675904009128-7qot95l5mnb63pbq98d6u7ab0djshgsj.apps.googleusercontent.com',
+        client_id: '675904009128-r2rj1nrco0vkkbgpp89im49lccd0npul.apps.googleusercontent.com',
         fetch_basic_profile: true,
         scope: 'profile'
       });
